@@ -1,0 +1,56 @@
+---
+layout: post
+title: Tidbits from Adam Bien
+date: '2008-09-25T22:34:00.001+02:00'
+author: Jonas Bandi
+tags:
+- work
+- programming
+- java
+modified_time: '2008-09-25T22:34:44.560+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4567645425285971120
+blogger_orig_url: http://blog.jonasbandi.net/2008/09/tidbits-from-adam-bien.html
+---
+
+I was attending <a href="http://www.adam-bien.com/roller/abien/">Adam Biens</a> workshop <a href="http://www.ch-open.ch/wstage/08/ws1.html">'Designing The Boundary - Rich UI Meets Efficient Java EE Backend'</a> at the <a href="http://www.ch-open.ch/wstage/08/">workshop-days</a> of <a href="http://www.ch-open.ch/">/ch/open</a>.
+<br/>
+<br/>
+I blogged his comment about rich- vs. anemic domain models <a href="http://closed-loop.blogspot.com/2008/09/anemic-but-progressing.html">here</a>.
+
+Here some more tidbits:
+<br/>
+<br/>
+<list>
+<li>
+If an application has more than three layers this is suspicious...
+</li>
+
+<li>
+There is a trend towards rich-client applications! The hype around platforms like FLEX/AIR, Java FX, Eclipse RCP, Google Chrome are a clear indicator of this.
+</li>
+
+<li>
+There are good reasons to keep your business-logic close to the persistence.
+</li>
+
+<li>
+There are a lot of arguments for stateful web applications. For typical inhouse enterprise applications with ~1000 users performance problems resulting from keeping the conversation state on the server should not be an issue.
+</li>
+
+<li>
+The DAO-Pattern is dead ... as are many other classic J2EE patterns. We have to rethink our patterns.
+</li>
+
+<li>
+Some applications are just not suited for service-orientation. These are typically problem-solving applications. Just think of a SOA-version of eclipse... typical workflow applications on the otehr hand are predestined for service-orientation.
+</li>
+
+<li>
+Applications with high user interaction are a typical indicator against service-orientation and for local business-logic close to the persistence.
+</li>
+
+<li>
+Whenever possible deploy into one single VM. Separated VMs for Web- and EJB-Container make hardly ever sense (performance can even be worse, scalability is better achieved with load balancing at the front ...)
+</li>
+
+</list>

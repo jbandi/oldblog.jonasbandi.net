@@ -1,0 +1,141 @@
+---
+layout: post
+title: 'JBoss Remote EJB Invocation: An Unexpected Journey'
+date: '2013-08-21T01:56:00.001+02:00'
+author: Jonas Bandi
+tags:
+- jboss
+- java
+modified_time: '2014-05-16T00:47:05.596+02:00'
+thumbnail: http://lh6.ggpht.com/-kD_W0VucqGU/UhQCHf6EJOI/AAAAAAAABZY/6gQY6jzuo3M/s72-c/complexity-sign6.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-1045455402013300893
+blogger_orig_url: http://blog.jonasbandi.net/2013/08/jboss-remote-ejb-invocation-unexpected.html
+---
+
+<p><img style="float: right; margin-left: 10px;" title="complexity-sign6.jpg" src="http://lh6.ggpht.com/-kD_W0VucqGU/UhQCHf6EJOI/AAAAAAAABZY/6gQY6jzuo3M/complexity-sign6.jpg?imgmax=800" alt="Complexity sign6" height="250" border="0" /></p>
+<div style="max-width: 450px;">
+<blockquote>
+<p>The amount of complexity I'm willing to tolerate is proportional to the size of the problem being solved. There will come a point where the accumulated complexity of our existing systems is greater than the complexity of creating a new one.</p>
+<p style="text-align: right;">- <a href="https://gist.github.com/cookrn/4015437">Ryan Dahl on Software</a></p>
+</blockquote>
+<blockquote>
+<p>Es könnte alles so einfach sein, ist es aber nicht.</p>
+<p style="text-align: right;">- <a href="http://www.youtube.com/watch?v=V1yEIaoRNhE">Die Fantastischen Vier</a></p>
+</blockquote>
+</div>
+<p> </p>
+<p>Getting EJB Remoting to work in JBoss 7 was probably the most pitfall-ridden path I have travelled so far on my journeys through the swamp of frameworks…</p>
+<p><strong>Note: The example and discussion in this post is based on JBoss EAP 6.1.</strong></p>
+<p>It all started out well with a simple quick-start: <a href="https://github.com/jboss-developer/jboss-eap-quickstarts/tree/jdf-2.1.9.Final">ejb-remote</a>.</p>
+<p>But the pitfalls lured …</p>
+<p><strong>TL;DR:</strong> Finally I got an illustrative example running, which will be the base for the following discussion. The example can be found <a href="https://github.com/jbandi/JavaExamples/tree/master/ejbremote">on my Github repo</a>.</p>
+<p>The EJB is simple: [<a href="https://gist.github.com/jbandi/6287441">Gist</a>]</p>
+<script type="text/javascript" src="https://gist.github.com/jbandi/6287441.js"></script>
+<p>It's in the client where we find the pitfalls: [<a href="https://gist.github.com/jbandi/6287518">Gist</a>]</p>
+<script type="text/javascript" src="https://gist.github.com/jbandi/6287518.js"></script>
+<p> </p>
+<p>Let's discuss the pitfalls:</p>
+<h3>Pitfall 1: Determining the JNDI-name for the EJB lookup</h3>
+<p>When you deploy the EJB into JBoss you get a nice output in the server-log:</p>
+<div class="codebox">
+<div style="width: 1000px;">
+<pre>[0m23:18:42,226 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-12) JNDI bindings for session bean named HelloWorldBean in deployment unit subdeployment "ejbremote-ejb.jar" of deployment "ejbremote-ear.ear" are as follows:
+ 
+	java:global/ejbremote-ear/ejbremote-ejb/HelloWorldBean!net.jonasbandi.ejbremote.server.HelloWorld
+	java:app/ejbremote-ejb/HelloWorldBean!net.jonasbandi.ejbremote.server.HelloWorld
+	java:module/HelloWorldBean!net.jonasbandi.ejbremote.server.HelloWorld
+	java:jboss/exported/ejbremote-ear/ejbremote-ejb/HelloWorldBean!net.jonasbandi.ejbremote.server.HelloWorld
+	java:global/ejbremote-ear/ejbremote-ejb/HelloWorldBean
+	java:app/ejbremote-ejb/HelloWorldBean
+	java:module/HelloWorldBean
+</pre>
+</div>
+</div>
+<p>It looks easy … but actually none of those JNDI bindings work for remote lookup!</p>
+<p> </p>
+<h3>Pitfall 2: There are two approaches for accessing a remote EJB</h3>
+<p>You can use the "standard" JNDI lookup (which uses the "remote-naming project") or the the (proprietary) EJB Client API. Both approaches differ in the initialisation properties (key-value pairs) that have to be configured and in the JNDI lookup name that must be used for a given bean. <br /> <br /> The EJB Client API is recommended. Loadbalancing, clustering and client interceptors are only available with the EJB Client API. Also it is performance optimised. [<a href="https://docs.jboss.org/author/display/AS72/Remote+EJB+invocations+via+JNDI+-+EJB+client+API+or+remote-naming+project">see here</a>]</p>
+<h3>Pitfall 3: The initialisation properties are cryptic</h3>
+<p>I do not understand the following properties (except that they all have something to do with client, context and naming):</p>
+<div class="codebox">
+<div style="width: 700px;">
+<pre>jndiProperties.put("jboss.naming.client.ejb.context", true);
+ejbProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+ejbProperties.put("org.jboss.ejb.client.scoped.context", "true");
+</pre>
+</div>
+</div>
+<p>Yet you have to use the correct ones for the correct lookup approach, else it won't work… <br /> There are also a lot of other properties floating around in different documentations, wikis, forums and JIRA issues … I did not find a authoritative documentation about them.</p>
+<h3>Pitfall 4: Use the correct runtime dependencies</h3>
+<p>Runtime dependencies are tricky. You can get you code compiling, but it will not work unless you have the correct runtime dependencies configure. Getting the EJB client API running, you need:</p>
+<div class="codebox">
+<pre>      &lt;dependency&gt;
+           &lt;groupId&gt;org.jboss&lt;/groupId&gt;
+           &lt;artifactId&gt;jboss-ejb-client&lt;/artifactId&gt;
+           &lt;scope&gt;runtime&lt;/scope&gt;
+       &lt;/dependency&gt;
+</pre>
+</div>
+<p>Getting the "standard" JNDI lookup running (including JNDI tree traversal) you need:</p>
+<div class="codebox">
+<pre>       &lt;dependency&gt;
+            &lt;groupId&gt;org.jboss&lt;/groupId&gt;
+            &lt;artifactId&gt;jboss-remote-naming&lt;/artifactId&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+</pre>
+</div>
+<p>In both cases you need some more runtime dependencies which are listed in the <a href="https://github.com/jbandi/JavaExamples/blob/master/ejbremote/client/pom.xml">client pom.xml of the example.</a></p>
+<p> </p>
+<h3>Pitfall 5: Error messages are mostly not helpful or even misleading</h3>
+<p>Example 1: If you configure the wrong version of the ejb-client dependency like:</p>
+<div class="codebox">
+<pre>       &lt;dependency&gt;
+           &lt;groupId&gt;org.jboss&lt;/groupId&gt;
+           &lt;artifactId&gt;jboss-ejb-client&lt;/artifactId&gt;
+           &lt;scope&gt;runtime&lt;/scope&gt;
+           &lt;version&gt;1.0.5.Final&lt;/version&gt;
+       &lt;/dependency&gt;
+</pre>
+</div>
+<p>Then you get an exception that makes you beleave you have made a mistake somewhere in the security-configuration:</p>
+<div class="codebox">
+<div style="width: 900px;">
+<pre>javax.ejb.EJBAccessException: JBAS014502: Invocation on method: [] is not allowed
+</pre>
+</div>
+</div>
+<p><br />Example 2: If you pass a number instead of a string for the port configuration like this:</p>
+<div class="codebox">
+<div style="width: 900px;">
+<pre>ejbProperties.put("remote.connection.1.port", 4447);
+</pre>
+</div>
+</div>
+<p>Then you get the same exception as when you use a wrong JNDI lookup name:</p>
+<div class="codebox">
+<div style="width: 1000px;">
+<pre>java.lang.IllegalStateException: EJBCLIENT000025: No EJB receiver available for handling [appName:ejbremote-ear, moduleName:ejbremote-ejb, distinctName:]
+</pre>
+</div>
+</div>
+<p> </p>
+<h3>Pitfall 6: Client interceptor registration does not work with scoped context</h3>
+<p>Since JBoss 7.2 you can use scoped contexts and then you would not need do programmatic initialisation of the EJBClientContext. <br />So if you do this:</p>
+<div class="codebox">
+<div style="width: 900px;">
+<pre>ejbProperties.put("org.jboss.ejb.client.scoped.context", "true");
+</pre>
+</div>
+</div>
+<p>… then you do <strong>not </strong>need to do the following:</p>
+<div class="codebox">
+<div style="width: 1000px;">
+<pre>final EJBClientConfiguration ejbClientConfiguration = new PropertiesBasedEJBClientConfiguration(ejbProperties);
+final ConfigBasedEJBClientContextSelector selector = new ConfigBasedEJBClientContextSelector(ejbClientConfiguration);
+EJBClientContext.setSelector(selector);
+</pre>
+</div>
+</div>
+<p>However if you do the above, then the programmatic registration of a client interceptor does not work any more. I suspect this is a bug?</p>
+<p>In a later post I plan to elaborate on how to get the above example running with a custom login module and with a cluster setup… be prepared for more complexity and more magic strings!</p>

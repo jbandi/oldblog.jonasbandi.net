@@ -1,0 +1,59 @@
+---
+layout: post
+title: Redeploying cactus tests in JBoss
+date: '2008-06-22T12:13:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+modified_time: '2008-06-22T12:15:12.186+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5206072122489897817
+blogger_orig_url: http://blog.jonasbandi.net/2008/06/redeploying-cactus-tests-in-jboss.html
+---
+
+I am experimenting with <a href="http://jakarta.apache.org/cactus/">Cactus</a> in JBoss AS.
+<br/>
+(I am using Cactus 1.8.0 and JBoss 4.2.2.GA)
+<br/>
+<br/>
+
+According to the Cactus <a href="http://jakarta.apache.org/cactus/integration/howto_tomcat.html">documentation</a>, there are two ways to deploy your cactus tests:
+<br/>
+<list>
+<li>
+Deploy the cactus jars globaly in your application server and deploy your derived <em>ServletTestCase</em>-Tests with your application.
+</li>
+<li>
+Deploy the cactus jars together with your application.
+</li>
+</list>
+<br/>
+
+(this documentation refers to tomcat deployment ...)
+<br/>
+<br/>
+
+I tried to go with the first method, but it didn't work:
+<br/>
+After the first deployment everything ran fine, triggering the <em>ServletTestRunner</em> resulted in a nice report showing the test results.
+<br/>
+But then I changed my tests, redeployed the application and hit the <em>ServletTestRunner</em> again... but nothing changed. The resulting report was still showing the results of the previous deployment.
+<br/>
+<br/>
+
+When I restarted JBoss, the actual report was shown. But redeploying the app did not update the report.
+<br/><br/>
+
+So I changed to method two from above and removed the cactus jars from the global JBoss libraries and packaged them into my app (that's what the cactify-ant-task is for anyway).
+<br/>
+After that everything was fine. Redeploying the app resulted in a up-to-date report when hitting the <em>ServletTestRunner</em>.
+<br/>
+<br/>
+My guess is, that the result of the <em>ServletTestRunner</em> is cached if this servlet is deployed globally...?
+<br/>
+<br/>
+
+Probably there is another way to solve the problem while having the cactus jars deployed globally, but the solution works for my needs...
+<br/>
+<br/>
+
+The only resource I found on the net was <a href="http://www.mail-archive.com/cactus-user@jakarta.apache.org/msg02811.html">this</a>.

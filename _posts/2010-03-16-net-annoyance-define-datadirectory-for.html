@@ -1,0 +1,64 @@
+---
+layout: post
+title: ".Net Annoyance: Define |DataDirectory| for Connection Strings"
+date: '2010-03-16T12:14:00.005+01:00'
+author: Jonas Bandi
+tags:
+- ".net"
+- programming
+- annoyance
+modified_time: '2010-03-26T10:20:39.001+01:00'
+thumbnail: http://lh6.ggpht.com/_X3kaawac_g4/Sl5hmccuoiI/AAAAAAAAAoM/aLEdXPpOQq4/s72-c/angry_face.jpg
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-852410282586078782
+blogger_orig_url: http://blog.jonasbandi.net/2010/03/net-annoyance-define-datadirectory-for.html
+---
+
+<img align="right" border="0" src="http://lh6.ggpht.com/_X3kaawac_g4/Sl5hmccuoiI/AAAAAAAAAoM/aLEdXPpOQq4/s144/angry_face.jpg" style="border-width: 0px; display: inline; margin: 0px 0px 5px 5px;" title="matroschka250px" width="141" />
+<b>Update 20100326:</b> For an acceptable workaround see at the bottom. <br />
+<br />
+One thing&nbsp; where I think common practice in .Net is behind Java is the idea of using an embedded database for integration tests.<br />
+<br />
+Sql Server Express Edition has the nice feature to specify the DB-File in the connection string with <code>AttachDbFilename</code>.     <br />
+This makes it easy to distribute your database with your project, which is a nice thing. The project template of ASP.Net MVC for instance uses this feature out of the box.<br />
+<br />
+However the connection string usually contains this fragment:    <br />
+<code>AttachDbFilename=|DataDirectory|\BookShopDB.mdf</code><br />
+<code>|DataDirectory|</code> is a placeholder, that in the case of the ASP.Net MVC template refers to the directory <code>App_Data</code>. This way it is possible to specify a relative path for your DB-File.<br />
+<br />
+This seems a nice feature, but only as long as you are only distributing your solution containing the application.<br />
+The problems start, when you would like to open a connection to the same database from outside of the actual application.This is a common scenario for integration tests, which live in another project. <code>AttachDbFilename</code> seems not to accept relative paths that point to a location higher in the directory structure … this is a major annoyance!<br />
+<br />
+You can define the value for <code>|DataDictionary|</code> like this:     <br />
+<code>AppDomain.CurrentDomain.SetData("DataDirectory", @"C:\XYZ\App_Data\");</code> <br />
+… but this does not solve the problem, since it still is not possible to use a relative path that point to a location higher in the directory structure.<br />
+<br />
+The following results in a runtime exception:   <br />
+<code>AppDomain.CurrentDomain.SetData("DataDirectory", @"..\..\XYZ\App_Data");</code> <br />
+<i>Argh! Why make it so hard?</i><br />
+<br />
+Does anybody have a solution for this problem?<br />
+Here the problem on <a href="http://stackoverflow.com/questions/125157/relative-path-reference-in-webconfig-connectionstring">Stackoverflow</a>, and here an <a href="http://blogs.msdn.com/dataaccess/archive/2005/10/28/486273.aspx">explanation on the Data Access</a> blog.<br />
+<br />
+<b>Update 20100326: </b>I settled for the following acceptable workaround:<br />
+<br />
+In my App.config of my test-project I have the following section:<br />
+<div style="border: 1px solid silver; clear: right; overflow: auto;">
+<div style="width: 700px;">
+<pre>  &lt;appSettings&gt;
+    &lt;add key="DataDirectory" value="..\..\..\BookShop\App_Data\"/&gt;
+  &lt;/appSettings&gt;
+</pre>
+</div>
+</div>
+<br />
+In the test-setup I then execute the following code:
+<br />
+<div style="border: 1px solid silver; clear: right; overflow: auto;">
+<div style="width: 700px;">
+<pre class="csharp:nogutter:nocontrols" name="code">var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
+var absoluteDataDirectory = Path.GetFullPath(dataDirectory);
+AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);
+</pre>
+</div>
+</div>
+<br />

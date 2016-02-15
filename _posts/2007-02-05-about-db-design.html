@@ -1,0 +1,22 @@
+---
+layout: post
+title: About DB-Design
+date: '2007-02-05T21:47:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-02-05T21:47:07.011+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5606354148845281338
+blogger_orig_url: http://blog.jonasbandi.net/2007/02/about-db-design.html
+---
+
+<p>Here just another insight from the <cite cite="http://www.sqlservercentral.com/columnists/dpeterson/lookuptablemadness.asp"><a href="http://www.sqlservercentral.com/columnists/dpeterson/lookuptablemadness.asp">Lookup Table Madness</a>&nbsp;article:</cite></p>
+<blockquote cite="http://www.sqlservercentral.com/columnists/dpeterson/lookuptablemadness.asp">
+<p>Remember that the primary reason to use a database is not to "persist data"; that can be done more efficiently with file-based systems. The purpose of a relational database is to enforce the rules that govern how data is to be created, maintained and used; in other words the database enforces the rules that give the data meaning.Without those rules your data becomes a meaningless tangle of 1's and 0's. In database design, the first and foremost consideration should always be logical correctness; all other concerns are secondary.</p></blockquote>
+<p class="citation">I repeat:</p>
+<p class="citation"><strong>In database design, the first and foremost consideration should always be logical correctness; all other concerns are secondary.</strong></p>
+<p class="citation">This means:</p>
+<ul>
+<li>
+<div class="citation">Do not think about performance, when you design your DB-model. Changes to improve performance should be made&nbsp; in a second iteration&nbsp;and consciously declared as deviation from the optimal model.</div></li>
+<li>
+<div class="citation">Introduce constraints as early as possible. It may be tedious in the beginning to work with a highly constrained data-store, but it forces your application to behave correctly. This is according to the <a href="http://en.wikipedia.org/wiki/Fail-fast">Fail Fast Principle</a>. Introducing constraints late will certainly force you to test the whole application again and probably force you to rework a lot of the application. Also introducing new constraints on an existing set of data can be painful.</div></li></ul>

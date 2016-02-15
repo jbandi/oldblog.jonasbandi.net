@@ -1,0 +1,58 @@
+---
+layout: post
+title: Using Facelets along with JSP in a JSF application
+date: '2008-05-28T17:03:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+modified_time: '2008-05-28T17:05:46.361+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6351113167961712029
+blogger_orig_url: http://blog.jonasbandi.net/2008/05/using-facelets-along-with-jsp-in-jsf.html
+---
+
+I wanted to use Facelets for some pages in an existing JSP/JSF application.
+<br/>
+To achieve this I had to perform the following steps:
+<br/>
+<br/>
+
+<list>
+<li>
+<a href="https://facelets.dev.java.net/">Download</a> Facelets and copy the jsf-facelets.jar into your WEB-INF/lib directory
+<br/>
+If you use maven you can include the following dependency in your pom:
+<pre class="textmate-source"><span class="text text_xml">        <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">dependency</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+            <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">groupId</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>com.sun.facelets<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">groupId</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+            <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">artifactId</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>jsf-facelets<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">artifactId</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+            <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">version</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>1.1.14<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">version</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+        <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">dependency</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span></span></pre>
+
+</li>
+<li>
+Add the FaceletViewHandler to the faces-config.xml file.<br/>
+<pre class="textmate-source"><span class="text text_plain"><span class="meta meta_paragraph meta_paragraph_text">&lt;application&gt;
+</span>    <span class="meta meta_paragraph meta_paragraph_text">...
+    &lt;view-handler&gt;
+</span>        <span class="meta meta_paragraph meta_paragraph_text">com.sun.facelets.FaceletViewHandler
+</span>    <span class="meta meta_paragraph meta_paragraph_text">&lt;/view-handler&gt;
+&lt;/application&gt;</span></span></pre>
+</li>
+
+<li>
+Define which pages should be handled by Facelets, i.e. urls ending with '.xhtml'. Add the following snippet to your web.xml:
+<br/>
+<pre class="textmate-source"><span class="text text_xml">    <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">context-param</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span> 
+            <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-name</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>facelets.VIEW_MAPPINGS<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-name</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span> 
+            <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-value</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>*.xhtml<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-value</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span> 
+    <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">context-param</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span></span></pre>
+</li>
+
+<li>
+For a useful debug-screen, you should also add the following snippet to your web.xml:
+<pre class="textmate-source"><span class="text text_xml">    <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">context-param</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+        <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-name</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>facelets.DEVELOPMENT<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-name</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+        <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-value</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>true<span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">param-value</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span>
+    <span class="meta meta_tag meta_tag_xml"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_localname entity_name_tag_localname_xml">context-param</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_xml">&gt;</span></span></span></pre>
+</li>
+
+</list>

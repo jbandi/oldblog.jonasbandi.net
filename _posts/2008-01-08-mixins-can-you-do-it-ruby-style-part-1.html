@@ -1,0 +1,69 @@
+---
+layout: post
+title: 'Mixins: Can you do it Ruby-Style? (Part 1)'
+date: '2008-01-08T01:47:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2008-01-08T01:54:54.359+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-3446578877264436503
+blogger_orig_url: http://blog.jonasbandi.net/2008/01/mixins-can-you-do-it-ruby-style-part-1.html
+---
+
+Ok, Ruby shows us how to do it:   <pre width="60%" style="border: 0.01mm solid silver; padding: 4px; line-height: 100%; background-color: rgb(255, 255, 255);font-family:monospace;"><span style="font-weight: bold; color: rgb(0, 0, 128); background-color: rgb(255, 255, 255);">module</span><span style="background-color: rgb(255, 255, 255);"> TalkMixin
+   </span><span style="font-weight: bold; color: rgb(0, 0, 128); background-color: rgb(255, 255, 255);">def</span><span style="background-color: rgb(255, 255, 255);"> say_hello
+       puts </span><span style="font-weight: bold; color: rgb(0, 128, 0); background-color: rgb(255, 255, 255);">"hello"
+</span><span style="background-color: rgb(255, 255, 255);">    </span><span style="font-weight: bold; color: rgb(0, 0, 128); background-color: rgb(255, 255, 255);">end
+end
+
+class</span><span style="background-color: rgb(255, 255, 255);"> Animal
+   </span><span style="font-weight: bold; color: rgb(0, 0, 128); background-color: rgb(255, 255, 255);">def</span><span style="background-color: rgb(255, 255, 255);"> eat
+       puts </span><span style="font-weight: bold; color: rgb(0, 128, 0); background-color: rgb(255, 255, 255);">"mpf mpf mpf ..."
+</span><span style="background-color: rgb(255, 255, 255);">    </span><span style="font-weight: bold; color: rgb(0, 0, 128); background-color: rgb(255, 255, 255);">end
+end
+
+class</span><span style="background-color: rgb(255, 255, 255);"> Dog &lt; Animal
+   </span><span style="font-weight: bold; background-color: rgb(255, 255, 255);">include </span><span style="background-color: rgb(255, 255, 255);">TalkMixin
+
+   </span><span style="font-weight: bold; color: rgb(0, 0, 128); background-color: rgb(255, 255, 255);">def</span><span style="background-color: rgb(255, 255, 255);"> bark
+       puts </span><span style="font-weight: bold; color: rgb(0, 128, 0); background-color: rgb(255, 255, 255);">"wuff wuff"
+</span><span style="background-color: rgb(255, 255, 255);">    </span><span style="font-weight: bold; color: rgb(0, 0, 128); background-color: rgb(255, 255, 255);">end
+end
+
+</span><span style="color: rgb(0, 60, 90); font-style: italic; background-color: rgb(255, 255, 255);">dog </span><span style="background-color: rgb(255, 255, 255);">= Dog.new
+</span><span style="color: rgb(0, 60, 90); font-style: italic; background-color: rgb(255, 255, 255);">dog.</span><span style="background-color: rgb(255, 255, 255);">eat
+</span><span style="color: rgb(0, 60, 90); font-style: italic; background-color: rgb(255, 255, 255);">dog.</span><span style="background-color: rgb(255, 255, 255);">bark
+</span><span style="color: rgb(0, 60, 90); font-style: italic; background-color: rgb(255, 255, 255);">dog.</span><span style="background-color: rgb(255, 255, 255);">say_hello</span></pre>
+
+<p> Now, extension methods in C# allow us to do something similar:</p>
+
+<pre width="60%"  style="border: 0.01mm solid silver; padding: 4px; line-height: 100%; background-color: rgb(255, 255, 255);font-family:monospace;"><span style="color:blue;">public interface </span><span style="color: rgb(43, 145, 175);">ITalker</span>{}
+
+<span style="color:blue;">public static class </span><span style="color: rgb(43, 145, 175);">TalkMixin </span>{
+   <span style="color:blue;">public static void </span>SayHello(<span style="color:blue;">this </span><span style="color: rgb(43, 145, 175);">ITalker </span>animal){
+       <span style="color: rgb(43, 145, 175);">Console</span>.WriteLine(<span style="color: rgb(163, 21, 21);">"hello"</span>);
+   }
+}
+
+<span style="color:blue;">public class </span><span style="color: rgb(43, 145, 175);">Animal </span>{
+   <span style="color:blue;">public void </span>Eat() {
+       <span style="color: rgb(43, 145, 175);">Console</span>.WriteLine(<span style="color: rgb(163, 21, 21);">"mpf mpf mpf ..."</span>);
+   }
+}
+
+<span style="color:blue;">public class </span><span style="color: rgb(43, 145, 175);">Dog </span>: <span style="color: rgb(43, 145, 175);">Animal</span>, <span style="color: rgb(43, 145, 175);">ITalker </span>{
+   <span style="color:blue;">public void </span>Bark() {
+       <span style="color: rgb(43, 145, 175);">Console</span>.WriteLine(<span style="color: rgb(163, 21, 21);">"wuff wuff"</span>);
+   }
+}
+
+[<span style="color: rgb(43, 145, 175);">TestFixture</span>]
+<span style="color:blue;">public class </span><span style="color: rgb(43, 145, 175);">MixinTest </span>{
+   [<span style="color: rgb(43, 145, 175);">Test</span>]
+   <span style="color:blue;">public void </span>Inerface_Mixin() {
+       <span style="color: rgb(43, 145, 175);">Dog </span>dog = <span style="color:blue;">new </span><span style="color: rgb(43, 145, 175);">Dog</span>();
+       dog.Eat();
+       dog.Bark();
+       dog.SayHello();
+   }
+}</pre>
+Not bad... this technique is heavily used in .NET 3.5, for instance in the <a href="http://msdn2.microsoft.com/en-us/library/19e6zeyy.aspx">IEnumerable</a> interface.

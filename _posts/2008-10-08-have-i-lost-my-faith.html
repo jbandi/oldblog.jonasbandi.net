@@ -1,0 +1,55 @@
+---
+layout: post
+title: Have I lost my faith?
+date: '2008-10-08T00:25:00.002+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- domain driven design
+modified_time: '2008-10-08T11:37:39.209+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5487108400365968459
+blogger_orig_url: http://blog.jonasbandi.net/2008/10/have-i-lost-my-faith.html
+---
+
+Recently I was listening to the <a href="http://www.se-radio.net/podcast/2008-05/episode-95-new-guardiancouk-website-matt-wall-and-erik-doernenburg">excellent episode</a> of <a href="http://www.se-radio.net/">Software Engineering Radio</a> about the new <a href="http://www.guardian.co.uk/">Guardian.co.uk</a> website.
+<br/>
+<br/>
+
+I was eagerly sucking up the facts the two architects Matthew Wall and Erik Doernenburg are presenting in the podcast.
+<br/>
+But after about 20 min I was shuddering: At this point Matthew and Erik are talking about applying <a href="http://domaindrivendesign.org/">Domain Driven Design (DDD)</a>, specifically about enforcing <a href="http://domaindrivendesign.org/discussion/messageboardarchive/Aggregates.html">aggregate</a> rules, when the host (Markus Völter) was stating the following:
+<br/>
+
+
+<blockquote >If I had done that, I probably would have defined a domain specific language, for example a textual DSL, that would know about those concepts. Then you could actually write programs using those common language terms as first class citizens. </blockquote>
+<br/>
+This made me cringe. I know the Markus Völter is an expert in MDSD and DSLs, but stating the above quote in such a casual manner rings a lot of my alarm bells.
+<br/>
+<br/>
+
+I just have a bad gut feeling if someone wants to build such essential infrastructure up front. That's when my <a href="http://blog.jonasbandi.net/2008/04/invented-elsewhere-syndrome.html">invented-elsewhere-syndrome</a> kicks in. 
+<p style="font-size:10px">
+[<a href="http://c2.com/xp/YouArentGonnaNeedIt.html">YAGNI</a>, <a href="http://gettingreal.37signals.com/ch06_Race_to_Running_Software.php">Race to Running Software</a>, <a href="http://gettingreal.37signals.com/ch03_Less_Mass.php">Less Mass</a> are other things that come to mind ...]
+</p>
+<br/>
+I have just seen too many projects, that invented their very own framework.
+<br/>
+In the beginning everything goes smooth and it is very cool to work on <em>TheFramework(tm)</em> and not having to solve the real business problem. You can really feel smart ... But then the 80-20 rule kicks in and all the special cases threaten to turn <em>TheFramework(tm)</em> into <a href="http://www.laputan.org/mud/">a big ball of mud</a>.
+<br/>
+And that's even before maintenance becomes an issue of its own ... who is going to hatch <em>TheFramework(tm)</em> when the underlying technology evolves?
+<br/>
+<br/>
+I think that endeavors like this should not be taken light-headed. This can cause a lot of suffering.
+<br/>
+<br/>
+As my self-confidence as developer is growing, I think I would refuse to work on a project with this premise.
+<br/>
+<br/>
+I think it is exactly the point of domain driven design that it is <strong>not about technology but about concepts</strong>. People too often rush head first into technical realizations. Thats also what Eric Evans says when he mentions that the <a href="http://blog.jonasbandi.net/2007/02/creativity-and-competent-people.html">competent developers often are not invoved in "domain crunching"</a>.
+<br/>
+<br/>
+<img style="margin: 0px 0px 0px 10px" src="http://realityloop.net/blog/IntroducingADD_AFAA/image_thumb_3.png" alt="braindead-closeup.jpg" border="0" width="150" align="right" />
+On the other hand, some years ago I would not have been so hesitant and precautious. As a highly motivated graduate, I would myself have rushed headfirst into the challange, working on a cool <em>TheFramework(tm)</em> of my own ... So one could ask: <strong>Why did I loose my faith?</strong>
+<br/>
+<br/>
+Honestly I don't know... could it be that I lost my courage in the trenches of enterprise-developement?

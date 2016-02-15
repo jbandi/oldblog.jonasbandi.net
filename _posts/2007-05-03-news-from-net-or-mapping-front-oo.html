@@ -1,0 +1,44 @@
+---
+layout: post
+title: News from the .NET OR-Mapping-Front - OO-Database concerns
+date: '2007-05-03T11:08:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-05-03T23:09:34.093+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-1858964324723022870
+blogger_orig_url: http://blog.jonasbandi.net/2007/05/news-from-net-or-mapping-front-oo.html
+---
+
+<p>There is yet another player entering the game of OR-Mapping in the .NET-World: <a href="http://persistor.net/">Persistor.NET</a>. Like their competitor <a href="http://genom-e.com/">Genome</a>&nbsp;they come from Austria.</p>
+<p>The product looks like an implementation of an OO-Database that uses SQL-Server as backend.</p>
+<p>I have not&nbsp;done a deep investigation of the product, but I am sceptical concerning the usefulness of the product for enterprise applications. The issues I have are the following:</p>
+<ul>
+<li>The goal of the product is to shield the developer <strong>completely</strong> from persistence-concerns: </li>
+<ul>
+<li>The developer can not define the DB-schema (resp. in their philosophy he does not have to care about the schema).</li>
+<li>The mapper does not work on an existing schema.</li>
+<li>The mapper generates (extends?) the schema on the fly.</li></ul></ul>
+<p>The product basically implies, that when we are doing Object-Oriented development, <strong>all</strong> persistence-details are not a business-concern and therefore should be handled by the infrastructure. I don't agree with this opinion at least on two levels:</p>
+<ol>
+<li>From an <strong>architectural standpoint </strong>the persistence details are very much a business concern for business applications:</li>
+<ul>
+<li>There is no <strong>logical</strong> separation of the Data-Storage-Layer and the Application Layer. There is no decoupling between those two layers: As soon as I have defined my object-structure, the DB-schema is also defined.<br />But this&nbsp;logical separation is a crucial requirement for non-trivial business applications:</li>
+<ul>
+<li>The&nbsp;persistent data is&nbsp;almost always&nbsp;the real asset of a company, not the applications that handle the data. The data often lives a lot longer than the applications on top of them. So it is a critical concern how the data is stored, and the schema plays a very important role here. Data-migration is a keyword that comes to mind.</li>
+<li>The&nbsp;persistent data has often to be accessed in different ways and even different applications. Not all consumers of the data can or want to use the same logical (object)&nbsp;model to work with the data. Think about reporting, advanced queries, exports and imports&hellip;</li></ul></ul>
+<li>From a <strong>development standpoint </strong>it rings my alarm bells, when all&nbsp;persistence details are hidden in a black-box:</li>
+<ul>
+<li>What if the application has to scale? Does the black-box scale as desired? What if not?</li>
+<li>What if there are performance problems?</li>
+<li>What if the black-box does not behave as I expect it?</li>
+<li>What if I want to use the black-box for an exotic use-case? (Example: What happens If I have an existing application with existing data and then I introduce some new subclasses for an existing class? There are several ways to map inheritance in a relational DB, each has pros and cons, a tool cannot make the decision for me! What happens with existing data, when the schema changes because of the new inheritance-hierarchy?</li></ul></ol>
+<p>So, I think for the <strong>big picture</strong> of an enterprise application, persistence and how it is realized is a very important business concern. A lot of effort should&nbsp;be put into that topic, mostly in the early phases of a project (architecture, design). It is also important to fix the persistence-details as early as possible in a project, since a strong fundament is always a good thing.</p>
+<p>What I think OR-Mapping as all about, is to shield the&nbsp;<strong>implementation of business logic&nbsp;</strong>from persistence details. The developer does not have to be concerned about persistence. He should not have&nbsp;to have any knowhow about the&nbsp;persistence-backend. He should be able to work on a higher level of abstraction, with an object-model, that was designed and optimized for the specific application he is developing</p>
+<p>Also the implementation of the business logic should be decoupled from the persistence-backend, so that the backend can be changed with minimal effort.</p>
+<p>My&nbsp;above concerns are&nbsp;more or less applicable for all OO-Databases. In my opinion OO-Databases are not suited for the core data-storage of business applications. I see the following scenarios for OO-Databases.</p>
+<ul>
+<li>Prototypes that need a data storage</li>
+<li>Systems that do need an embedded data storage, but where the raw data is no business concern. Clients/Users of those systems do not mainly interact with the data in the system, but with the functionality of the system. (Control platforms, embedded systems, standalone desktop applications &hellip;)</li>
+<li>Intermediate repositories of business-data for distributed business applications. For instance for disconnected smart-clients. The repositories hold a copy of a subset of the business-data and there is some kind of synchronization with the primary data-storage.</li></ul>
+<p>But back to <a href="http://persistor.net/">Persistor.NET</a>: I don't see how they place themselves on the market. Do they compete with full blown OR-Mappers like <a href="http://www.nhibernate.org/">NHibernate</a><a href="http://www.nhibernate.org/"></a>, <a href="http://www.genom-e.com/">Genome</a> or <a href="http://www.vanatec.com/">OpenAccess</a>? I dont think so, according to my concerns above. On the other side there is competition from pure OO-Databases like <a href="http://db4o.com/">db4o</a>.&nbsp;All the&nbsp;features of <a href="http://persistor.net/">Persistor.NET</a>&nbsp;seem to be standard OO-Database features and the so called&nbsp;&lsquo;<span class="DDMFontSty" id="DDMLink1" style="COLOR: rgb(0,0,0)"><span class="style14">Zero Configuration&rsquo;, can be provided by <a href="http://db4o.com/">db4o</a>&nbsp;even better, because it does not rely on a SQL-Server as backend.</span></span></p>
+<p>By the way: Ted Neward is writing some tutorials about <a href="http://db4o.com/">db4o</a>&nbsp;(<a href="http://www-128.ibm.com/developerworks/java/library/j-db4o1.html">Part 1</a>, <a href="http://www-128.ibm.com/developerworks/java/library/j-db4o2.html">Part 2</a>). In the tutorials he addresses also&nbsp;some general topics of object databases.</p>

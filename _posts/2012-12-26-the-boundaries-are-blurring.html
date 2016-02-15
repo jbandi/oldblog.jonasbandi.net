@@ -1,0 +1,25 @@
+---
+layout: post
+title: The boundaries are blurring
+date: '2012-12-26T19:17:00.001+01:00'
+author: Jonas Bandi
+tags:
+- technology
+- object-relational mapping
+- programming
+modified_time: '2012-12-26T19:54:17.126+01:00'
+thumbnail: http://lh4.ggpht.com/-IIH1PQ1PQcY/UNs_Jv_GCGI/AAAAAAAABSE/1RDExXuezTY/s72-c/1981759130-caster-semenya-zwitter-leichtathletik.9.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-560560190912772545
+blogger_orig_url: http://blog.jonasbandi.net/2012/12/the-boundaries-are-blurring.html
+---
+
+<p><img style="float: right;" title="" src="http://lh4.ggpht.com/-IIH1PQ1PQcY/UNs_Jv_GCGI/AAAAAAAABSE/1RDExXuezTY/1981759130-caster-semenya-zwitter-leichtathletik.9.jpg?imgmax=800" alt="1981759130 caster semenya zwitter leichtathletik 9" width="200" border="0" />It's interesting to watch how the recent trend to mobile and browser applications is changing the traditional understanding of client-server separation and how the traditional territories of some technologies are blurring.</p>
+<p>Two recent examples in the field of persistence technologies illustrate this blurring of boundaries quite well:</p>
+<ul>
+<li><strong>Rack::CoreData<br /></strong>With the <a href="https://github.com/mattt/rack-core-data">Rack::CoreData</a> library <a href="https://devcenter.heroku.com/articles/ios-core-data-buildpack-app">you define a</a><a href="https://devcenter.heroku.com/articles/ios-core-data-buildpack-app"> client-server interface (REST API) and server backend with a OSX/iOS CoreData Model</a>.<br />While <a href="http://en.wikipedia.org/wiki/Core_Data">CoreData</a> has its root in the enterprise space, today it is primarily a client-side technology. I guess that in its current form it was never intended for anything else than persistence on client side and the only reason for it's transition to the server side is its wide usage due to the success of iOS. </li>
+</ul>
+<ul>
+<li><strong>JBoss Errai</strong><br /><a href="http://www.jboss.org/errai">JBoss Errai</a> represents the opposite trend compared to Rack::CoreData: <a href="http://docs.jboss.org/errai/2.1.1.Final/errai/reference/html_single/#sid-54493688">It takes JPA into the browser</a>! JPA is traditionally a server-side (or at least server-interfacing) technology. I am pretty sure that it was not intended as a browser technology. But with the rise of HTML5 and browser-side persistence there is the pressure to take that programming model to the web client.</li>
+</ul>
+<p>It seems that the triumph of mobile apps and rich internet applications has quite a disruptive effect on the traditional server-side technologies and frameworks. <br />
+I am wondering where this will lead? Both of the above examples do not feel quite right in my opinion… but hey, maybe we will get JPA support in HTML6 or Oracle will include direct CoreData support in the future ...</p>

@@ -1,0 +1,50 @@
+---
+layout: post
+title: No setters, no getters ... return of OO?
+date: '2008-08-25T23:46:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- domain driven design
+modified_time: '2008-08-25T23:51:56.090+02:00'
+thumbnail: http://lh4.ggpht.com/jonas.bandi/SLMnxPv05iI/AAAAAAAAARw/9f_x_E-Bi9E/s72-c/core-value.gif?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-2205333351932807301
+blogger_orig_url: http://blog.jonasbandi.net/2008/08/no-setters-no-getters-return-of-oo.html
+---
+
+<img style="margin: 0px 10px 10px 0px" src="http://lh4.ggpht.com/jonas.bandi/SLMnxPv05iI/AAAAAAAAARw/9f_x_E-Bi9E/core-value.gif?imgmax=800" alt="core-value.gif" border="0" width="200" align="left" />
+Have you also often been wondering what your state-of-the-art enterprise-project has to do with the highly praised <a href="http://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented principles</a>?
+<br/>
+
+<br/>
+Well, you are not alone. I think that's an omnipresent dichotomy in current enterprise development. Object-orientation is generally accepted as the way to go. It get's preached to you at university, you read books about it ... but then reality slaps you you hard in the face:
+<br/>
+<br/>
+<em>Welcome in the trenches of enterprise-development where object-orientation usually goes no further than using an object-oriented language!
+</em><br/>
+<br/>
+<a href="http://domaindrivendesign.org/">Domain Driven Design (DDD)</a> promotes the application of true object-orientation to enterprise-systems. But the concrete realization of DDD is often harder than we would think, and requires a lot of design-effort and experience.
+<br/>
+<a href="http://codebetter.com/blogs/david_laribee/default.aspx">Dave Laribee</a> and <a href="http://peripateticaxiom.blogspot.com/">Keith Braithwaite</a> are now promoting an interesting idea: <strong>Promoting object-orientation by not using setters and getters!</strong>
+
+<br/>
+<br/>
+The idea is, that by not using setters and getters you are forced to think about <a href="http://alistair.cockburn.us/index.php/Using_CRC_cards">classes, responsibilities and collaboration</a> instead of procedures over dumb data structures.
+<br/>
+<br/>
+Read the posts for yourself, its an interesting thought (and don't miss the coments):
+<list>
+<li>
+<a href="http://codebetter.com/blogs/david_laribee/archive/2008/07/08/super-models-part-2-avoid-mutators.aspx">Super Models, Part 2: Avoid Mutators</a>
+</li>
+<li>
+<a href="http://peripateticaxiom.blogspot.com/2008/06/tdd-mocks-and-design.html">TDD, Mocks and Design</a>
+</li>
+
+</list>
+<br/>
+<br/>
+The discussion is not new, the topic was already discussed in this article:<a href="http://www.javaworld.com/javaworld/jw-09-2003/jw-0905-toolbox.html"> Why getter and setter methods are evil</a>.
+<br/>
+<br/>
+There is much truth in those articles. I wish those ideas would be more widespread down here in the trenches...

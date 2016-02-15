@@ -1,0 +1,43 @@
+---
+layout: post
+title: Defining the name of a sequence with JPA annotations
+date: '2008-09-16T00:04:00.001+02:00'
+author: Jonas Bandi
+tags:
+- object-relational mapping
+- jpa
+- programming
+- java
+modified_time: '2008-09-18T21:58:16.553+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5980608930404829295
+blogger_orig_url: http://blog.jonasbandi.net/2008/09/defining-named-sequence-with-jpa.html
+---
+
+Last week I was giving another <a href="http://www.ch-open.ch/wstage/08/ws9.html">workshop</a> about object-relational mapping at the workshop-days of <a href="http://www.ch-open.ch/">/ch/open</a>.
+<br/>
+<br/>
+I got quite positive feedback from several participants and I am curious about the official ratings.
+<br/>
+<br/>
+During the exercises there was the question how to define the name of a sequence when using the strategy <code style="border: solid 1px silver; background-color:LightGray">GenerationType.SEQUENCE</code>. <br/>
+I did not know the answer then, but here it is:
+<br/>
+<br/>
+
+<div style="border:solid 1px silver;width:98%;overflow:auto">
+<div style="width:1100px;"> 
+<pre class="java:nogutter" name="code" class="java">
+@Entity
+@SequenceGenerator(name="PROD_SEQ", sequenceName="product_seq")
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="PROD_SEQ")
+    long id;
+    String title;
+
+    ...
+}
+</pre>
+</div>
+</div>

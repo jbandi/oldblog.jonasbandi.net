@@ -1,0 +1,34 @@
+---
+layout: post
+title: 'Dichotomies in software development: Anti-Anti-If Campaign?'
+date: '2013-12-13T20:13:00.001+01:00'
+author: Jonas Bandi
+tags:
+- programming
+modified_time: '2013-12-13T21:55:20.172+01:00'
+thumbnail: http://lh3.ggpht.com/-eZ6b4talSS8/UqtccbMuPHI/AAAAAAAABjM/XL6Ql0iHKMg/s72-c/600794_581837505169922_1396033429_n.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-3838456658278154631
+blogger_orig_url: http://blog.jonasbandi.net/2013/12/dichtonomies-in-software-development.html
+---
+
+<p>In the team I am currently working, a toy contest is going on among developers to reduce if-statements in the code-base to a minimum.</p>
+<p>This goes along with the <a href="http://www.antiifcampaign.com/">Anti-IF Campaign: LESS Ifs, MORE POWER</a>:</p>
+<p><a href="http://www.antiifcampaign.com/"><img style="display: block; margin-left: auto; margin-right: auto;" title="600794_581837505169922_1396033429_n.jpg" src="http://lh3.ggpht.com/-eZ6b4talSS8/UqtccbMuPHI/AAAAAAAABjM/XL6Ql0iHKMg/600794_581837505169922_1396033429_n.jpg?imgmax=800" alt="600794 581837505169922 1396033429 n" width="160" height="160" border="0" /></a></p>
+<p><br /> <br /> On the other side I recently stumbled across the following code examples from current "bleeding-edge" technologies: <br /> </p>
+<p><strong><a href="http://www.meteor.com/">Meteor</a>:</strong> Hey cool, we can use the same code on the server and the client! We just have to check where we are and then do different things!</p>
+
+
+<script src="https://gist.github.com/jbandi/7920288.js"></script>
+
+<p>(From the <a href="https://github.com/meteor/meteor/blob/devel/examples/leaderboard/leaderboard.js">official Meteor.js examples</a>) <br /> </p>
+<br />
+
+<p><strong><a href="http://www.appcelerator.com/titanium/">Appcelerator Titanium:</a></strong> Hey cool, we can use the same code-base for Android and iOS! We just have to check where we are and then do different things!</p>
+
+<script src="https://gist.github.com/jbandi/7920398.js"></script>
+
+<p>(From the appcelerator wiki: <a href="https://wiki.appcelerator.org/display/guides/Supporting+Multiple+Platforms+in+a+Single+Codebase">Supporting Multiple Platforms in a Single Codebase</a>). <br /> </p>
+<br />
+
+<p>That just looks convincing. Next step on this path to enlightenment would probably be to put all the code in the same source file?</p>
+

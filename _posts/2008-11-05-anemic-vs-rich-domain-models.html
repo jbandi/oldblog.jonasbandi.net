@@ -1,0 +1,70 @@
+---
+layout: post
+title: Anemic vs. Rich Domain Models
+date: '2008-11-05T17:27:00.001+01:00'
+author: Jonas Bandi
+tags:
+- object-relational mapping
+- programming
+- javablog
+- domain driven design
+modified_time: '2008-11-05T17:42:26.799+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-7174472564788935229
+blogger_orig_url: http://blog.jonasbandi.net/2008/11/anemic-vs-rich-domain-models.html
+---
+
+There is an interesting discussion on stackoverflow: <a href="http://stackoverflow.com/questions/18655/why-do-we-need-entity-objects">Why do we need entities</a>?
+<br/>
+<br/>
+
+When I read through this discussion, I get the impression that most people here are looking at entities in the sense of an <a href="http://en.wikipedia.org/wiki/Anemic_Domain_Model">Anemic Domain Model</a>. A lot of people are considering the Anemic Domain Model as an antipattern!
+<br/>
+<br/>
+
+There is value in rich domain models. That is what <a href="http://en.wikipedia.org/wiki/Domain_driven_design">Domain Driven Design</a> is all about. I personally believe that OO is a way to conquer complexity. This means not only technical complexity (like data-access, ui-binding, security ...)<strong> but also complexity in the business domain</strong>!
+<br/>
+<br/>
+
+If we can apply OO techniques to analyze, model, design <strong>and implement</strong> our business problems, this is a tremendous advantage for the maintainability and extensibility of non-trivial applications!
+<br/>
+<br/>
+
+There are differences between your entities and your tables. Entities should represent your model, tables just represent the data-aspect of your model!
+<br/>
+<br/>
+<img style="margin: 0px 0px 10px 30px"src="http://lh5.ggpht.com/_X3kaawac_g4/SRHMYrqVCII/AAAAAAAAAT4/f2RsQFAonK0/s_wedding-ring.jpg?imgmax=800" alt="s_wedding-ring.jpg" border="0" width="150"  align="right" />
+
+It is true that data lives longer than apps, but consider <a href="http://laribee.com/files/fundamental-ddd.pdf">this quote</a>: 
+
+<blockquote style="font-size:14px">Models are forever ... data is a happy side effect.</blockquote>
+<p align="right">-<a href="http://codebetter.com/blogs/david_laribee/">David Laribee</a></p>
+<br/>
+<br/>
+
+Some more links on this topic:
+<list>
+<li>
+<a href="http://www.javaworld.com/javaworld/jw-09-2003/jw-0905-toolbox.html">Why Setters and Getters are evil</a>
+</li>
+<li>
+<a href="http://blog.jonasbandi.net/2008/08/no-setters-no-getters-return-of-oo.html">Return of pure OO</a>
+</li>
+<li>
+<a href="http://blog.jonasbandi.net/2007/02/generalization-another-gap-between-db.html">Generalization - Another Gap between DB- and OO-Models</a>
+</li>
+<li>
+<a href="http://puttingtheteaintoteam.blogspot.com/2008/10/is-that-pojo-or-nojo.html">POJO vs. NOJO</a>
+</li>
+<li>
+<a href="http://codebetter.com/blogs/david_laribee/archive/2008/07/08/super-models-part-2-avoid-mutators.aspx">Super Models Part 2</a>
+</li>
+<li>
+<a href="http://peripateticaxiom.blogspot.com/2008/06/tdd-mocks-and-design.html">TDD, Mocks and Design</a>
+</li>
+
+</list>
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>
+

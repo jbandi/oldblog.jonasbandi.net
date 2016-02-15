@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Classifying BDD Tools (Unit-Test-Driven vs. Acceptance Test Driven) and a bit of BDD history</title>
+  <meta name="description" content="BDD (Behavior Driven Developement) seems to gain momentum lately.BDD is hard to grasp, because it is more than a development methodology (unlike TDD) and the...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/2010/03/classifying-bdd-tools-unit-test-driven.html">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml">
+
+  <link rel="stylesheet" href="/css/code.css">
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Your awesome title</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Classifying BDD Tools (Unit-Test-Driven vs. Acceptance Test Driven) and a bit of BDD history</h1>
+    <p class="post-meta"><time datetime="2010-03-31T00:37:00+02:00" itemprop="datePublished">Mar 31, 2010</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Jonas Bandi</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div class="separator" style="clear: both; text-align: center;">
+<a href="http://2.bp.blogspot.com/_X3kaawac_g4/S6-9sArYT_I/AAAAAAAAAzQ/Hy4cAADP7Jw/s1600/gearknob.jpg" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" height="200" src="http://2.bp.blogspot.com/_X3kaawac_g4/S6-9sArYT_I/AAAAAAAAAzQ/Hy4cAADP7Jw/s200/gearknob.jpg" width="148" /></a></div>
+<a href="http://en.wikipedia.org/wiki/Behavior_driven_development">BDD (Behavior Driven Developement)</a> seems to gain momentum lately.<br />
+<br />
+<a href="http://en.wikipedia.org/wiki/Behavior_driven_development">BDD</a> is hard to grasp, because it is more than a <i>development</i> methodology (unlike <a href="http://en.wikipedia.org/wiki/Test_Driven_Development">TDD</a>) and there are currently very different ideas what it really means. To make matters worse there are a lot of BDD tools around that pursue quite different concepts.<br />
+In this post I try to classify two main categories among those tools.<br />
+<br />
+Important for the understanding is that <a href="http://en.wikipedia.org/wiki/Behavior_driven_development">BDD</a> can be practiced at <b>different levels</b>. At the <b>code/unit level</b> and at the <b>feature level</b>. In both cases it is a good practice to <b>use examples to specify the behavior</b> of the units resp. features. However in both cases we have different stakeholders and intents with the BDD process.<br />
+Both approaches to BDD are not exclusive, they can be combined.<br />
+(see also "<a href="http://groups.google.com/group/specflow/browse_thread/thread/cbfcacf5a197f75e/f59a4f4c138e6f0f?#f59a4f4c138e6f0f">BDD
+ for Acceptance Tests vs. BDD for Unit Tests (or: ATDD vs. TDD)</a>" on the <a href="http://www.specflow.org/">SpecFlow</a> mailing list)<br />
+<br />
+Currently I would differentiate two flavors of BDD tools:<br />
+<ol>
+<li>Tools with a <b>business readable output</b></li>
+<li>Tools with a <b>business readable input</b></li>
+</ol>
+With tools from the first category (business readable output) the support for the BDD process is typically <b>focused on the developers</b>. All artifacts involved are owned by the developers and are typically code. This is not a bad thing, as responsible and committed developers are often the main stakeholders in successful software projects. Other stakeholders are only addressed by the tools by providing understandable reports <i>after developers have done their work</i>.<br />
+<br />
+Tools from the second category (business readable input) try to widen the focus of the BDD process by <b>enabling more involvement by all other stakeholders</b>: customers, business analysts, testers maybe even operations.<br />
+This involvement is possible <i>upfront</i>, meaning <i>before the developers have done their work</i>. This business readable input is an artifact commonly owned by all stakeholders. By having a <b>commonly owned artifact</b>, the process tries to ensure that all involved stakeholders build up a <b>shared understanding</b> which is crucial for successfully software projects (for more information I suggest reading <a href="http://www.acceptancetesting.info/the-book/">Bridging the Communication Gap</a> by <a href="http://gojko.net/">Gojko Adzic</a>).<br />
+<br />
+Because this <b>shared understanding</b> is input (as opposed to output) and business readable, the process can even be taken further and make the artifact business writable. If this is achieved successfully then we have done a big step towards <b>executable specifications</b>.<br />
+<br />
+In practice we often see tools of the first category (business readable input) used as a replacement/extension for <a href="http://en.wikipedia.org/wiki/Test_Driven_Development">TDD</a> at a unit-testing level.<br />
+In this case the behavior of the unit under development is focused by trying to specify this behavior upfront in a less technical way. However this is usually not interesting for other stakeholders than developers, because the <b>technical units under development are usually too fine grained and have no meaning to non technical persons</b>. Also technical units are the primary focus of developers and they are the main stakeholders (think of testability, separation of concern, maintainability ...), other stakeholders should not be too involved here. So this is mainly a tool for developers and allows in some cases the <i>mapping of technical units to overlying features</i>.<br />
+<br />
+The second kind of tools aim clearly at <a href="http://en.wikipedia.org/wiki/Acceptance_testing">Acceptance Testing</a> and <a href="http://www.methodsandtools.com/archive/archive.php?id=23">Acceptance Test Driven Development</a>. Here <i>system features are clearly focused</i>. <b>Features are usually more coarse grained than the behaviors of single technical units</b>. Features should always be understood and driven by business requirements.<br />
+<br />
+It is certainly possible to write acceptance tests with the first category of tools, but the driving aspect (as in Acceptance Test <i>Driven</i> Developement) is certainly harder to achieve and less supported by these kind of tools.<br />
+<b><br /></b><br />
+<b>Examples:</b><br />
+<a href="http://easyb.org/">Easyb</a> is a Groovy based tool of the first category. The following example (from <a href="http://tech.mrozewski.pl/2010/02/26/from-junit3-to-easyb/">this post</a>) shows how <b>behavior is specified at at unit-level (class-level)</b>:<br />
+<div style="border: 1px solid silver; overflow: auto;">
+<div style="width: 800px;">
+<pre class="groovy">scenario <span style="color: red;">"Two amounts with the same currencies are added"</span>, <span style="color: #66cc66;">{</span>
+  given <span style="color: red;">"Two different amounts with the same currencies"</span>, <span style="color: #66cc66;">{</span>
+    money1 = <a href="http://www.google.de/search?q=site%3Adocs.codehaus.org/%20new"><span style="color: black; font-weight: bold;">new</span></a> Money<span style="color: #66cc66;">(</span><span style="color: #cc66cc;">12</span>, <span style="color: red;">"CHF"</span><span style="color: #66cc66;">)</span>
+    money2 = <a href="http://www.google.de/search?q=site%3Adocs.codehaus.org/%20new"><span style="color: black; font-weight: bold;">new</span></a> Money<span style="color: #66cc66;">(</span><span style="color: #cc66cc;">14</span>, <span style="color: red;">"CHF"</span><span style="color: #66cc66;">)</span>
+    expected = <a href="http://www.google.de/search?q=site%3Adocs.codehaus.org/%20new"><span style="color: black; font-weight: bold;">new</span></a> Money<span style="color: #66cc66;">(</span><span style="color: #cc66cc;">26</span>, <span style="color: red;">"CHF"</span><span style="color: #66cc66;">)</span>
+  <span style="color: #66cc66;">}</span>
+  when <span style="color: red;">"Add given amounts"</span> , <span style="color: #66cc66;">{</span>
+    result = money1.<span style="color: #006600;">add</span><span style="color: #66cc66;">(</span>money2<span style="color: #66cc66;">)</span>
+  <span style="color: #66cc66;">}</span>
+  then <span style="color: red;">"New amount is sum of two given ones"</span>, <span style="color: #66cc66;">{</span>
+    result.<span style="color: #006600;">equals</span><span style="color: #66cc66;">(</span>expected<span style="color: #66cc66;">)</span>.shouldBe true</pre>
+<pre class="groovy"><span style="color: #66cc66;">  }</span>
+<span style="color: #66cc66;">}</span></pre>
+<pre class="groovy"></pre>
+<pre class="groovy">scenario <span style="color: red;">"Two amounts with different currencies are added"</span>, <span style="color: #66cc66;">{</span>
+  given <span style="color: red;">"Two amounts with different currencies"</span>, <span style="color: #66cc66;">{</span>
+    money1 = <a href="http://www.google.de/search?q=site%3Adocs.codehaus.org/%20new"><span style="color: black; font-weight: bold;">new</span></a> Money<span style="color: #66cc66;">(</span><span style="color: #cc66cc;">12</span>, <span style="color: red;">"CHF"</span><span style="color: #66cc66;">)</span>
+    money2 = <a href="http://www.google.de/search?q=site%3Adocs.codehaus.org/%20new"><span style="color: black; font-weight: bold;">new</span></a> Money<span style="color: #66cc66;">(</span><span style="color: #cc66cc;">14</span>, <span style="color: red;">"EURO"</span><span style="color: #66cc66;">)</span>
+  <span style="color: #66cc66;">}</span>
+  when <span style="color: red;">"Add given amounts"</span>, <span style="color: #66cc66;">{</span>
+    add = <span style="color: #66cc66;">{</span>
+      money1.<span style="color: #006600;">add</span><span style="color: #66cc66;">(</span>money2<span style="color: #66cc66;">)</span>
+    <span style="color: #66cc66;">}</span>
+  <span style="color: #66cc66;">}</span>
+  then <span style="color: red;">"Operation should fail"</span>, <span style="color: #66cc66;">{</span>
+    ensureThrows<span style="color: #66cc66;">(</span><a href="http://www.google.de/search?as_q=IllegalArgumentException&amp;num=100&amp;hl=en&amp;as_occt=url&amp;as_sitesearch=java.sun.com%2Fj2se%2F1.5.0%2Fdocs%2Fapi%2F"><span style="color: #aaaadd; font-weight: bold;">IllegalArgumentException</span></a><span style="color: #66cc66;">)</span> <span style="color: #66cc66;">{</span>
+      add<span style="color: #66cc66;">(</span><span style="color: #66cc66;">)</span>
+    <span style="color: #66cc66;">}</span>
+  <span style="color: #66cc66;">}</span>
+<span style="color: #66cc66;">}</span></pre>
+</div>
+</div>
+<br />
+Executing the above story gives you the follwowing readable report:<br />
+<div style="border: 1px solid silver; overflow: auto;">
+<div style="width: 800px;">
+<code>
+2 scenarios executed successfully.<br /><br />&nbsp; Story: money<br /><br />&nbsp;&nbsp;&nbsp; scenario Two amounts with the same currencies are added<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; given Two different amounts with the same currencies<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; when Add given amounts<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then New amount is sum of two given ones<br /><br />&nbsp;&nbsp;&nbsp; scenario Two amounts with different currencies are added<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; given Two amounts with different currencies<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; when Add given amounts<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then Operation should fail<br />
+</code>
+</div>
+</div>
+<span style="font-size: x-small;">(of course easyb can also generate a fancy html report)</span><br />
+<br />
+<br />
+<a href="http://www.cukes.info/">Cucumber</a> is a tool of the second category. The <a href="http://github.com/aslakhellesoy/cuke4duke/blob/master/examples/java-ejb3/features/01_book_search.feature">following example from cuke4duke</a> shows how an <b>executable feature</b> is specified:<br />
+<div style="border: 1px solid silver; overflow: auto;">
+<div style="width: 800px;">
+<code>
+Feature: Book search<br />&nbsp; In order to find books I might buy<br />&nbsp; As a potential customer<br />&nbsp; I want to search for books by different criterias<br />&nbsp; <br />&nbsp; Background:<br />&nbsp;&nbsp;&nbsp; Given the following books<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Year | Publisher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Martin Fowler&nbsp;&nbsp; | Patterns of Enterprise Application Architecture | 2002 | Addison Wesley |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Eric Evans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Domain Driven Design&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2003 | Addison Wesley |<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Gerard Meszaros | xUnit Test Patterns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 2007 | Addison Wesley |<br />&nbsp; <br />&nbsp; Scenario: Search for title<br />&nbsp;&nbsp;&nbsp; When I search for title 'Patterns'<br />&nbsp;&nbsp;&nbsp; Then the result list should contain 2 books<br />&nbsp; <br />&nbsp; Scenario: Search for author<br />&nbsp;&nbsp;&nbsp; When I search for author 'Fowler'<br />&nbsp;&nbsp;&nbsp; Then the result list should contain 2 books<br />
+</code>
+</div>
+</div>
+(notice the error in the second scenario!)<br />
+<br />
+When executing this example (using <a href="http://github.com/aslakhellesoy/cuke4duke">cuke4duke</a>) the whole EJB stack is exercised, including database-access. The result is the following report:<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="http://1.bp.blogspot.com/_X3kaawac_g4/S69i_yGY6OI/AAAAAAAAAzA/njwSl_k0cgE/s1600/Cucumber_Report.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="297" src="http://1.bp.blogspot.com/_X3kaawac_g4/S69i_yGY6OI/AAAAAAAAAzA/njwSl_k0cgE/s400/Cucumber_Report.png" width="400" /></a></div>
+<span style="font-size: x-small;">(of course Cucumber can generate a lot of different outputs)</span><br />
+<br />
+<br />
+<b>History</b> <span style="font-size: x-small;">(as I could reconstruct it)</span>:<br />
+Tools from the first category evolved from TDD. Dan North introduced BDD in 2002, see his <a href="http://dannorth.net/introducing-bdd">introductory blog post</a>.<br />
+<a href="http://jbehave.org/">JBehave</a> was one of the first BDD tools, at this point clearly part of the first of the above categories.<br />
+Then the BDD movement was mainly driven by the Ruby/Rails community. <a href="http://blog.dannorth.net/2007/06/17/introducing-rbehave/">RBehave was introduced</a> and then merged into RSpec as<i> RSpec Story Runner</i>.<br />
+<a href="http://rspec.info/">RSpec</a> then was as a tool that could satisfy both of the above catgories<br />
+<br />
+<i>RSpec StoryRunner</i> was then dropped and <a href="http://www.cukes.info/">Cucumber</a> was created. Cucumber coined the current flavor of BDD tools with plain-text specifications. <a href="http://rspec.info/">Cucumber</a> also is aiming at extending its reach beyond Ruby/Rails (see <a href="http://github.com/aslakhellesoy/cuke4duke">cuke4duke</a>, <a href="http://github.com/richardlawrence/Cuke4Nuke">cuke4Nuke</a>, <a href="http://github.com/aslakhellesoy/gherkin">gherkin</a>).<br />
+Other first-generation tools then adapted and also support plain-text specifications (<a href="http://jbehave.org/">JBehave2</a>, <a href="http://nbehave.org/">NBehave</a>).<br />
+<br />
+Beside all those explicit <a href="http://en.wikipedia.org/wiki/Behavior_driven_development">BDD</a> tools there is <a href="http://fit.c2.com/">FIT</a>/<a href="http://fitnesse.org/">FitNesse</a>. FIT was also invented in 2002 by Ward Cunningham. Its goal was enabling collaboration and communication through automated <a href="http://en.wikipedia.org/wiki/Acceptance_testing">accepatance testing</a>. <a href="http://fitnesse.org/">FitNesse </a>took up the basics of FIT and provided an intuitive, wiki-based frontend/IDE.<br />
+While FIT seems to have practically died, <a href="http://fitnesse.org/">FitNesse</a>&nbsp; is still thriving. FitNesse also recently added <a href="http://fitnesse.org/FitNesse.UserGuide.SliM.ScenarioTable">Parameterized Scenario Tables</a> and there is <a href="http://code.google.com/p/givwenzen/">GivWenZen</a>. This makes it possible to use the plain-text GWT (Given-When-Then) syntax, that was made popular by the plain-text BDD tools.<br />
+<br />
+I will list a more complete overview of BDD tools for the Java and .Net platforms in later posts.<br />
+<br />
+<div style="clear: right; font-size: 10px;">
+<br />
+<a href="http://twitter.com/jbandi"><img align="left" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" height="13px" src="http://www.google.com/s2/favicons?domain=twitter.com" style="margin: 0px;" /> follow me on twitter, I need some friends :-)</a></div>
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Your awesome title</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jekyll</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jekyllrb</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

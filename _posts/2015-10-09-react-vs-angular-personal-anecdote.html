@@ -1,0 +1,42 @@
+---
+layout: post
+title: 'React vs. Angular: A personal anecdote'
+date: '2015-10-09T21:28:00.001+02:00'
+author: Jonas Bandi
+tags:
+- javascript
+- react
+- AngularJS
+modified_time: '2015-10-09T23:03:06.068+02:00'
+thumbnail: https://lh3.googleusercontent.com/-jNo-2rEITGQ/VhgIaAWZaPI/AAAAAAAACag/yc1d2kVh1Yw/s72-c-Ic42/ReactAngular.jpg
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-348300196013113514
+blogger_orig_url: http://blog.jonasbandi.net/2015/10/react-vs-angular-personal-anecdote.html
+---
+
+<p><img class="jb-main-img" src="https://lh3.googleusercontent.com/-jNo-2rEITGQ/VhgIaAWZaPI/AAAAAAAACag/yc1d2kVh1Yw/s912-Ic42/ReactAngular.jpg"></p>
+
+<p>I am currently working for a team that is about to build a web frontend for their in-house legacy system. The web frontend is basically a greenfield project, and the team can freely choose their technology stack.</p>
+
+<p>I developed a small technology prototype in <a href="https://angularjs.org/">AngularJS</a> and <a href="https://facebook.github.io/react/">React</a>. For both solutions I used npm and <a href="https://webpack.github.io/">webpack</a> as a build environement. In the AngularJS solution I used <a href="http://www.typescriptlang.org/">TypeScript</a> and in the React solution I used <a href="http://www.ecma-international.org/ecma-262/6.0/">ES2015</a> (formerly ES6) and <a href="https://babeljs.io/">Babel</a>.</p>
+
+<p>The prototype is here: <a href="https://bitbucket.org/jonasbandi/webshop/">https://bitbucket.org/jonasbandi/webshop/</a></p>
+
+<p>I presented both solutions to the team, and let them decide which stack they like to choose for the actual project.</p>
+
+<p>The team decided that they felt more comfortable with the solution based on React.</p>
+
+<p>There were two main reasons:</p>
+
+<ul>
+<li>AngularJS is currently in a strange state, since Angular 2.0 is announced and hyped but not ready for production yet. If you start a project based on AngularJS now, you get the feeling that you are writing in a legacy technology right from the beginning.</li>
+<li>The React solution left a conciser impression and was clearer to grasp by the team. For example to realize a “component” in AngularJS you have to understand Directives (a DDO is pretty arcane for a newbie) and the implementation is spread over several entities (DDO, controller, template …). In contrast to that the approach of React to components is much easier to grasp.</li>
+</ul>
+
+<p>This decision was made some weeks ago. In the meantime I set up the real project with the following components:</p>
+
+<ul>
+<li>A Build based on npm, <a href="https://webpack.github.io/">webpack</a>, <a href="https://babeljs.io/">Babel</a> and <a href="http://eslint.org/">ESLint</a> (no gulp or grunt)</li>
+<li><a href="https://facebook.github.io/react/">React</a> 0.14 / <a href="https://github.com/rackt/react-router">ReactRouter</a> 1.0</li>
+<li>Flux architecture based on <a href="http://alt.js.org/">Alt.js</a></li>
+<li>Internationalization with <a href="http://i18next.com/">i18next</a></li>
+</ul>

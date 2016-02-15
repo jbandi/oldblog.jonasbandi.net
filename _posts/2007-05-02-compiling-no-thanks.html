@@ -1,0 +1,20 @@
+---
+layout: post
+title: Compiling? - No thanks!
+date: '2007-05-02T23:29:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-05-03T08:34:53.877+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8898013650710650063
+blogger_orig_url: http://blog.jonasbandi.net/2007/05/compiling-no-thanks.html
+---
+
+<p><br />Compiling is a waste of time! Jeff Atwood from <a href="http://www.codinghorror.com/blog/">Coding Horror</a> formulates it like this:</p>
+<blockquote>
+<p><strong>'Death by a thousand 10 second delays.'</strong> (<a href="http://www.dotnetrocks.com/default.aspx?showNum=232">DNR 232</a>)</p></blockquote>
+<p dir="ltr"><a href="http://www.jetbrains.com/">Jet Brains</a> seems to have the same opinion.&nbsp;Their newest pre-relaese of Resharper 3.0 (<a href="http://www.jetbrains.net/confluence/display/ReSharper/Download">EAP</a>) has a <a href="http://www.jetbrains.net/confluence/display/ReSharper/ReSharper+3.0+Changes">new feature</a> called 'Solution Wide Error Analysis'. With this feature you basically do not have to compile any more to check for compilation errors! Just forget about Ctrl-Shift-B! <br />This allows an even clearer separation between developing and building a solution: </p>
+<ul dir="ltr">
+<li>
+<div>Develop with VisualStudio/ReSharper </div></li>
+<li>Build with your favorite automated build tools (NAnt, MSBuild, MyGeneration, CodeSmith etc...)</li></ul>
+<p dir="ltr">By the way, in the Java World eclipse provides the same comfort with background compiling.</p>

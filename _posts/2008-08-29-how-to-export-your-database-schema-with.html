@@ -1,0 +1,42 @@
+---
+layout: post
+title: How to export your database schema with Hibernate3 and Ant
+date: '2008-08-29T00:43:00.001+02:00'
+author: Jonas Bandi
+tags:
+- object-relational mapping
+- jpa
+- programming
+- java
+modified_time: '2008-09-18T22:00:51.139+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4534592900490347492
+blogger_orig_url: http://blog.jonasbandi.net/2008/08/how-to-export-your-database-schema-with.html
+---
+
+<p>There is a lot of old information floating around on the net. Currently the correct way to export your database schema with Hibernate3 and Ant is using <a href="http://www.hibernate.org/255.html">Hibernate-Tools</a>. </p> <p>The according Ant-task is <code>org.hibernate.tool.ant.HibernateToolTask</code> (documentation is <a href="http://www.hibernate.org/hib_docs/tools/reference/en/html/ant.html">here</a>). It is contained in <code>hibernate-tools.jar</code></p> <p>The resulting section in <code>build.xml</code> should look like this:</p> <p></p> <div style="border-right: silver 1px solid; border-top: silver 1px solid; overflow: auto; border-left: silver 1px solid; width: 95%; border-bottom: silver 1px solid"> <div style="width: 1100px"><pre class="java:nogutter" name="code">	
+&lt;!-- Hibernate Tools import --&gt;
+&lt;taskdef name="hibernatetool"
+		 classname="org.hibernate.tool.ant.HibernateToolTask"
+		 classpathref="lib.classpath"/&gt;
+
+&lt;!-- Export the database schema --&gt;
+&lt;target name="schemaexport" description="Exports a generated schema to DB and file"&gt;
+
+	&lt;hibernatetool destdir="${basedir}"&gt;
+		&lt;classpath refid="build.classpath"/&gt;
+		&lt;!-- Use META-INF/persistence.xml 
+			&lt;jpaconfiguration/&gt;--&gt;
+		&lt;annotationconfiguration configurationfile="${build.dir}/hibernate.cfg.xml" /&gt;
+		&lt;hbm2ddl
+				drop="true"
+				create="true"
+				export="true"
+				outputfilename="ddl.sql"
+				delimiter=";"
+				format="true"/&gt;
+	&lt;/hibernatetool&gt;
+&lt;/target&gt;
+</pre></div></div>
+<p>Unfortunately most of the documantation of <a href="http://www.hibernate.org/255.html">Hibernate-Tools</a> seems to imply that it is "just" an eclipse-plugin. The truth is, the ant-tasks are completely usable on their own.</p>
+<p>The Ant-task <code><tt>org.hibernate.tool.hbm2ddl</tt>.SchemaExportTask</code> seems to be depreciated. Even though it is still contained in <code>hibernate3.jar</code>...</p>
+<p>See also this <a href="http://www.hibernate.org/381.html">page</a>.</p>  

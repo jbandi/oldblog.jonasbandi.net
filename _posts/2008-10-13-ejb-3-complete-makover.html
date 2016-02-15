@@ -1,0 +1,54 @@
+---
+layout: post
+title: EJB 3 - The complete makeover?
+date: '2008-10-13T22:03:00.002+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- javablog
+- java
+modified_time: '2008-10-29T17:48:18.155+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8807207731355227440
+blogger_orig_url: http://blog.jonasbandi.net/2008/10/ejb-3-complete-makover.html
+---
+
+<img style="margin: 0px 0px 10px 10px" src="http://www.poddop.com/blog-images/plastic-celebrity-surgery-n.jpg" border="0" height="230" align="right" />
+EJB has undergone quite a makeover!
+<br/>
+<br/>
+While EJB 1/2 was considered obese and ugly , EJB 3 now claims to be the complete opposite.
+<br/>
+<br/>
+I find the following observation illustrates the complete makeover:
+<br/>
+<br/>
+EJB 2 was one of the main reasons for the development of the <a href="http://www.springframework.net/">Spring Framework</a>. Spring aimed to provide a developer-friendly alternative to EJB:
+
+<blockquote>I wrote this book for architects and developers who have grown increasingly frustrated with traditional approaches to J2EE design, especially EJB. It shows what you can do right now t implement cleaner, more productive alternatives to EJB and move into the next era of web applications.</blockquote>
+<div style="text-align:right">- Rod Johnson (founder of Spring), 2004, 
+<br/>
+<a href="http://www.amazon.com/Expert-One-One-Development-without/dp/0764558315">J2EE Development without EJB</a>
+</div>
+<br/>
+During several years Spring was THE lightweight alternative to the heavyweight EJB model.
+<br/>
+<br/>
+Now with EJB 3 this seems to have changed to the exact opposite:
+
+<blockquote>The Spring framework then would be "Just Another EJB Container On Steroids" (JAEC :-)) - it would make, however, the integration between EJB 3 and Spring easier, than even now. This lowers the entry barrier for EJB 3 as well: the migration to pure Spring environment, in case EJB 3 wouldn't be sufficient for functional, or non-functional requirements, should be not that hard.
+</blockquote>
+<div style="text-align:right">- <a href="http://www.adam-bien.com/roller/abien/entry/is_springsource_working_on_ejb">Adam Bien, 2008</a></div>
+<br/>
+EJB is now presented as a quick and easy technology, very lightweight but maybe not ready for advanced enterprise scenarios.
+<br/>
+Spring on the other hand earns more and more critique as beeing overly complex, verbose, xml-heavy [see Bob Lee <a href="http://crazybob.org/2006/01/i-dont-get-spring.html">here</a> and <a href="http://crazybob.org/2006/02/i-was-too-hard-on-spring.html">here</a>, <a href="http://code.google.com/p/google-guice/wiki/SpringComparison">Guice Comparison</a>, <a href="http://lateralprogramming.wordpress.com/2008/04/07/why-use-spring-if-you-have-a-hashmap-at-hand/">another blog</a> ...].
+<br/>
+<br/>
+One of my last projects was a simple web-application. We decided that EJB would be an overkill and went with a straight JSF-and-Hibernate-in-a-single-war-approach.
+<br/>
+Today I think that leveraging EJB3 would have made the implementation easier and not more complex, especially when implementing <a href="http://blog.jonasbandi.net/2008/04/need-help-with-your-conversations.html">stateful-conversations</a>.
+<br/>
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

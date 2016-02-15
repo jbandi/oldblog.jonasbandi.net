@@ -1,0 +1,102 @@
+---
+layout: post
+title: 'Performance: Nashorn vs. Node'
+date: '2014-03-19T23:04:00.001+01:00'
+author: Jonas Bandi
+tags:
+- javascript
+- java
+modified_time: '2014-03-28T22:52:49.846+01:00'
+thumbnail: http://lh3.ggpht.com/-fPyCmCGVfDk/Uyt12CZrZNI/AAAAAAAABrA/PQArzqaRWu4/s72-c/jjs.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8030549802380177697
+blogger_orig_url: http://blog.jonasbandi.net/2014/03/performance-nashorn-vs-node.html
+---
+
+<p><img style="float: left; border: none; box-shadow: none; margin-right: 10px; margin-bottom: 10px;" title="250x250xJavaScript-logo.png.pagespeed.ic.I5rUk2FRl9.jpg" src="http://lh3.ggpht.com/-fPyCmCGVfDk/Uyt12CZrZNI/AAAAAAAABrA/PQArzqaRWu4/jjs.png?imgmax=800" alt="250x250xJavaScript logo png pagespeed ic I5rUk2FRl9" /></p>
+<p>I am naively playing around with <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/index.html">Nashorn</a>. Nashorn is the new JavaScript Runtime that comes with Java 8 and runs on the JVM.</p>
+<p>I am using the current Build b132 of the Early Access Release of Java 8 on a recent MacBook Pro (2.3 GHz Intel Core i7)</p>
+<p>One of my first experiments is comparing performance with <a href="http://nodejs.org/">node.js</a>.</p>
+<p>I have run the following script with Nashorn and with Node:</p>
+<script type="text/javascript" src="https://gist.github.com/jbandi/9622968.js"></script>
+<p>The results:</p>
+<table>
+<tbody>
+<tr>
+<td>Nashorn:
+<pre>✔ jjs fib.js
+Input: 30, Time: 66
+Input: 31, Time: 40
+Input: 32, Time: 58
+Input: 33, Time: 90
+Input: 34, Time: 154
+Input: 35, Time: 242
+Input: 36, Time: 348
+Input: 37, Time: 556
+Input: 38, Time: 920
+Input: 39, Time: 1483
+Input: 40, Time: 2426
+Input: 41, Time: 3928
+Input: 42, Time: 6360
+Input: 43, Time: 10303
+Input: 44, Time: 16602
+Input: 45, Time: 26802
+Input: 46, Time: 43384
+Input: 47, Time: 72201
+Input: 48, Time: 116425
+Input: 49, Time: 188520
+</pre>
+</td>
+<td style="padding-left: 40px;">Node:
+<pre>✔ node fib.js
+Input: 30, Time: 13
+Input: 31, Time: 20
+Input: 32, Time: 33
+Input: 33, Time: 53
+Input: 34, Time: 88
+Input: 35, Time: 142
+Input: 36, Time: 226
+Input: 37, Time: 365
+Input: 38, Time: 590
+Input: 39, Time: 954
+Input: 40, Time: 1530
+Input: 41, Time: 2522
+Input: 42, Time: 4047
+Input: 43, Time: 6534
+Input: 44, Time: 10557
+Input: 45, Time: 17161
+Input: 46, Time: 27712
+Input: 47, Time: 46323
+Input: 48, Time: 73521
+Input: 49, Time: 118905
+</pre>
+</td>
+<td style="padding-left: 40px;"><a href="https://gist.github.com/jbandi/499d182ee35317dc2111">Pure Java</a>:
+<pre>✔ java -cp fibdemo.jar FibDemo
+Input: 30, Time: 5
+Input: 31, Time: 6
+Input: 32, Time: 11
+Input: 33, Time: 18
+Input: 34, Time: 27
+Input: 35, Time: 45
+Input: 36, Time: 71
+Input: 37, Time: 121
+Input: 38, Time: 188
+Input: 39, Time: 304
+Input: 40, Time: 490
+Input: 41, Time: 804
+Input: 42, Time: 1276
+Input: 43, Time: 2067
+Input: 44, Time: 3361
+Input: 45, Time: 5445
+Input: 46, Time: 8901
+Input: 47, Time: 14253
+Input: 48, Time: 23288
+Input: 49, Time: 37160
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Out of the box the performance of Node seems to be almost a factor 1.6 better than of Nashorn.</p>
+<p>Of course this naive experiment is not representative for real world performance and this is still an early access release of Java 8. It might well be that the performance of the final release will be better. Also the JVM can probably be tuned in many ways unknown to me.</p>
+<p>Still I would be interested in thoughts about the findings of this experiment...</p>

@@ -1,0 +1,18 @@
+---
+layout: post
+title: 'Join Tables and Domain Models: The LINQ-Way'
+date: '2007-08-06T00:31:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-08-06T00:31:22.140+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-7615122995944679927
+blogger_orig_url: http://blog.jonasbandi.net/2007/08/join-tables-and-domain-models-linq-way.html
+---
+
+<p>I blogged about Join Tables and Domain Models <a href="http://closed-loop.blogspot.com/2007/06/join-tables-and-domain-models_1793.html">before</a>, where I showed different ways to deal with <em>'association-entities</em>' in Ruby and C# 2.0.</p> <p>Now in C# 3.0,&nbsp;LINQ offers another interesting way to express a domain model.</p> <p>Assume the following object model: </p> <p align="center"><a href="http://www.realityloop.net/blog/JoinTablesandDomainModelsTheLINQWay_799/ClassDiagram1.png" atomicselection="true"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" height="299" alt="ClassDiagram1" src="http://www.realityloop.net/blog/JoinTablesandDomainModelsTheLINQWay_799/ClassDiagram1_thumb.png" width="390" border="0"></a> </p> <p align="left"><strong>Article</strong> has associated <strong>Users</strong> through the <em>'association-entities</em>' <strong>Readings</strong>. Now LINQ allows us to express this association in another elegant way:</p><pre class="code"><font size="1"><span style="color: rgb(0,0,255)">private</span> <span style="color: rgb(0,0,255)">readonly</span> <span style="color: rgb(43,145,175)">List</span>&lt;<span style="color: rgb(43,145,175)">Reading</span>&gt; readings = <span style="color: rgb(0,0,255)">new</span> <span style="color: rgb(43,145,175)">List</span>&lt;<span style="color: rgb(43,145,175)">Reading</span>&gt;();
+<span style="color: rgb(0,0,255)">public</span> <span style="color: rgb(43,145,175)">IEnumerable</span>&lt;<span style="color: rgb(43,145,175)">User</span>&gt; Readers {
+   <span style="color: rgb(0,0,255)">get</span> {
+       <span style="color: rgb(0,0,255)">return</span> <span style="color: rgb(0,0,255)">from</span> reading <span style="color: rgb(0,0,255)">in</span> readings
+                  <span style="color: rgb(0,0,255)">select</span> reading.User;
+       }<br></font><font size="1">}</font></pre>
+<p>When I think about LINQ its mostly in the context of querying data, which is usually a common task in the data access layer. There LINQ allows us to specify what part of a domain model should be loaded.<br>But the above example shows us, that LINQ can be used in other scenarios, even in expressing our domain model itself.</p>

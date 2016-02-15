@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Book Review: ActiveMQ in Action</title>
+  <meta name="description" content="Manning was so kind to send me a copy of ActiveMQ in Action.Note that this review is based on the July MEAP version of the book. Not all chapters are availab...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/2009/08/book-review-activemq-in-action.html">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml">
+
+  <link rel="stylesheet" href="/css/code.css">
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Your awesome title</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Book Review: ActiveMQ in Action</h1>
+    <p class="post-meta"><time datetime="2009-08-12T17:28:00+02:00" itemprop="datePublished">Aug 12, 2009</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Jonas Bandi</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <img style="margin: 2px 10px 10px 0px"src="http://lh6.ggpht.com/_X3kaawac_g4/SoLg0Z5KMLI/AAAAAAAAApQ/zvnZ1hp0tR0/ActiveMQinAction.jpg?imgmax=800" alt="ActiveMQinAction.jpg" border="0" width="144" height="181" align="left" />
+<a href="http://lh6.ggpht.com/_X3kaawac_g4/SoLg0Z5KMLI/AAAAAAAAApQ/zvnZ1hp0tR0/ActiveMQinAction.jpg?imgmax=800" alt="snyder_cover150.jpg" border="0" width="150" height="188" align="left" /></a>
+<a href="http://www.manning.com/">Manning</a> was so kind to send me a copy of <a href="http://www.manning.com/snyder/"><strong>ActiveMQ in Action</strong></a>.
+<br/>
+<br/>
+Note that this review is based on the July MEAP version of the book. Not all chapters are available in this version yet.
+<br/>
+<br/>
+<br/>
+
+<strong>Chapter 1: Understanding Message-Oriented Middleware and JMS</strong>
+<br/>
+This is a solid introduction to JMS. The chapter first touches briefly the topics of Enterprise Messaging and Message-Oriented Middleware and then dives into an overview of JMS. The core concepts of JMS are explained and the main Java APIs are introduced.
+<br/>
+For readers who don't know JMS, this chapter offers a clear and concise overview. It is written in an easily understandable way which helps to get you a kickstart on the topic. If you have already worked with JMS, then this chapter offers nothing new, but it can be a valuable repetition.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 2: Introduction to Apache ActiveMQ</strong>
+<br/>
+This chapter first gives a theoretical overview over ActiveMQ: What is it and why, when and where should you use it. Then the chapter explains how to set up a basic installation of ActiveMQ and how to run the basic examples. Finally some usecases are explained, that will be used as reference throughout the rest of the book.
+<br/>
+This chapter is very hands on. Don't expect any grand insights. But it provides a quick and reliable way to get ActiveMQ up and running.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 3: Understanding Connectors</strong>
+<br/>
+This chapter takes a profound look at connectors, which provide the core mechanism for communication in JMS. The chapter explains the different configuration options that are available and the advantages and disadvantages of them. The provided information is quite detailed and extensive. There are a lot of code examples that illustrate the different configuration options.
+<br/>
+While this chapter is quite low-level (meaning it deals a lot with networks protocols) it also provides the base concepts for different broker topologies, which is one of the major design decisions when creating a messaging system.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 4: Message Persistence</strong>
+<br/>
+At the beginning of this chapter there is a short theoretical explanation about the differences concerning storage for Queues and Topics. The rest of the chapter is again a hands on. It explains the different storage options that are provided by ActiveMQ and discusses their advantages and disadvantages. Again a lot of code examples illustrate how to configure the different persistence options.
+<br/>
+This chapter gives you a good overview and is useful a reference when you have to evaluate and set up ActiveMQ in a concrete project.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 5: Securing ActiveMQ</strong>
+<br/>
+This is rather short chapter that discusses the security mechanisms that are provided by ActiveMQ and shows different strategies for authentication and authorization with concrete examples. The chapter is a pragmatic introduction to the topic, don't expect anything fancy about security concepts or how to secure applications.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 6: Creating Java Applications With ActiveMQ</strong>
+<br/>
+Up to this chapter the book dicusses ActiveMQ as an infrastructure that could be run standalone or embedded. This chapter bow shows how to integrate ActiveMQ in a Java application. Two ways of integration are shown: basic Java integration and Spring integration.
+<br/>
+This chapter is quite short. I was a bit disappointed, because I hoped for some information or guidelines about the architecture and design of applications using ActiveMQ (or more generally MOM/JMS). This kind of high-level overview is not part of this chapter. The chapter simply explains how to instantiate, configure and get running ActiveMQ with plain Java or with Spring.
+<br/>
+<br/>
+<br/>
+
+
+
+<strong>Chapter 8: Connecting to ActiveMQ With Other Languages</strong>
+<br/>
+This chapter is mainly a big collections of examples how to use ActiveMQ with other languages/platforms. In this use-case ActiveMQ is set-up as a MOM-service and different clients are used as message producers and consumers.
+<br/>
+There are examples for the scripting languages Ruby, Python, PHP and Perl. Those are using the text-oriented STOMP protocol and some third-party APIs for the respective language.
+<br/>
+The examples for .NET and C++ use the NMS resp. CMS APIs that are also provided by the ActiveMQ project.
+<br/>
+Finally there are examles for the REST and Ajax interfaces that ActiveMQ provides out of the box.
+<br/>
+The chapter is a good overview and tutorial to get up working examples with the different clients. However the examples are very simplistic, and I guess for a real world project some more information will be necessary very soon.
+<br/>
+<br/>
+<br/>
+
+<strong>Chapter 12: Tuning ActiveMQ For Performance</strong>
+<br/>
+This chapter shows and explains some different factors that can influence performance in a system based on ActiveMQ. Different options and configurations are discussed and a complete example is shown.
+<br/>
+The discussed options reach from low-level network/protocol configurations (like cacheSize, tcpDelay ...) over application-level design-options (like embedding a broker in the same VM) to system-level considerations (like transactions or flow-control from producer to consumer).
+<br/>
+In my opinion that is the most interesting chapter of the book, since it treats some topics that have an influence on the architecture and the design of a system that is based on ActiveMQ (or more generally MOM/JMS).
+<br/>
+<br/>
+<br/>
+
+<strong>Chapter 14: Administering and Monitoring ActiveMQ</strong>
+<br/>
+This chapter shows several ways how to monitor and manage ActiveMQ at runtime. This starts with discussing the possibilities to get or set information via JMX and shows how to get monitoring information by special JMS-Messages ("Advisory Messages"). Then several tools for monitoring/managing are shown: command-line, JConsole, and WebConsole. Especially cool is the possibility to use a XMMP-chat-client instead of the commandline. Finally logging configurations for client and broker are discussed.
+<br/>
+Again, this is a very hand-on chapter. The different options are explained in great detail with the necessary code-examples and screenshots.
+
+<br/>
+<br/>
+<br/>
+
+<strong>Conclusion:</strong>
+<br/>
+This is a very solid hands-on book, that lets you smoothly dive into the details of ActiveMQ. However do not expect an epiphany while reading the book.
+<br/>
+<br/>
+This is the perfect book if you have one of the following goals:
+
+<list>
+<li>
+Get to know the features of ActiveMQ
+</li>
+<li>
+Get ActiveMQ up and running
+</li>
+<li>
+Get a reference and explanations for the most important configurations and options that ActiveMQ offers
+</li>
+<li>
+Get guidance for advanced usage scenarios when using ActiveMQ 
+</li>
+</list>
+<br/>
+
+However do not expect the following from the book:
+
+<list>
+<li>
+Learning how to architect and design applications/systems that use ActiveMQ (or generally MOM/JMS)
+</li>
+<li>
+How to evaluate if ActiveMQ is the right technology for a new system
+</li>
+<li>
+For me the book did not contain any real eye-openers nor did I feel that it did widen my horizon (unlike other Manning titles like <a href="http://manning.com/gsmith/">Grails in Action</a> or <a href="http://www.manning.com/bibeault2/">jQuery in Action</a>)
+</li>
+<li>
+There is not much to learn if you are just a plain "user" of JMS and it is not your task to run the JMS infrastucture.
+</li> 
+</list>
+<br/>
+
+If the above criteria matches your needs, I can fully recommend <a href="http://www.manning.com/snyder/"><strong>ActiveMQ in Action</strong></a>. 
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Your awesome title</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jekyll</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jekyllrb</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

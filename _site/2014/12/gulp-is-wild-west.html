@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gulp is the Wild West</title>
+  <meta name="description" content="TL;DR This post described how I implemented asset processing with Gulp in a .NET project.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/2014/12/gulp-is-wild-west.html">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml">
+
+  <link rel="stylesheet" href="/css/code.css">
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Your awesome title</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Gulp is the Wild West</h1>
+    <p class="post-meta"><time datetime="2014-12-31T00:47:00+01:00" itemprop="datePublished">Dec 31, 2014</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Jonas Bandi</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>TL;DR This post described how I implemented asset processing with Gulp in a .NET project.</em></p>
+
+<p><img src="https://lh5.googleusercontent.com/-FnAqNm21fBk/VKMvjm27SGI/AAAAAAAAB_U/CQTTn1cvw8o/s399/Gulp-Alive-Logo_1_1-7211401.jpg" alt="enter image description here" title=""></p>
+
+<p>I am working on a .NET web application using <a href="http://nancyfx.org/">Nancy</a> in the backend and <a href="https://angularjs.org/">AngularJS</a> in the frontend. <br>
+I decided to use a frontend-build based on <a href="http://gulpjs.com/">Gulp</a>. Frontend builds based on <a href="http://gruntjs.com/">Grunt</a> or <a href="http://gulpjs.com/">Gulp</a> have a lot of momentum right now, and this seems a better option for me than some .NET based tools like <a href="http://getcassette.net/">Cassette</a> or <a href="https://github.com/jetheredge/SquishIt">SquishIt</a></p>
+
+<p><em>By the way: if you have a node based frontend build you can run it on each Azure deployment like <a href="https://github.com/projectkudu/kudu/wiki/Deployment-hooks">described here</a>.</em></p>
+
+<p>My requirements were the following:</p>
+
+<ul>
+<li>For development the project should be runnable from VisualStudio without having to trigger a frontend build. That means that all the frontend assets have to be present at development time and referenced from my <code>.cshtml</code> files.</li>
+<li>For release the frontend assets should be processed (concatenated, minified, revisioned …) by a frontend build. This build also needed to manipulate the <code>.cshtml</code> files, since they must reference the processed assets.</li>
+</ul>
+
+<p>I started with <a href="https://www.npmjs.com/package/gulp-usemin">gulp-usemin</a>:</p>
+
+<pre class="prettyprint"><code class=" hljs avrasm">gulp<span class="hljs-preprocessor">.task</span>(<span class="hljs-string">"usemin"</span>, function() {
+    return gulp<span class="hljs-preprocessor">.src</span>(<span class="hljs-string">"./Views/*.cshtml"</span>)
+        <span class="hljs-preprocessor">.pipe</span>(usemin({
+            js: [ngAnnotate(), uglify(), rev()]
+        }))
+        <span class="hljs-preprocessor">.pipe</span>(gulp<span class="hljs-preprocessor">.dest</span>(<span class="hljs-string">"Dist/"</span>))<span class="hljs-comment">;</span>
+
+})<span class="hljs-comment">;</span></code></pre>
+
+<p>This was nice and easy and worked well … until I had some more requirements …</p>
+
+<p>The problem: <br>
+With gulp-usemin you have not access to the stream in a pipeline. So you are limited to list some tasks that should be performed. If you want to do something more fancy, you are out of luck. In my case I wanted to add the output of angular template cache to my main js file after it has been concatenated and minified… <br>
+In my case I wanted to append another JavaScript file that contains my angular templates (generated with <a href="https://www.npmjs.com/package/gulp-angular-templatecache">gulp-angular-templatecache</a>)</p>
+
+<p>So I started looking for another solution… thats where I discovered that I am in the Wild Wild West: <a href="https://www.npmjs.com/package/gulp-usemin2">gulp-usemin2</a>, <a href="https://www.npmjs.com/package/gulp-spa">gulp-spa</a>, <a href="https://www.npmjs.com/package/gulp-asset-transform">gulp-asset-transform</a>, <a href="https://www.npmjs.com/package/gulp-inject">gulp-inject</a>, <a href="https://www.npmjs.com/package/gulp-rev-replace">gulp-rev-replace</a>, <a href="https://www.npmjs.com/package/gulp-useref">gulp-useref</a>, <a href="https://www.npmjs.com/package/gulp-rev-all">gulp-rev-all</a>, <a href="https://www.npmjs.com/package/gulp-rev-collector">gulp-rev-collector</a> … all seem somehow to do something similar, documentation is minimalistic and you can waste a big amount of time to find the right plugin combination that works for you.</p>
+
+<p>I ended up with the following combination of plugins:</p>
+
+<pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp"</span>);
+<span class="hljs-keyword">var</span> ngAnnotate = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-ng-annotate"</span>);
+<span class="hljs-keyword">var</span> templateCache = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-angular-templatecache"</span>);
+<span class="hljs-keyword">var</span> uglify = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-uglify"</span>);
+<span class="hljs-keyword">var</span> addsrc = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-add-src"</span>);
+<span class="hljs-keyword">var</span> concat = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-concat"</span>);
+<span class="hljs-keyword">var</span> rev = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-rev"</span>);
+<span class="hljs-keyword">var</span> minifyCSS = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-minify-css"</span>);
+<span class="hljs-keyword">var</span> useref = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-useref"</span>);
+<span class="hljs-keyword">var</span> filter = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-filter"</span>);
+<span class="hljs-keyword">var</span> revReplace = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-rev-replace"</span>);
+<span class="hljs-keyword">var</span> order = <span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-order"</span>);
+
+gulp.task(<span class="hljs-string">"angular-templates"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> gulp.src(TEMPLATES_SOURCES)
+        .pipe(templateCache(TEMPLATES_JS, {module: <span class="hljs-string">"moonwalk"</span>, root: TEMPLATES_ROOT}))
+        .pipe(gulp.dest(<span class="hljs-string">"Temp/"</span>));
+});
+
+gulp.task(<span class="hljs-string">"release-assets"</span>, [<span class="hljs-string">"angular-templates"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> assets = useref.assets();
+    <span class="hljs-keyword">var</span> jsFilter = filter(<span class="hljs-string">"**/*.js"</span>);
+    <span class="hljs-keyword">var</span> moonwalkFilter = filter(<span class="hljs-string">"**/"</span> + MOONWALK_JS);
+    <span class="hljs-keyword">var</span> cssFilter = filter(<span class="hljs-string">"**/*.css"</span>);
+
+    <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">"./Content/**/*.cshtml"</span>)
+        .pipe(assets)               <span class="hljs-comment">// Concatenate with gulp-useref</span>
+        .pipe(jsFilter)
+        .pipe(ngAnnotate())         <span class="hljs-comment">// Process javascript sources to add dependency injection annotations</span>
+        .pipe(uglify())             <span class="hljs-comment">// Minify javascript sources</span>
+        .pipe(jsFilter.restore())
+        .pipe(cssFilter)
+        .pipe(minifyCSS())          <span class="hljs-comment">// Minify CSS sources</span>
+        .pipe(cssFilter.restore())
+        .pipe(moonwalkFilter)       <span class="hljs-comment">// Filter the moonwalk.js source file, which is generated above by useref</span>
+        .pipe(addsrc(<span class="hljs-string">"Temp/"</span> + TEMPLATES_JS))<span class="hljs-comment">// Add the templates.js to the stream, which is generated by a seperate task</span>
+        .pipe(order([<span class="hljs-string">"**/"</span> + MOONWALK_JS, <span class="hljs-string">"*.js"</span>]))<span class="hljs-comment">// Order stream, so that templates.js is appended to moonwalk.js (needed, since templates depend on the angular module)</span>
+        .pipe(concat(MOONWALK_JS))<span class="hljs-comment">// Concat the existing moonwalk.js and the templates.js into moonwalk.js</span>
+        .pipe(moonwalkFilter.restore())
+        .pipe(rev())                <span class="hljs-comment">// Rename the concatenated files</span>
+        .pipe(assets.restore())
+        .pipe(useref())             <span class="hljs-comment">// Replace the original references in the cshtml with the concatenated and processed resources by usemin</span>
+        .pipe(revReplace({replaceInExtensions:[<span class="hljs-string">".cshtml"</span>]}))         <span class="hljs-comment">// Replace the usemin generated resources with the reved resources</span>
+        .pipe(gulp.dest(<span class="hljs-string">"Dist/"</span>));
+});</code></pre>
+
+<p>And by the way: This <a href="https://github.com/gulpjs/gulp/issues/96">thread about running tasks synchronously</a> is representative for Gulp (final verdict: “This will be fixed in gulp 4”) … welcome in the wild wild west!</p>
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Your awesome title</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jekyll</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jekyllrb</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

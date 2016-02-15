@@ -1,0 +1,181 @@
+---
+layout: post
+title: 'Michael C. Feathers: Seven Blind Alleys in Software Design'
+date: '2009-08-25T19:01:00.002+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- javablog
+modified_time: '2009-08-26T07:37:35.914+02:00'
+thumbnail: http://lh3.ggpht.com/_X3kaawac_g4/Sn8uLVI6aKI/AAAAAAAAApE/E_tHefpMMfo/s72-c/sackgasse3_web.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8014013505039301233
+blogger_orig_url: http://blog.jonasbandi.net/2009/08/michael-c-feathers-seven-blind-alleys.html
+---
+
+<img style="margin: 0px 0px 10px 10px" src="http://lh3.ggpht.com/_X3kaawac_g4/Sn8uLVI6aKI/AAAAAAAAApE/E_tHefpMMfo/sackgasse3_web.jpg?imgmax=800" alt="sackgasse3_web.jpg" border="0" width="181" align="right" />
+<a href="http://twitter.com/mfeathers">Michael Feathers</a> (author of <a href="http://www.amazon.de/gp/product/0131177052?ie=UTF8&tag=cl00-21&linkCode=as2&camp=1638&creative=19454&creativeASIN=0131177052">Working Effectively with Legacy Code</a><img src="http://www.assoc-amazon.de/e/ir?t=cl00-21&l=as2&o=3&a=0131177052" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;"/>) gave an interesting talk at the <a href="http://ndc2009.no/en/">Norwegian Developer Conference</a>: 
+
+<blockquote style="font-size:14px; width:140px">Seven Blind Alleys in Software Design.</blockquote>
+
+<br/>
+
+The video of the talk can be found on <a href="http://ndc2009.no/en/agenda.aspx?cat=1071&id=1813">this page</a>.
+<br/>
+<br/>
+Here is a short transcript of the seven dead alleys he identified:
+<br/>
+<br/>
+
+<strong>1. Programming in Pictures</strong> 
+<list>
+<li>
+This has been a pipe-dream for years and years in the software industry.
+</li>
+<li>
+"Anybody remember MDA?" <span style="font-size:9px">(note the notion of the past ;-)</span>
+</li>
+<li>
+Some complexity is irreducible.
+</li>
+<li>
+Pictures are not necessary better than words! 
+</li>
+<li>
+Word language symbolism vs. letter language symbolism. Thats the options we have, regardless if visual or textual.
+</li>
+<li>
+Where are the real systems?
+</li>
+<li>
+Think about the edge-cases.
+</li>
+</list>
+<br/>
+
+<strong>2. Metaprogramming</strong>
+<br/>
+<list><li>
+A result from the notion that it is hard to change code.
+</li>
+<li>
+The promise is that it is easier to change data that represents things in the code.
+</li>
+<li>
+We have to remember that code is data anyway.
+</li>
+<li>
+Flexiblity vs. Understandability
+</li>
+<li>
+Complexity is not reduced with flexibility.
+</li>
+<li>
+Its hard to figure out what's going on in production.
+</li>
+</list>
+<br/>
+<br/>
+
+<strong>3. The Ultimate Abstraction</strong>
+<br/>
+<list>
+<li>
+It always just seems one step away.
+</li>
+<li>
+Believing in perfection
+</li>
+<li>
+People don't want to make compromises
+</li>
+<li>
+Programmers are abstraction junkies
+</li>
+<li>
+Striving for the grand unified theory
+</li>
+<li>
+Indicator: attempt to unify one and many
+</li> 
+<li>
+Deadlines and budgets help
+</li>
+</list>
+<br/>
+
+<strong>4. The perfect taxonomy</strong>
+<br/>
+<list><li>
+Do not try to create it upfront. Let it evolve and hope that it eventually will become stable.
+</li>
+<li>
+Do not generalize too early -> failed framework projects.
+</li>
+<li>
+Abstractions just have to be good enough not perfect.
+</li>
+<li>
+English is ambiguous, programming ought not to be.
+</li>
+</list>
+<br/>
+
+<strong>5. Modeling the real world</strong>
+<list>
+<li>
+Software is really different, it is subject to tighter constraints than the real word
+</li>
+<li>
+If we can borrow concepts from the domain for our code, then that is great, but we don't have to.
+</li>
+Behavior is key. We can't always find a metaphor. We don't have to be limited by the concepts in the domain. We can make stuff up.
+<li>
+Why would you want to model the real world, thats where the problems are!
+</li>
+<li>
+Classical example: Liskov substitution princple (Square/Rectangle)
+</li>
+</list>
+<br/>
+
+<strong>6. Code generation</strong>
+<list>
+<li>
+Accept: You are never going to be complete! Don't be ambitious!
+</li>
+<li>
+Traps! Can be shaping the code in bad ways.
+</li>
+<li>
+Effect: De-skilling development
+</li>
+<li>
+Encodes advanced knowledge of the domain which is likely to be wrong - workarounds are inevitable and get even the norm the older the system gets
+</li>
+<li>
+Cruft buckets - Places where developers are forced to put their code. No design freedom possibe! Complexity cannot be tackled!
+</li> </list>
+<br/>
+
+
+<strong>7. Natural Languages</strong>
+<br/>
+<list>
+<li>
+Business people are never going to be able to program - even in plain english
+</li>
+<li>
+Programming is always going to be more constrained than plain english is
+</li>
+<li>
+English seems easier, it does read better, but you have to <em>think</em> like a programmer!
+</li>
+</list>
+<br/>
+<br/>
+
+I can't say that I always agree, but this presentation really allows you to take a step back and reflect. Michael  addresses a lot of current and reoccurring hypes, and lets us remeber that <a href="http://en.wikipedia.org/wiki/No_Silver_Bullet">there is no silver bullet</a>.
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

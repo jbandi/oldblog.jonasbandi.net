@@ -1,0 +1,116 @@
+---
+layout: post
+title: Update for Software Testing Workshop
+date: '2009-06-15T00:26:00.001+02:00'
+author: Jonas Bandi
+tags:
+- testing
+- programming
+- javablog
+modified_time: '2009-06-15T00:35:27.960+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-2648432487188145505
+blogger_orig_url: http://blog.jonasbandi.net/2009/06/update-for-software-testing-workshop.html
+---
+
+My semi-annual <a href="http://www.realityloop.net/presentations.htm">testing workshop</a> at <a href="http://www.sws.bfh.ch/">SWS</a> is approaching. In the theoretical part I want to incorporate some insights I picked up recently:
+<br/>
+<br/>
+
+<strong>From Aslak Hellesøys presentation <a href="http://www.infoq.com/presentations/hellesoy-bdd-rspec">"Executable User Stories with RSpec and BDD"</a> (<a href="http://jaoo.dk/london-2008/file?path=/qcon-london-2008/slides/AslakHellesoy_Executable_User_Stories_RSpec_BDD.pdf">slides</a>):</strong>
+<br/>
+<br/>
+Where errors are introduced (according to CHAOS report):
+<br/>
+
+<p align="center">
+<img src="http://chart.apis.google.com/chart?
+chs=350x100
+&amp;chd=t:56,27,7,10
+&amp;cht=p3
+&amp;chl=Requirements 56%|Design 27%|Code 7%|Other 10%"
+alt="Sample chart" />
+</p>
+<br/>
+This should put developer testing in the big picture of software development.
+<list>
+<li>
+Developer testing is traditionally focussing on code, maybe also design. 
+</li>
+<li>
+Techniques like <a href="http://en.wikipedia.org/wiki/Behavior_driven_development">BDD</a>, <a href="http://en.wikipedia.org/wiki/Framework_for_Integrated_Test">FIT</a> and <a href="http://en.wikipedia.org/wiki/Acceptance_test">Acceptance Testing</a> can also help to takle errors in the requirements.
+</li>
+<li>
+<a href="http://en.wikipedia.org/wiki/Verification_and_Validation">Validation</a> (in contrast to verification) can also help to uncover problems in design and requirements. Validation can be accomplished prior to the creation of the software artifacts.
+</li>
+</list>
+<br/>
+<br/>
+<strong>From Jay Fields talk<a href="http://blog.jayfields.com/2009/06/developer-testing-welcome-to-beta-test.html"> "Developer Testing: Welcome to the Beta Test"</a>:</strong>
+<br/>
+<br/>
+Most important characteristics of good unit tests:
+<list><li>
+Readable
+</li>
+<li>
+Reliable
+</li>
+<li>
+Performant
+</li>
+</list>
+<br/>
+Reasons to write tests:
+<list>
+<li>
+Design
+</li>
+<li>
+Protect against regression
+</li>
+<li>
+Achieve sign-off
+</li>
+<li>
+Increase customer interaction
+</li>
+<li>
+Document the system
+</li>
+<li>
+Refactor confidently
+</li>
+<li>
+Ensure the system works correctly
+</li>
+</list>
+<br/>
+Unit testing suggestions:
+<list>
+<li>
+Setup methods are evil
+</li>
+<li>
+Test one thing at a time
+</li>
+<li>
+Maintainability &gt; DRY
+</li>
+<li>
+Test names are comments
+</li>
+<li>
+Zero or one mock per test
+</li>
+<li>
+Expect literals
+</li>
+<li>
+Create test data builders
+</li>
+
+</list>
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

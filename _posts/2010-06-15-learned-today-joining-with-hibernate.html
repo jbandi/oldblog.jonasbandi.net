@@ -1,0 +1,52 @@
+---
+layout: post
+title: 'Learned Today: Joining with Hibernate'
+date: '2010-06-15T11:09:00.007+02:00'
+author: Jonas Bandi
+tags:
+- hibernate
+- quicktip
+modified_time: '2010-06-15T17:50:44.352+02:00'
+thumbnail: http://lh4.ggpht.com/_X3kaawac_g4/SsHokfvFdCI/AAAAAAAAAqU/z4-LrYlJhUw/s72-c/mind_the_gap-logo.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8867541664540548890
+blogger_orig_url: http://blog.jonasbandi.net/2010/06/learned-today-joining-with-hibernate.html
+---
+
+<img alt="" border="0" src="http://lh4.ggpht.com/_X3kaawac_g4/SsHokfvFdCI/AAAAAAAAAqU/z4-LrYlJhUw/mind_the_gap-logo.jpg?imgmax=800" style="float: right; margin: 0px 0px 10px 10px;" width="150" />
+Hibernate (and NHibernate) is able to do a lot of <a href="http://docs.jboss.org/hibernate/core/3.3/reference/en/html/queryhql.html#queryhql-joins">different kind of joins</a>. <br />
+Unfortunately it can not do outer joins on properties that are not mapped as associations.<br />
+<br />
+My goal was to get the result of the following SQL-query with an outer join:<br />
+<div style="border: 1px solid silver; padding: 2px;">
+<code>
+</code>
+<pre>select e.Name, d.Status, count(*) from event e
+left outer join delivery d on e.Id = d.EventId
+group by e.Name, d.Status
+</pre>
+</div>
+<br />
+I hoped to realize the above query with Hibernate in HQL. Actually you can do joins between entities where no association is mapped:<br />
+<br />
+<div style="border: 1px solid silver; padding: 2px;">
+<code>
+</code>
+<pre>select new ReportDto(e.Name, d.Status, count(d))
+from Delivery d, StatisticalEvent e where d.EventId = e.Id
+group by d.EventId, e.Name, d.Status</pre>
+</div>
+... unfortunately this is an inner join.
+<br />
+<br />
+You can do outer joins with Hibernate:<br />
+<div style="border: 1px solid silver; padding: 2px;">
+<code>
+</code>
+<pre>select new ReportDto(e.Name, d.Status, count(d))
+from Delivery d right outer join d.Event e
+group by e.Name, d.Status</pre>
+</div>
+... unfortunately you have to have mapped the association between the two entities, since you have to feed a path to the join expression.
+<br />
+<br />
+<i>(Note that I do not claim this is a proper usage scenario for Hibernate. Reporting queries like this are certainly an edge case for using Hibernate.)</i><br /><br />

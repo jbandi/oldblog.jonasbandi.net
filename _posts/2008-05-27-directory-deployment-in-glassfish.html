@@ -1,0 +1,49 @@
+---
+layout: post
+title: Directory Deployment in Glassfish
+date: '2008-05-27T18:56:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+modified_time: '2008-05-27T18:56:09.214+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-54638152652283896
+blogger_orig_url: http://blog.jonasbandi.net/2008/05/directory-deployment-in-glassfish.html
+---
+
+<a href="https://glassfish.dev.java.net/javaee5/deployment/#0.0.0.0.Deploying%20Applications|outline">Directory deployment</a> can help you to improve your productivity when developing web-applications with <a href="https://glassfish.dev.java.net/">GlassFish</a>.
+<br/>
+<br/>
+Instead of deploying a packaged archive (.war) you can point GlassFish to a directory and <a href="http://docs.sun.com/app/docs/doc/819-4733/ablgw?a=view">let it pick up and deploy</a> the application from there.
+<br/>
+<br/>
+You can do this by using the command <em>asadmin deploydir path_to_app_dir</em>.
+<br/>
+<br/>
+This has the following benefits:
+<list>
+<li>
+You don't have to assemble the archive-package. That's one step less in the build-process.</li>
+<li>
+Changes to your web-sources (JSPs, facelets...) are picked up immediately. There is no need for redeployment! This can be a huge producivity-boost!</li>
+<li>
+According to <a href="http://docs.sun.com/app/docs/doc/819-4733/ablgw?a=view">this dcumentation</a>, it should also be possible to dynamically reload the whole application (not only your web-sources)... but for some reason this didn't work for me...</li>
+</list>
+<br/>
+<br/>
+The directory you point GlassFish to should have the <a href="https://glassfish.dev.java.net/javaee5/deployment/#0.0.0.0.Packaging%20Applications%20for%20Deployment%7Coutline">following structure</a>:
+<br/><br/>
+
+–|myproj<br/>
+–|–|web-sources (JSPs, facelets, css ... subdirectories are possible)<br/>
+–|–|...<br/>
+–|–|–|WEB-INF<br/>
+–|–|–|–lib<br/>
+–|–|–|–classes<br/>
+–|–|–|–web.xml<br/>
+–|–|.reload<br/>
+
+<br/>
+The trick is to configure your IDE/Environment, so that you can work directly on the above structure...
+<br/><br/>
+
+By touching '.reload', you can force the application to be redeployed.

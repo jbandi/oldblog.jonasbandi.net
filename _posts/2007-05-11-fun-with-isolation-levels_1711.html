@@ -1,0 +1,29 @@
+---
+layout: post
+title: Fun with Isolation Levels
+date: '2007-05-11T00:53:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-05-11T00:54:11.175+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6214854166183040410
+blogger_orig_url: http://blog.jonasbandi.net/2007/05/fun-with-isolation-levels_1711.html
+---
+
+<p>Open two sessions&nbsp;(query-windows)&nbsp;to an sql-server.</p>
+<p>In the first session execute the following:</p><font color="#0000ff" size="2">
+<p>drop</font><font size="2"> </font><font color="#0000ff" size="2">table</font><font size="2"> t<br /></font><font color="#0000ff" size="2">create</font><font size="2"> </font><font color="#0000ff" size="2">table</font><font size="2"> t <br /></font><font color="#808080" size="2">(</font><font size="2">a </font><font color="#0000ff" size="2">int</font><font size="2"> </font><font color="#0000ff" size="2">primary</font><font size="2"> </font><font color="#0000ff" size="2">key</font><font color="#808080" size="2">,</font><font size="2"> b </font><font color="#0000ff" size="2">int</font><font size="2"> </font><font color="#808080" size="2">,</font><font size="2">c </font><font color="#0000ff" size="2">int</font><font size="2"> </font><font color="#0000ff" size="2">unique</font><font color="#808080" size="2">)<br /></font><font color="#0000ff" size="2">insert</font><font size="2"> </font><font color="#0000ff" size="2">into</font><font size="2"> t </font><font color="#0000ff" size="2">values</font><font size="2"> </font><font color="#808080" size="2">(</font><font size="2">1</font><font color="#808080" size="2">,</font><font size="2">1</font><font color="#808080" size="2">,</font><font size="2">1</font><font color="#808080" size="2">)<br /></font><font color="#0000ff" size="2">insert</font><font size="2"> </font><font color="#0000ff" size="2">into</font><font size="2"> t </font><font color="#0000ff" size="2">values</font><font size="2"> </font><font color="#808080" size="2">(</font><font size="2">2</font><font color="#808080" size="2">,</font><font size="2">2</font><font color="#808080" size="2">,</font><font size="2">2</font><font color="#808080" size="2">)<br /></font><font color="#0000ff" size="2">insert</font><font size="2"> </font><font color="#0000ff" size="2">into</font><font size="2"> t </font><font color="#0000ff" size="2">values</font><font size="2"> </font><font color="#808080" size="2">(</font><font size="2">3</font><font color="#808080" size="2">,</font><font size="2">3</font><font color="#808080" size="2">,</font><font size="2">3</font><font color="#808080" size="2">)</p></font><font color="#0000ff" size="2">
+<p>begin</font><font size="2"> </font><font color="#0000ff" size="2">tran<br />update</font><font size="2"> t </font><font color="#0000ff" size="2">set</font><font size="2"> b</font><font color="#808080" size="2">=</font><font size="2">20 </font><font color="#0000ff" size="2">where</font><font size="2"> a</font><font color="#808080" size="2">=</font><font size="2">2<br /></font><font color="#008000" size="2">-- switch to the other session</font></p>
+<p><font color="#808080" size="2"><font color="#000000">Remember the <strong>unique constraint </strong>on column c.</font></font></p>
+<p><font color="#808080" size="2"><font color="#000000">Now execute the following in the <strong>second</strong> session:</font></font></p><font color="#808080" size="2"><font color="#0000ff" size="2">
+<p>select</font><font color="#000000" size="2"> </font><font color="#808080" size="2">*</font><font color="#000000" size="2"> </font><font color="#0000ff" size="2">from</font><font size="2"><font color="#000000"> t</font></font></p>
+<p><font color="#000000" size="2">(it should block&hellip;)</font></p>
+<p><font size="2"><font color="#000000">Switch back to the <strong>first</strong> session:</font></font></p><font size="2"><font color="#0000ff" size="2">
+<p>update</font><font color="#000000" size="2"> t </font><font color="#0000ff" size="2">set</font><font color="#000000" size="2"> a </font><font color="#808080" size="2">=</font><font color="#000000" size="2"> 4 </font><font color="#0000ff" size="2">where</font><font color="#000000" size="2"> a </font><font color="#808080" size="2">=</font><font size="2"><font color="#000000"> 1<br /></font></font><font color="#0000ff" size="2">update</font><font color="#000000" size="2"> t </font><font color="#0000ff" size="2">set</font><font color="#000000" size="2"> a </font><font color="#808080" size="2">=</font><font color="#000000" size="2"> 0 </font><font color="#0000ff" size="2">where</font><font color="#000000" size="2"> a </font><font color="#808080" size="2">=</font><font size="2"><font color="#000000"> 3<br /></font></font><font color="#0000ff" size="2">select</font><font color="#000000" size="2"> </font><font color="#808080" size="2">*</font><font color="#000000" size="2"> </font><font color="#0000ff" size="2">from</font><font size="2"><font color="#000000"> t<br /></font></font><font color="#0000ff" size="2">commit</font><font color="#000000" size="2"> </font><font color="#0000ff" size="2">tran</font></p>
+<p><font color="#000000"></font></p>
+<p><font color="#000000"></font></p>
+<p><font color="#000000"></font></p>
+<p><font color="#000000"></font></p>
+<p><font color="#000000"><img alt="Result1" src="http://www.realityloop.net/blog/result1.png" border="0" /></font></p>
+<p><font color="#000000">So far, so good&hellip; nothing unexpected here. But the&nbsp;query in the second session should now also have finished:</font></p>
+<p><img alt="Result2" src="http://www.realityloop.net/blog/result2.jpg" border="0" /></p>
+<p><font color="#000000">Hmm&hellip; well, not quite the same as above&hellip; and what happened to the unique constraint on column c?</font></p></font></font>

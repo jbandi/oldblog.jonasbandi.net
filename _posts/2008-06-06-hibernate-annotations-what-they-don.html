@@ -1,0 +1,32 @@
+---
+layout: post
+title: 'Hibernate Annotations: what they don''t tell you about mapping a package'
+date: '2008-06-06T01:18:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+modified_time: '2008-06-06T01:19:02.062+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4466571383402604249
+blogger_orig_url: http://blog.jonasbandi.net/2008/06/hibernate-annotations-what-they-don.html
+---
+
+<p>I just spent some time setting up a project using hibernate-annotations.</p> <p>In the <a href="http://www.hibernate.org/hib_docs/annotations/reference/en/html/ch01.html#setup-configuration">reference documentation</a> you find the following example for hibernate.cfg.xml:</p><pre>&lt;hibernate-configuration&gt;
+    &lt;session-factory&gt;
+            <b>&lt;mapping package="test.animals"/&gt;
+            &lt;mapping class="test.Flight"/&gt;
+            &lt;mapping class="test.Sky"/&gt;
+            &lt;mapping class="test.Person"/&gt;
+            &lt;mapping class="test.animals.Dog"/&gt;</b>
+<b>            &lt;mapping resource="test/animals/orm.xml"/&gt;</b>
+     &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</pre>
+<p>What they don't tell you is what the element <b>&lt;mapping package="test.animals"/&gt; </b>means...</p>
+<p>Intuitively I would expect, that any annotated class in the given package is picked up automatically by the session factory, so that you can save the work of explicitly enlisting them.</p>
+<p>But this is not the case! And I could not find any clear documentation why...</p>
+<p>I only found the following clues:</p>
+<ul>
+<li>According to <a href="http://java.sun.com/docs/books/jls/third_edition/html/packages.html">this documentation</a>, a package can be annotated. I never heard of this. It seems that you have to place the annotations in a file called <code>package-info.java</code>.<br><a href="http://docs.jboss.org/ejb3/app-server/HibernateAnnotations/reference/en/html_single/index.html">Here is an example</a>, using annotated packages. 
+<li>According to the <a href="http://www.hibernate.org/hib_docs/annotations/api/org/hibernate/cfg/AnnotationConfiguration.html">api documentation</a> of the class <code>AnnotationConfiguration</code>, the method <code>addPackage</code> '<em>reads package level metadata</em>'.</li></ul>
+<p>So I guess the element <b>&lt;mapping package="test.animals"/&gt; </b>picks up any annotation-configuration that's available <em>on</em> the given package. But it does not pick up any configuration of the classes <em>in</em> the package...</p>
+<p>This is still a speculation on my part, but I think I am <a href="http://forum.springframework.org/showthread.php?t=51732">not the only one</a> tripping over this ...</p>  

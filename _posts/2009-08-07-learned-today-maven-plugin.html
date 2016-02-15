@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'Learned Today: Maven Plugin Configuration'
+date: '2009-08-07T15:56:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- javablog
+- java
+modified_time: '2009-08-07T15:58:47.319+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5329612229328285693
+blogger_orig_url: http://blog.jonasbandi.net/2009/08/learned-today-maven-plugin.html
+---
+
+<p>There are different options for configuring maven plugins in a POM-hierarchy.</p>  <p>A plugin can be <strong>defined and configured</strong> in a parent-POM. Then it is executed for the parent itself and for all its children.     <br />This is achieved in the <em>build-&gt;plugins</em> section of the POM.</p>  <p>A plugin can be <strong>configured only</strong> in a parent-POM and <strong>selectively included</strong> in any child of the parent. Then the plugin is only executed in the respective children.     <br />Configuration happens in the <em>build-&gt;pluginManagement-&gt;plugins</em> section of the parent POM<em>.      <br /></em>Activation in a child happens in the <em>build-&gt;plugins</em> section of the POM.</p>  <p>References:    <br />Maven Doc: <a href="http://maven.apache.org/pom.html#Plugins">Plugins</a>     <br />Maven Doc: <a href="http://maven.apache.org/pom.html#Plugin_Management">Plugin Management</a>     <br />Sonatype Blog: <a href="http://www.sonatype.com/people/2008/05/optimal-maven-plugin-configuration/">Optimal Maven Plugin configuration</a></p>  <div style="clear: right; font-size: 10px; align: right">   <br />    <p><a href="http://twitter.com/jbandi"><img style="margin: 0px" height="13" alt="http://www.google.com/s2/favicons?domain=twitter.com" src="http://www.google.com/s2/favicons?domain=twitter.com" align="left" border="0" /> follow me on twitter, I need some friends :-)</a></p> </div>  

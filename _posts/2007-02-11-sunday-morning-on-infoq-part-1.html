@@ -1,0 +1,30 @@
+---
+layout: post
+title: Sunday Morning on InfoQ, Part 1
+date: '2007-02-11T15:14:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-02-10T16:22:13.262+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4123310352365180549
+blogger_orig_url: http://blog.jonasbandi.net/2007/02/sunday-morning-on-infoq-part-1.html
+---
+
+<p>Its Sunday morning and the weather is really bad &hellip; so I went to <a href="http://www.infoq.com/">InfoQ</a>&nbsp;&hellip;</p>
+<p>I&nbsp;found a presentation called&nbsp;<a href="http://www.infoq.com/presentations/principles-agile-oo-design">The Principle of Agile Design</a>&nbsp;by Bob Martin (&ldquo;Uncle Bob&rdquo; from <a href="http://blog.objectmentor.com/">Object Mentor</a>&nbsp;and <a href="http://butunclebob.com/">butUncleBob</a>).</p>
+<p>This is an excellent talk, really insightful but funny at the same time. I had to laugh out loud several times. Uncle Bob is is a amazing presenter, he manages to immediately get your attention, and makes sure that you stay tuned.</p>
+<p>The talk is about agile design principles in OO-Programming.</p>
+<p>The main point of the talk is the following: OO is about managing dependencies. Abstraction is a tool to manage dependencies.</p>
+<p>In OO-Design high-level policy/components do not depend on low-level details/components. Abstraction of the low-level details removes the dependency from the high-level components. It is a characteristic of procedural programs that they do depend on low-level details.</p>
+<p>Bob Martin explains these concepts&nbsp;with a very illustrative and funny example of a copy module, that copies chars from the keyboard to the printer. Later on the module has to be extended and begins to rot&hellip; Watch it, you will laugh&hellip;</p>
+<p>Bob Martin then moves on to some class design principles every OO-designer should know about:</p>
+<p>These are the <strong><a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">SOLID-Principles</a></strong>: </p>
+<ul>
+<li><strong>S</strong>RP: <a href="http://en.wikipedia.org/wiki/Open/closed_principle">Single Responsibility Principle</a></li>
+<li><strong>O</strong>CP: <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">The Open/Close Principle</a></li>
+<li><strong>L</strong>SP: <a href="http://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov Substitution Principle</a></li>
+<li><strong>I</strong>SP: Interface Segregation Principle</li>
+<li><strong>D</strong>IP: Dependency Inversion Principle</li></ul>
+<p><strong>SRP:</strong> A class should have one, and only one, reason to change. If a class has many reason to change it becomes rigid, it becomes a dependency magnet. That means if you change any part of the system, you have to change the given class too. Strict <strong>Separation of Concerns</strong> and <strong>Decoupling </strong>helps to ensure the SRP. Technically this often means to split one class in several classes that have exactly one, well defined responsibility.</p>
+<p><strong>OCP:</strong> Modules should be open for extension, but closed for modification (<a href="http://en.wikipedia.org/wiki/Bertrand_Meyer">Bertrand Meyer</a>). Change should be applied with addition and not with modification. </p>
+<p>Unfortunately the recording ends here suddenly, because the presentation shifted into &ldquo;tutorial mode&rdquo;, which could not be recorded anymore!?!</p>
+<p>This is quite disappointment, but the talk is really worth to watch it anyway.</p>

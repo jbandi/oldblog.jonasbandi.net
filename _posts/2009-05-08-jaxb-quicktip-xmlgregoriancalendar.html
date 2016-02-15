@@ -1,0 +1,57 @@
+---
+layout: post
+title: 'JAXB Quicktip: XMLGregorianCalendar'
+date: '2009-05-08T14:43:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- java
+modified_time: '2009-05-08T17:11:48.583+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-7325087087218877802
+blogger_orig_url: http://blog.jonasbandi.net/2009/05/jaxb-quicktip-xmlgregoriancalendar.html
+---
+
+<p>Assume you have the following type-declaration in your XSD:</p>  <div style="border-right: silver 1px solid; border-top: silver 1px solid; overflow: auto; border-left: silver 1px solid; width: 410px; border-bottom: silver 1px solid">   <div style="width: 1100px"><pre class="xml:nogutter:nocontrols" name="code">&lt;xs:simpleType name=&quot;dateType&quot;&gt;
+	&lt;xs:annotation&gt; 
+		&lt;xs:documentation&gt;Date without Timezone with the following format: YYYY-MM-DD&lt;/xs:documentation&gt;
+	&lt;/xs:annotation&gt;
+	&lt;xs:restriction base=&quot;xs:date&quot;&gt;
+		&lt;xs:pattern value=&quot;\d{4}-\d{2}-\d{2}&quot;/&gt;
+	&lt;/xs:restriction&gt; 
+&lt;/xs:simpleType&gt; </pre></div>
+</div>
+
+<p>If you are using <a href="http://java.sun.com/webservices/docs/1.6/jaxb/xjc.html">XJC</a> to generate Java classes from the above XSD, then references of Type <a href="http://java.sun.com/j2se/1.5.0/docs/api/javax/xml/datatype/XMLGregorianCalendar.html">XMLGregorianCalendar</a> are generated.</p>
+
+<p>Now, if you instantiate a new XMLGregorianCalendar in your Java code like this:</p>
+
+<div style="border-right: silver 1px solid; border-top: silver 1px solid; overflow: auto; border-left: silver 1px solid; width: 410px; border-bottom: silver 1px solid">
+  <div style="width: 1100px">
+    <pre class="java:nogutter:nocontrols" name="code">GregorianCalendar cal = new GregorianCalendar( 1976, Calendar.<i>DECEMBER</i>, 22 );
+XMLGregorianCalendar xmlCal = DatatypeFactory.newInstance().newXMLGregorianCalendar( cal );</pre></div>
+</div>
+
+<p>… and then let JAXB render the xml, the corresponding XML looks like this:</p>
+
+<div style="border-right: silver 1px solid; border-top: silver 1px solid; border-left: silver 1px solid; border-bottom: silver 1px solid">&lt;birthday&gt;1976-12-22T00:00:00.000+01:00&lt;/birthday&gt; </div>
+
+<p>… this XML fragment is not valid according to the above schema! 
+  <br />What we want would look like this:</p>
+
+<div style="border-right: silver 1px solid; border-top: silver 1px solid; border-left: silver 1px solid; border-bottom: silver 1px solid">&lt;birthday&gt;1976-12-22&lt;/birthday&gt; </div>
+
+<p>An quick workaround is to set the unwanted fields of XMLGregorianCalendar to <em>DatatypeConstants.FIELD_UNDEFINED</em> like this:</p>
+
+<div style="border-right: silver 1px solid; border-top: silver 1px solid; overflow: auto; border-left: silver 1px solid; width: 410px; border-bottom: silver 1px solid">
+<div style="width: 1100px"><pre class="java:nogutter:nocontrols" name="code">XMLGregorianCalendar gc = DatatypeFactory.newInstance().newXMLGregorianCalendar( c );
+gc.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
+gc.setTime(DatatypeConstants.FIELD_UNDEFINED, DatatypeConstants.FIELD_UNDEFINED, DatatypeConstants.FIELD_UNDEFINED);</pre></div>
+</div>
+
+<p>Of course it would be much cleaner if JAXB would respect the constraints when generating the Java code. I guess this could be achieved by <a href="http://java.sun.com/webservices/docs/1.5/tutorial/doc/JAXBUsing4.html">configuring JAXB</a> accordingly … but I did not go so far.</p>
+
+<p>&#160;</p>
+
+<div style="clear: right; font-size: 10px; align: right">
+  <p><a href="http://twitter.com/jbandi"><img style="margin: 0px" height="13" alt="http://www.google.com/s2/favicons?domain=twitter.com" src="http://www.google.com/s2/favicons?domain=twitter.com" align="left" border="0" /> follow me on twitter, I need some friends :-)</a></p>
+</div>  

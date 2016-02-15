@@ -1,0 +1,26 @@
+---
+layout: post
+title: 'QuickTip: Programmatic MBean access under JBoss'
+date: '2012-09-10T18:34:00.001+02:00'
+author: Jonas Bandi
+tags:
+- jboss
+- java
+modified_time: '2012-12-27T22:17:57.653+01:00'
+thumbnail: http://4.bp.blogspot.com/-nkMBNKcVOlA/UFYJJquVyXI/AAAAAAAABQs/6AwxTGmrIHo/s72-c/jboss.jpeg
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6949418309018394060
+blogger_orig_url: http://blog.jonasbandi.net/2012/09/quicktip-programmatic-mbean-access.html
+---
+
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-nkMBNKcVOlA/UFYJJquVyXI/AAAAAAAABQs/6AwxTGmrIHo/s1600/jboss.jpeg" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="http://4.bp.blogspot.com/-nkMBNKcVOlA/UFYJJquVyXI/AAAAAAAABQs/6AwxTGmrIHo/s200/jboss.jpeg" width="100" /></a></div>I have been struggeling a bit with the programmatic access of MBeans under JBoss. This is my current conclusion.<br />
+With <b>JBoss 5 </b>there are two methods for accessing MBeans:  <br />
+<ul><li>By JNDI-lookup of the RMIAdaptor. With this method you need the JBoss client libraries (the jars in your <code>$JBOSS_HOME/client</code>) on the classpath since the RMIAdaptor is a type that is provided by JBoss.</li>
+<li>By pure JMX. You don't need the JBoss client libraries your class path here.&nbsp;</li>
+</ul><br />
+The following snipped shows both methods:<br />
+<script src="https://gist.github.com/3691788.js"></script>  <br />
+With <b>JBoss 7</b> the way to access MBeans changed quite a bit: <script src="https://gist.github.com/3691798.js"></script>  The tricky thing here is, that you need the JBoss client libraries (the jars in <code>$JBOSS_HOME/bin/client</code>) on your classpath even though you don't explicitly import types provided by JBoss.  <br />
+<br />
+If the client libraries are missing, you get the following exception:  <code>java.net.MalformedURLException: Unsupported protocol: remoting-jmx</code> <br />
+<br />
+As far as I could figure, this is the only way to access MBeans under JBoss 7.

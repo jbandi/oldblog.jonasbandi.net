@@ -1,0 +1,51 @@
+---
+layout: post
+title: Return of Friendship
+date: '2007-07-18T15:54:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-07-18T15:55:22.644+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-1250116845917867590
+blogger_orig_url: http://blog.jonasbandi.net/2007/07/return-of-friendship.html
+---
+
+<p><a href="http://realityloop.net/blog/ReturnoftheFriend_D141/mozscreenshot112111.jpg" atomicselection="true"><img style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; margin: 0px 10px 0px 0px; border-right-width: 0px" height="157" alt="moz-screenshot-11[2][1][1][1]" src="http://realityloop.net/blog/ReturnoftheFriend_D141/mozscreenshot112111_thumb.jpg" width="184" align="left" border="0"></a>In the good old days, friendship was a meaningful construct.</p> <p>On lone&nbsp;evenings, I like to look back to the&nbsp;long gone era of&nbsp;C++, long before the decadence of virtual machines and the sloth of&nbsp;garbage collection.&nbsp;</p> <p>Back in those days I could declare someone as a friend and this meant trust. Absolute, boundless trust.&nbsp;Even though this intimate relationship was not necessarily bi-directional (I was not necessarily the friend of my friends...sigh!)&nbsp;</p> <p>I know, its hard to grasp the full&nbsp;meaning and consequences of&nbsp;friendship for the&nbsp;insubordinate youths of today's Java- and C#-Sharp generation&nbsp;(and even more for&nbsp;their self-indulgent Ruby- and Phyton-offspring).</p> <p>For a long time I had looked at the world of today with great despair, but recently a spark of new hope has found its way into my heart: Friendship has <a href="http://msdn2.microsoft.com/en-us/library/0tke9fxk(VS.80).aspx">returned</a> with the .NET Framework 2.0 and seeks its way into the troubled lives of the young generations.</p> <p>Of course today's new friendship is not the same as in the old days: The friendship between&nbsp;assemblies&nbsp;its much more coarse than the delicate friendship between classes used to be. But hey, it's a beginning, don't call me a grumpy old man!</p> <p>Here we have a modern declaration of&nbsp;friendship:</p> <table cellspacing="0" cellpadding="2" width="400" border="1" unselectable="on"> <tbody> <tr> <td valign="top" width="400"><pre class="code"><span style="color: rgb(0,0,255)">using</span> System.Runtime.CompilerServices;
+
+[assembly: <span style="color: rgb(43,145,175)">InternalsVisibleTo</span>(<span style="color: rgb(163,21,21)">"Test"</span>)]
+
+<span style="color: rgb(0,0,255)">namespace</span> Friends {
+
+    <span style="color: rgb(0,0,255)">public</span> <span style="color: rgb(0,0,255)">class</span> <span style="color: rgb(43,145,175)">PublicFriend</span> {
+        <span style="color: rgb(0,0,255)">internal</span> <span style="color: rgb(0,0,255)">string</span> InternalMethod() {
+            <span style="color: rgb(0,0,255)">return</span> <span style="color: rgb(163,21,21)">"I am Internal!"</span>;
+        }
+    }
+    
+    <span style="color: rgb(0,0,255)">internal</span> <span style="color: rgb(0,0,255)">class</span> <span style="color: rgb(43,145,175)">InternalFriend</span> {
+        <span style="color: rgb(0,0,255)">public</span> <span style="color: rgb(0,0,255)">string</span> PublicMethod() {
+            <span style="color: rgb(0,0,255)">return</span> <span style="color: rgb(163,21,21)">"I am Internal!"</span>;
+        }
+    }
+}</pre></td></tr></tbody></table>
+<p>And here we have an example of how to enjoy the pleasures of this friendship:</p>
+<table cellspacing="0" cellpadding="2" width="400" border="1" unselectable="on">
+<tbody>
+<tr>
+<td valign="top" width="400"><pre class="code">    [<span style="color: rgb(43,145,175)">TestFixture</span>]
+    <span style="color: rgb(0,0,255)">public</span> <span style="color: rgb(0,0,255)">class</span> <span style="color: rgb(43,145,175)">Test</span> {
+        [Test]
+        <span style="color: rgb(0,0,255)">public</span> <span style="color: rgb(0,0,255)">void</span> instantiate_internal_friend_should_work() {
+            <span style="color: rgb(43,145,175)">InternalFriend</span> myFriend = <span style="color: rgb(0,0,255)">new</span> <span style="color: rgb(43,145,175)">InternalFriend</span>();
+            <span style="color: rgb(43,145,175)">Assert</span>.IsNotNull(myFriend);
+            <span style="color: rgb(0,0,255)">string</span> test = myFriend.PublicMethod();
+            <span style="color: rgb(43,145,175)">Assert</span>.IsTrue(test.Length &gt; 0);
+        }
+
+        [Test]
+        <span style="color: rgb(0,0,255)">public</span> <span style="color: rgb(0,0,255)">void</span> calling_internal_method_should_work() {
+            <span style="color: rgb(43,145,175)">PublicFriend</span> myFriend = <span style="color: rgb(0,0,255)">new</span> <span style="color: rgb(43,145,175)">PublicFriend</span>();
+            <span style="color: rgb(0,0,255)">string</span> test = myFriend.InternalMethod();
+            <span style="color: rgb(43,145,175)">Assert</span>.IsTrue(test.Length &gt; 0);
+        }
+    }</pre></td></tr></tbody></table>
+<p>Rejoice and praise the lords high up in Redmond for the mercy they show for our blunted souls!</p>

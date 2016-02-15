@@ -1,0 +1,39 @@
+---
+layout: post
+title: Rethinking the Test Automation Pyramid
+date: '2011-06-07T13:03:00.002+02:00'
+author: Jonas Bandi
+tags:
+- testing
+- TDD
+- BDD
+modified_time: '2011-06-09T08:11:43.477+02:00'
+thumbnail: http://lh3.ggpht.com/-2wkCTY2OtV0/Te3-NIrZKaI/AAAAAAAAA_g/a97BhVvE1nk/s72-c/Pyramid_orig_WB.JPG?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-1152293943079515762
+blogger_orig_url: http://blog.jonasbandi.net/2011/06/rethinking-test-automation-pyramid.html
+---
+
+The <b>Test Automation Pyramid</b> is an analogy that is often referred when discussing test automation:<br />
+<img alt="Pyramid orig WB" border="0" src="http://lh3.ggpht.com/-2wkCTY2OtV0/Te3-NIrZKaI/AAAAAAAAA_g/a97BhVvE1nk/Pyramid_orig_WB.JPG?imgmax=800" style="display: block; margin-left: auto; margin-right: auto;" width="300" /><br />
+I believe the origin of this analogy is referred to Mike Cohn. At least he discussed it in the agile context in his post <a href="http://blog.mountaingoatsoftware.com/the-forgotten-layer-of-the-test-automation-pyramid">The Forgotten Layer of the Test Automation Pyramid</a>.
+
+
+If you google for "testing pyramid" <a href="http://www.google.ch/search?hl=de&amp;safe=off&amp;client=firefox-a&amp;hs=vZu&amp;rls=org.mozilla%3Aen-US%3Aofficial&amp;biw=1316&amp;bih=629&amp;tbm=isch&amp;sa=1&amp;q=testing+pyramid&amp;oq=testing+pyramid&amp;aq=f&amp;aqi=&amp;aql=&amp;gs_sm=e&amp;gs_upl=7764l8858l0l5l4l1l0l0l1l180l349l0.2">you find many derivations</a> of the original pyramid picture.
+
+While preparing for our <a href="http://ndc2011.no/">BDD presentations at the NDC</a>, <a href="http://gasparnagy.blogspot.com/">Gaspar</a> and I were discussing the pyramid once again. And we also came to the conclusion that we want to redraw it: 
+
+<br />
+<img alt="Pyramid new WB" border="0" src="http://lh3.ggpht.com/-UX9HUH9twvw/Te4FfehrCmI/AAAAAAAAA_o/Sx2TFHjRypA/Pyramid_new_WB.JPG?imgmax=800" style="display: block; margin-left: auto; margin-right: auto;" width="300" /><br />
+We found that we want to decouple test automation from architectural layering.
+<br />
+On the one hand we found that the tip of the pyramid is not always UI testing. Of course this depends on your definition of UI. But in a lot of systems I have seen interactive testing that is not really going through a UI (e.g. checking the print-layout of a report, checking if files are delivered on a share ...)
+<br />
+On the other hand we feel that with modern approaches (and tooling) automated UI testing can also be done efficiently in the middle layer of the pyramid to perform functional tests. The <a href="http://rubyonrails.org/">Rails</a>/<a href="https://github.com/jnicklas/capybara">Capybara</a>/<a href="http://cukes.info/">Cucumber</a> stack is a good example for this.
+<br />
+<br />
+The next question is, if the functional slice of the pyramid should once again divided in different sub-slices. On the lower level there are automated <b>Scenarios</b> that usually fit to one feature of the system. 
+<br />
+The <a href="http://www.thoughtworks.com/sites/www.thoughtworks.com/files/files/thoughtworks-tech-radar-january-2011-US-color.pdf">ThoughTworks technology Radar from January 2011</a> mentions <b>Journeys</b> as a more holistic approach that describe and verify coherent functionality overarching individual scenarios. This will be an interesting concept to explore ...
+<br />
+<br />
+Of course we were not the first to discuss this, there are <a href="http://www.tomslabs.com/index.php/2011/04/test-automation-strategy/">other posts</a> about this.

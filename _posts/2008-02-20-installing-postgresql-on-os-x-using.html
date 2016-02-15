@@ -1,0 +1,104 @@
+---
+layout: post
+title: Installing PostgreSQL on OS X using Fink
+date: '2008-02-20T17:16:00.003+01:00'
+author: Jonas Bandi
+tags:
+- mac
+modified_time: '2009-06-26T08:27:58.595+02:00'
+thumbnail: http://lh6.google.com/jonas.bandi/R7xPZT_YxlI/AAAAAAAAAJQ/yJ7FxqhUfuY/s72-c/Picture%202.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5425638706927163754
+blogger_orig_url: http://blog.jonasbandi.net/2008/02/installing-postgresql-on-os-x-using.html
+---
+
+For a <a href="http://closed-loop.blogspot.com/2008/02/do-your-contribution.html">current project</a> I am playing around with <a href="http://www.postgresql.org/">PostgreSQL</a>.
+<br/>
+<br/>
+Sidenote: I am very positively suprised about the documentation of PostgreSQL...
+<br/>
+<br/>
+I chose to install PostgreSQL on my MacBook using <a href="http://www.finkproject.org/">Fink</a> (I try to use Fink whenever possible, because I believe serious package management pays off in the long term).
+<br/>
+<br/>
+However the installation did not run through as smoothly as possible...
+<br/>
+<br/>
+Here are the necessary steps:
+<br/>
+<br/>
+<strong>Step 0: Install Fink</strong>
+<br/>
+Go to the <a href="http://www.finkproject.org/">Fink project</a> and follow their installation instructions.
+<br/>
+<br/>
+<strong>Step 1: Install PostgreSQL</strong>
+<br/>
+Just type
+<div style="border:1px solid silver">
+<code>
+sudo fink install postgresql82
+</code><br/>
+</div>
+into a terminal.
+<br/><br/>
+
+This takes a while and a lot of gibberish appears on your terminal...<br/>
+In my case there was a warning at the end, telling something about not installing plpgsql. Since I am not planning to use <a href="http://www.postgresql.org/docs/current/static/plpgsql.html">PL/pgSQL</a>, I just ignored that...
+<br/>
+<br/>
+<strong>Step 2: Initialize the Database</strong>
+<br/>
+According to the fink package description, this step should not be necessary. But in my case the installation process did not initialize the database, so I had to do it manually.<br/>
+<br/>
+Type 
+<div style="border:1px solid silver">
+<code>
+sudo -u postgres initdb -D /sw/var/postgresql-8.2/data/
+</code><br/>
+</div>
+into a terminal.
+<br/><br/>
+
+<strong>Step 3: Start the dbms</strong><br/>
+Type 
+<div style="border:1px solid silver">
+<code>
+sudo pgsql.sh start
+</code><br/>
+</div>
+into a terminal.
+<br/><br/>
+This uses a script provided by fink. You could also start the dbms with the native command (i.e. <code>pg_ctl</code>, just look at the script...)
+<br/>
+<br/>
+
+<strong>Step 4: Create a database</strong><br/>
+
+This is optional, you can do this also with pgAdmin (see below). But it is a good check, if the previous step worked.
+<br/><br/>
+
+Type 
+<div style="border:1px solid silver">
+<code>
+sudo -u postgres createdb testdb
+</code><br/>
+</div>
+into a terminal.
+<br/><br/>
+
+<strong>Step 5: Get pgAdmin and connect</strong>
+<br/>
+PgAdmin is a client application to access postgres databases. You can get it <a href="http://www.pgadmin.org/download/macosx.php">here</a>.
+<br/>
+<br/>
+After starting pgAdmin you have to add the server (File->Add Server...):
+<br/>
+<div style="text-align:center;"><img src="http://lh6.google.com/jonas.bandi/R7xPZT_YxlI/AAAAAAAAAJQ/yJ7FxqhUfuY/Picture%202.png?imgmax=800" alt="Picture 2.png" border="0" width="350" /></div>
+To begin with connect as the user 'postgres' (which was created during the fink installation process), which has full administration privileges. Leave the password blank.
+<br/>
+<br/>
+This should be it...
+<br/>
+<br/>
+BTW: Fink installs the PostgreSQL documentation here: <br/>
+<code>/sw/share/doc/postgresql-8.2/html/index.html</code>

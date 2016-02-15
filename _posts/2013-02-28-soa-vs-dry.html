@@ -1,0 +1,24 @@
+---
+layout: post
+title: SOA vs. DRY
+date: '2013-02-28T18:37:00.001+01:00'
+author: Jonas Bandi
+tags:
+- programming
+modified_time: '2013-02-28T19:10:26.010+01:00'
+thumbnail: http://lh6.ggpht.com/-AH2GoLwqFcs/US-V4lUMEOI/AAAAAAAABTE/0J0iD6pb3FM/s72-c/Screen%252520Shot%2525202013-02-17%252520at%2525204.53.06%252520PM.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4682390618605384005
+blogger_orig_url: http://blog.jonasbandi.net/2013/02/soa-vs-dry.html
+---
+
+<p>In his presentation <a href="https://vimeo.com/53154358">"Designing For Rapid Release"</a> (<a href="http://www.slideshare.net/spnewman/designing-for-rapid-release">slides</a>) Sam Newman points out an ugly fact that we often try to ignore: <a href="http://en.wikipedia.org/wiki/Service-oriented_architecture">SOA</a> and <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> are to a large extent opposed forces.</p>
+<p>Of course this is not a new break-through discovery and I guess it is also nothing new for most battle-proven enterprise developers. But I also have the experience that in most SOA projects this topic is treated like the crazy uncle in the attic: You don't talk about it and you certainly don't plan for it.</p>
+<p>The result is usually a schizophrenic feeling: The architecture postulates nice decoupling, but in reality we end up with the feeling that we are not doing it right: either we are using shared logic in several services which negates idea of decoupling or we have a lot of code duplication.</p>
+<p>In the presentation Sam illustrated this conflict with two services that share a common domain model:</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" title="Screen Shot 2013-02-17 at 4.53.06 PM.png" src="http://lh6.ggpht.com/-AH2GoLwqFcs/US-V4lUMEOI/AAAAAAAABTE/0J0iD6pb3FM/Screen%252520Shot%2525202013-02-17%252520at%2525204.53.06%252520PM.png?imgmax=800" alt="Screen Shot 2013 02 17 at 4 53 06 PM" width="300" border="0" /></p>
+<p>In the above picture, since service A and service B are both using a common model from a shared library, they get tightly coupled. On the other hand managing the development and releases of the shared library all of a sudden gets much more complicated under the premise that service A and service B should be decoupled.</p>
+<p>He further brings the incompatibility of SOA and DRY to the point with the following quote:</p>
+<blockquote>
+<p>Ending up with tightly bound services because of code-reuse is significantly worse than to copy &amp; paste that code.</p>
+</blockquote>
+<p>I like that Sam makes the conflict between SOA and DRY explicit. Not ignoring this fact is the first step to objectively balance the tradeoffs and to honestly plan how to deal with the drawbacks of either approach.</p>

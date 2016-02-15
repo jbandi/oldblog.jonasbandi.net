@@ -1,0 +1,137 @@
+---
+layout: post
+title: 'Google App Engine: Guestbook with Groovy Groovlets'
+date: '2009-04-13T14:09:00.002+02:00'
+author: Jonas Bandi
+tags:
+- groovy
+- javablog
+- java
+modified_time: '2009-05-28T08:01:54.792+02:00'
+thumbnail: http://lh4.ggpht.com/_X3kaawac_g4/SeMqe4eZckI/AAAAAAAAAdU/HcoVzk5xPKU/s72-c/google-app-engine-groovy.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6046141500310923601
+blogger_orig_url: http://blog.jonasbandi.net/2009/04/google-app-engine-guestbook-with-goovy.html
+---
+
+<img src="http://lh4.ggpht.com/_X3kaawac_g4/SeMqe4eZckI/AAAAAAAAAdU/HcoVzk5xPKU/google-app-engine-groovy.png?imgmax=800" alt="google-app-engine-groovy.png" border="0" width="150" align="right" />
+
+The web is soaring, since Google announced <a href="http://code.google.com/appengine/docs/java/overview.html">Java support on Google App Engine</a>!
+<br/>
+<br/>
+People are <a href="http://spreadsheets.google.com/pub?key=pRJ_0hajVrhacLjp3HqD5ew">getting ahead of themselves</a> to try out their favorite piece of the Java ecosystem on the Google platform.
+<br/>
+<br/>
+I figured that I also wanted to experience this pre-<a href="http://www.martinfowler.com/bliki/AlphaGeek.html">alpha-geek</a> feeling :-)
+<br/>
+<br/>
+I followed <a href="http://blog.springsource.com/2009/04/07/write-your-google-app-engine-applications-in-groovy/">the guidelines to run Groovy appliccations on Google App Engine</a> from <a href="http://twitter.com/glaforge">glaforge</a> and reimplemented the guestbook example from the Google Appengine SDK with Groovy <a href="http://groovy.codehaus.org/Groovlets">Groovlets</a>.
+<br/>
+<br/>
+<strong>The result is <a href="http://groovy-loop.appspot.com/">here</a>. Leave me a message ;-)</strong>
+<br/>
+<br/>
+<br/>
+
+The backend classes (Greeting.java, PMF.java) were not changed (however it seems to be possible to <em>datanucleusenhance</em> classes written in Groovy and compiled with <em>groovyc</em>, see <a href="http://burtbeckwith.com/blog/?p=122">here</a>).
+<br/>
+<br/>
+I kicked out the two servlets and the jsp and replaced them with the following two <a href="http://groovy.codehaus.org/Groovlets">Groovlets</a>.
+<br/>
+<br/>
+hello.goovy
+<div style="border:solid 1px silver;width:410px;overflow:auto">
+<div style="width:1100px;"> 
+<pre name="code" class="java:nogutter">
+import com.google.appengine.api.users.User
+import com.google.appengine.api.users.UserService
+import com.google.appengine.api.users.UserServiceFactory
+import javax.jdo.PersistenceManager
+import guestbook.PMF
+import guestbook.Greeting
+
+UserService userService = UserServiceFactory.getUserService()
+User u = userService.getCurrentUser()
+
+PersistenceManager pm = PMF.get().getPersistenceManager()
+String query = "select from " + Greeting.class.getName() + " order by date desc range 0,25"
+List&lt;Greeting&gt; greetings = (List&lt;Greeting&gt;) pm.newQuery(query).execute()
+
+html.html {
+ head {
+  title "Hello"
+  link(type:"text/css", rel:"stylesheet", href:"/stylesheets/main.css")
+ }
+ body {
+  div(class: "main"){
+   div ("Today is: ${new Date()}")
+
+   if (u == null) {
+    div(class:"login"){
+     a (href: userService.createLoginURL(request.getRequestURI()) , "Log in with your Google Account.")
+    }
+   }
+   else {
+    div(class:"login"){
+     span("Welcome ${u.nickname}. ")
+     a (href: userService.createLogoutURL(request.getRequestURI()) , "Log out")
+    }
+   }
+
+   p ("Leave me a message:")  
+
+   form(method: "POST", action: "/post.groovy"){
+    div(){
+     textarea(name: "content", rows: "3", cols: "60", "")
+    }
+    div(){
+     input(type: "submit", value: "Post")
+    }
+   }
+
+   greetings.each{
+    def user = "anonymous"
+    if(it.author != null) user = it.author
+    div(class:"entry-header", "On  ${it.date} ${user} wrote: ")
+    div(class:"entry-body", "${it.content}")
+   }
+  }
+ }
+}
+</pre>
+</div>
+</div>
+<br/>
+post.groovy:
+<div style="border:solid 1px silver;width:410px;overflow:auto">
+<div style="width:1100px;"> 
+<pre name="code" class="java:nogutter">
+import com.google.appengine.api.users.User
+import com.google.appengine.api.users.UserService
+import com.google.appengine.api.users.UserServiceFactory
+import javax.jdo.PersistenceManager
+import guestbook.PMF
+import guestbook.Greeting
+
+UserService userService = UserServiceFactory.getUserService()
+User user = userService.getCurrentUser()
+String content = request.getParameter("content")
+Date date = new Date()
+Greeting greeting = new Greeting(user, content, date)
+
+PersistenceManager pm = PMF.get().getPersistenceManager()
+try {
+    pm.makePersistent(greeting)
+} finally {
+    pm.close()
+}
+
+response.sendRedirect("/hello.groovy")
+</pre>
+</div>
+</div>
+<br/>
+This was my first take at <a href="http://groovy.codehaus.org/Groovlets">Groovlets</a>, so it might well be that things are not state of the art...
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

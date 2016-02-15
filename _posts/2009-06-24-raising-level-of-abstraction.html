@@ -1,0 +1,69 @@
+---
+layout: post
+title: Raising the Level of Abstraction
+date: '2009-06-24T08:13:00.001+02:00'
+author: Jonas Bandi
+tags:
+- MDSD
+- programming
+- javablog
+- domain driven design
+- DSL
+modified_time: '2009-06-24T08:35:42.647+02:00'
+thumbnail: http://lh4.ggpht.com/_X3kaawac_g4/SjoN6lKzfMI/AAAAAAAAAeI/TynZzIqZrJQ/s72-c/Association.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8987359120624599751
+blogger_orig_url: http://blog.jonasbandi.net/2009/06/raising-level-of-abstraction.html
+---
+
+<img style="margin: 10px 0px 10px 10px"src="http://lh5.ggpht.com/_X3kaawac_g4/SjoQO9ln-0I/AAAAAAAAAeM/U0aDs9-Omx4/highjump.jpg?imgmax=800" alt="highjump.jpg" border="0" width="170" align="right" />
+Abstraction is a central concept in software development. 
+<br/>
+Abstraction is probably our only hope to conquer the ever rising complexity and requirements in current and future systems.
+<br/>
+<br/>
+When designing a software system today often there are no physical constraints. The only constraints are intellectual: Is the design understandable, maintainable, what are the effects of future changes ...
+<br/>
+<br/>
+Abstraction is supposed to be a tool to do the right choices when designing.
+<br/>
+But what is abstraction really? How do you characterize it? How do you measure it?
+<br/>
+<br/>
+There seem to be a lot of different notions about how to raise the abstraction level.
+<br/>
+<br/>
+
+Some people talk about <a href="http://en.wikipedia.org/wiki/Nonterminal_symbol">nonterminal symbols</a>:
+
+<pre style="border: solid 1px gray; padding:3px">
+&lt;integer&gt; ::= ['-'] &lt;digit&gt; {&lt;digit&gt;}
+&lt;digit&gt; ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+</pre>
+
+<br/>
+
+Some people believe in pictures and visuals:
+<div style="text-align:center;"><img src="http://lh4.ggpht.com/_X3kaawac_g4/SjoN6lKzfMI/AAAAAAAAAeI/TynZzIqZrJQ/Association.png?imgmax=800" alt="Association.png" border="0" width="200" /></div>
+<br/>
+<br/>
+
+Some people see hope in reducing the <a href="http://blog.jonasbandi.net/2007/04/about-signal-to-noise.html">signal-to-noise ratio of code</a>:
+
+<blockquote>[...] a lot of Java programs are the boiler plate of controlled structures with very little business logic. It's probably a four or five to one ratio between business logic and boiler plate control structures. So Ruby gives you that conciseness.
+<br/>
+You are saying: "Here is the business logic, apply this business logic [...]</blockquote>
+<p align="right">
+-- <a href="http://www.infoq.com/interviews/Lift-Scala-David-Pollack">David Pollak, InfoQ</a>
+</p>
+<br/>
+For me, the third approach is currently the most promising. That's where <a href="http://en.wikipedia.org/wiki/Domain-driven_design">DDD</a> tries to pull the lever. That's where concepts like the <a href="http://www.emxsoftware.com/Domain+Driven+Design/DDD+Ubiqitous+Language">Ubiquitous Language</a> and <a href="http://en.wikipedia.org/wiki/Domain-specific_programming_language">Domain Specific Languages</a> try to provide value.
+<br/>
+<br/>
+<br/>
+And finally remember <a href="http://www.joelonsoftware.com/">Joel Spolsky's</a> Law of <a href="http://en.wikipedia.org/wiki/Leaky_abstraction">Leaky Abstractions</a>: 
+<blockquote>All non-trivial abstractions, to some degree, are leaky.</blockquote>
+<br/>
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

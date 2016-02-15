@@ -1,0 +1,41 @@
+---
+layout: post
+title: Converting html to pdf
+date: '2008-07-16T20:48:00.001+02:00'
+author: Jonas Bandi
+tags:
+- technology
+modified_time: '2008-07-16T20:50:15.648+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5274547052440647196
+blogger_orig_url: http://blog.jonasbandi.net/2008/07/converting-html-to-pdf.html
+---
+
+I wanted to put the content of the <a href="http://java.boot.by/scea5-guide/">SCEA 5 Study Guide</a> in one single pdf document.
+<br/>
+This is what I did:
+<br/>
+<br/>
+
+Download all the files used by the page with <a href="http://www.gnu.org/software/wget/">wget</a>:
+<div style="border:1px solid silver">
+<code>
+wget -r http://java.boot.by/scea5-guide/
+</code>
+</div>
+<br/>
+
+Convert the downloaded html-pages into one pdf with <a href="http://www.htmldoc.org/">htmldoc</a>:
+<div style="border:1px solid silver">
+<code>
+htmldoc index.html pr01.html pt01.html ch*.html pt02.html --outfile scea5-guide.pdf --footer /
+</code>
+</div>
+<br/>
+
+On the Mac you can easily install wget and htmldoc with <a href="http://www.finkproject.org/">fink</a>:
+
+<div style="border:1px solid silver">
+<code>
+fink install wget htmldoc-nox
+</code>
+</div>

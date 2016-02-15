@@ -1,0 +1,19 @@
+---
+layout: post
+title: Sunday Morning on InfoQ, Part 2
+date: '2007-02-11T15:51:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-02-11T15:51:21.993+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-5826960923248752236
+blogger_orig_url: http://blog.jonasbandi.net/2007/02/sunday-morning-on-infoq-part-2.html
+---
+
+<p>Well it is still Sunday morning, and the weather is still bad &hellip; so I am staying on <a href="http://www.infoq.com/">InfoQ</a></p>
+<p>I watched an interview with <a href="http://www.infoq.com/interviews/jimmy-nilsson-domain-driven-design">Jimmy Nillson on Domain Driven Design</a></p>
+<p>The interview is about <a href="http://domaindrivendesign.org/">Domain Driven Design (DDD)</a>&nbsp;(see also my <a href="http://realityloop.net/presentations.htm">presentation</a>).<br />If you have read <a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/sr=1-1/qid=1171203883/ref=pd_bbs_sr_1/102-5249563-3379353?ie=UTF8&amp;s=books">DDD</a> of Eric Evans and <a href="http://www.amazon.com/Applying-Domain-Driven-Design-Patterns-Examples/dp/0321268202/sr=11-1/qid=1171203849/ref=sr_11_1/102-5249563-3379353">ADDDAP</a> of Jimmy Nillson, the Interview does not offer much interesting content.</p>
+<p>However at the end of the interview Jimmy talks about MDA in relation to DDD. He states that in DDD the code is the model while in MDA the model defines the code. At the time being the two notions stand in conflict with each other. Jimmy states that this does not have to be, but with the current state of the tools and implementations of MDA (&ldquo;executable UML&rdquo;) the conflict exists.</p>
+<p>This reflects&nbsp;also my current opinion. I basically think it is not a good idea to use code-generation in your business-logic. The business-logic is the the core of your application. It is the value that your application offers to the user, its where&nbsp;the knowledge of the domain is buried where and all the insights extracted from analysis and design are applied. </p>
+<p>Code-generation cannot help you with creating this business-logic, because the knowhow and the insights about the domain cannot be generated automatically. </p>
+<p>Code-generation can only help you with infrastructural concerns like persistence, gui-binding, distribution &hellip; but not with implementing the core business-logic.</p>
+<p>So again it is important to apply strict <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>, so that the core business-logic can be developed independently of infrastructural problems.&nbsp;The more&nbsp;the infrastructural problems leak into the business logic, the more moves the concrete implementation of the business-logic away from the core-domain. Then again people will think that code-generation solves their problem. But in reality this would only be fighting symptoms of a bad architecture and not&nbsp;seizing the root of the problem, which&nbsp;is leaking concerns.</p>

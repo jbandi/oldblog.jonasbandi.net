@@ -1,0 +1,77 @@
+---
+layout: post
+title: 'NetBeans Showstopper: Running Tests'
+date: '2009-07-01T09:29:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- javablog
+- java
+modified_time: '2009-07-02T10:02:32.056+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-2792374176500428866
+blogger_orig_url: http://blog.jonasbandi.net/2009/07/netbeans-showstopper-running-tests.html
+---
+
+<strong>Update 2009-07-02:</strong> Adam Bien has some related info <a href="http://www.adam-bien.com/roller/abien/entry/how_to_debug_unit_tests">here</a>, but this still does not solve my issues (easily running single test methods, failing JUnit tests in maven projects, crappy TestNG integration in maven projects)
+<br/>
+<br/>
+<br/>
+
+<a href="http://www.netbeans.org/"><img style="margin: 0px 0px 10px 10px"src="http://lh3.ggpht.com/_X3kaawac_g4/SksPNVF6QgI/AAAAAAAAAmo/dkB9uC_7pP0/netbeans-logo.png?imgmax=800" alt="netbeans-logo.png" border="0" width="150" align="right" /></a>Basically I like <a href="http://www.netbeans.org/">NetBeans</a>. I have been successfully prototyping applications in NetBeans, and especially the Glassfish integration is superb.
+<br/>
+<br/>
+Unfortunately all the commercial projects I have been working on had been using Eclipse. Compared to Eclipse, I think NetBeans is much more intuitive to use and better organized.
+<br/>
+<br/>
+Another advantage of NetBeans, is the <a href="http://www.h-online.com/open/NetBeans-6-7-released-focuses-on-Maven-and-Kenai-integration--/news/113640">native Maven integration</a>, which seems still to be a major kludge in Eclipse.
+<br/>
+<br/>
+Recently <a href="http://www.netbeans.org/community/releases/67/">NetBeans 6.7</a> was released. This motivated me to toy around a bit.
+
+<br/>
+But soon I encountered a major showstopper: the infrastructure to run tests is really poor!
+<br/>
+<br/>
+<strong>It seems not to be possible to run single test methods!</strong>
+<br/>
+For me this is just not acceptable. To do micro-iterations and test-driven development, I have to be able to run single tests.
+<br/>
+<br/>
+NetBeans only offers to run all Tests of the whole Project or the tests in a given File. That is just not good enough!
+<br/>
+Both Eclipse and IntelliJ can run Tests on any granularity level (method, class, package, project), and I am heavily using this feature.
+<br/>
+<br/>
+According to this <a href="http://www.netbeans.org/issues/show_bug.cgi?id=72080">bug-report</a>, it should be possible to run single test methods for Ruby development in NetBeans, but I did not verify this.
+<br/>
+<br/>
+Also the <a href="http://wiki.netbeans.org/TestNG">TestNG plugin</a> seems to provide this functionality for projects using TestNG.
+<br/>
+<br/>
+<br/>
+<strong>When I tried to run tests in a Maven project the situation got even worse! Basically I was only able to run all tests of the whole project. </strong>
+<br/>
+<br/>
+With JUnit, while running the tests for the whole project (or from maven on the commandline) succeded, running the Tests from a single file failed <span style="font-size:9px">(the project was a simple example from <a href="http://openejb.apache.org/examples.html">OpenEJB</a>)</span>.
+<br/>
+Both Eclipse and IntelliJ had no problems running the single tests of exactly the same project...
+<br/>
+<br/>
+Running TestNG tests in a Maven project <span style="font-size:9px">(I tried <a href="http://anonsvn.jboss.org/repos/hibernate/core/trunk/envers/">Hibernate Envers</a>)</span> was possible, but the IDE always delegated to Maven to run the test goal, which resulted in all tests beeing executed... slooooow... it did not matter if I chose to run a single test method or the tests in a file.
+<br/>
+Again, both Eclipse and IntelliJ had no problems running the single tests of exactly the same project ...
+<br/>
+<br/>
+<img style="margin: 0px 0px 10px 10px"src="http://lh5.ggpht.com/_X3kaawac_g4/SksOO-LyH3I/AAAAAAAAAmk/aODk7EWvpSM/RoadClosed.jpg?imgmax=800" alt="RoadClosed.jpg" border="0" width="208" height="147" align="right" />
+Unfortunately I have to come to the conclusion that NetBeans is unusable for me, and I think for any project, that sets a focus on developer testing ...
+<br/>
+<br/>
+<strong>Maybe I am overlooking something, then please enlighten me ...</strong>
+<br/>
+<br/>
+Googling showed that also others had the same issue:  <a href="http://www.appliweb.net/index.php/blog/viewpost/79">here</a>, <a href="http://karussell.wordpress.com/2008/09/06/mavenized-projects-in-netbeans-61/">here</a> and <a href="http://www.nabble.com/NetBeans-maven---cannot-run-main-class-in-war-project-td18210790.html">here</a> ...
+<br/>
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

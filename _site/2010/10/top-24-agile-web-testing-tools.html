@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Top 24 Agile Web Testing Tools</title>
+  <meta name="description" content="According to the book Agile Testing there is a certain kind of tools  called Agile Web Testing Tools. The book does not contain a precise  definition.﻿My def...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/2010/10/top-24-agile-web-testing-tools.html">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml">
+
+  <link rel="stylesheet" href="/css/code.css">
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Your awesome title</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Top 24 Agile Web Testing Tools</h1>
+    <p class="post-meta"><time datetime="2010-10-07T23:29:00+02:00" itemprop="datePublished">Oct 7, 2010</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Jonas Bandi</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <img alt="hand-tools-list-important.jpg" border="0" height="167" src="http://lh4.ggpht.com/_X3kaawac_g4/TK47pVBc-2I/AAAAAAAAA4Q/xeOiQsPaFiY/hand-tools-list-important.jpg?imgmax=800" style="float: right; margin-left: 8px;" width="200" />
+According to the book <a href="http://www.amazon.com/gp/product/0321534468?ie=UTF8&amp;tag=cl02fb-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321534468">Agile Testing</a> there is a certain kind of tools  called <b>Agile Web Testing Tools</b>. The book does not contain a precise  definition.<br />
+﻿My definition of Agile Web Testing Tools contains the following characteristics:<br />
+<ul>
+<li>Lightweight (not needing heavy infrastructure or installation nor difficult licences)</li>
+<li>Can be run on any developer workstation and can be easily integrated in a continuous build</li>
+<li>Programmatic API for web automation</li>
+<li>Integrates with common test automtation frameworks (JUnit, NUnit ...)</li>
+</ul>
+<iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm.amazon.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=cl02fb-20&amp;o=1&amp;p=8&amp;l=as1&amp;m=amazon&amp;f=ifr&amp;md=10FE9736YVPPT7A0FBG2&amp;asins=0321534468" style="float: left; height: 240px; margin-bottom: 4px; margin-right: 10px; margin-top: 4px; width: 120px;"></iframe>
+﻿I don't fully agree with the "Agile" prefix, but I guess that is an  attempt to differentiate those tools from heavier multi purpose tools  like Borland SilkTest, HP QuickTest (formerly Mercury) or Visual Studio  Team System Test Edition.<br />
+<br />
+Following from the characteristic of hose  tools is the fact, that they are rathe<b>r developer focused</b>. They approach  functional web testing from the unit-testing perspective and strive to  be as close to the existing <b>programming artifacts</b> (the tools have a  programming API, tests are written as code, tests should be runnable as  part of the normal build, no special management tools are necessary ...)  <br />
+<br />
+The current situation around this type of tools is quite  entangled, some tools are extending or complementing others, some are  competitors and new ones are sprouting out of others... <br />
+<br />
+The following post tries to get some order and structure in the landscape of those Agile Web Testing Tools. <br />
+<br />
+The first imortant distinction is between <b>out-of-browser (headless browser)</b> and <b>browser automation</b> tools.<br />
+<ul>
+<li><b>Out-of-browser tools</b> do not run the test against a real browser but use some kind of browser-simulation/emulation. This simulation/emulation can usually be run in-process, embedded inside an automated test.</li>
+<li><b>Browser automation</b> tools drive a real browser to access the application under test.</li>
+</ul>
+<br />
+The browser automation tools then can be divided between <b>browser-remoting</b> tools and <b>in-browser</b> tools.<br />
+<ul>
+<li>A <b>browser remoting</b> test-driver controls the browser from the outside through some programmatic API.</li>
+<li>An <b>in-browser </b>test-driver is a test execution runtime that runs inside  the browser (usually as JavaScript). This runtime then accesses the  application under test from within the browser.</li>
+</ul>
+<br />
+Some confusion is currently created  by a third kind of tools. These tools are <b>wrappers</b> or <b>abstractions</b> over concrete test-drivers. They try to give a <b>common programming model  for automated functional web tests.</b> This way the same tests should be  runnable on a headless browser or on a browser automation driver.<br />
+<br />
+<br />
+<img alt="headless.png" border="0" src="http://lh6.ggpht.com/_X3kaawac_g4/TK47qgUlicI/AAAAAAAAA4U/bRZaxNgkc58/headless.png?imgmax=800" style="float: left; margin-bottom: 5px; margin-right: 8px;" width="150" />
+<b style="font-size: 18px;">Headles browsers:</b><br />
+<br />
+<a href="http://htmlunit.sourceforge.net/" style="font-size: 14px;">HtmlUnit</a> (Java)<br />
+HtmlUnit is a  headless browser that runs in in memory and is implemented in Java.  HtmlUnit is the base for a lot of other libraries/tools.<br />
+HtmlUnit itself uses Apache HttpClient, a library for from Apache.<br />
+HtmlUnit  includes Rhino as JavaScript runtime. Unfortunately Rhino is not used  in any browser, so if you test JavaScript using HtmlUnit the results may  differ significantly from those browsers.<br />
+<br />
+There are attempts to run a IKVM-ported version of HtmlUnit under .NET:<br />
+<ul>
+<li>See <a href="http://blog.stevensanderson.com/2010/03/30/using-htmlunit-on-net-for-headless-browser-automation/">this blog post by SteveSanderson</a></li>
+<li>There is the <a href="http://code.google.com/p/watin-htmlunit/">watin-html project</a>&nbsp;</li>
+</ul>
+<ul>
+</ul>
+<br />
+<a href="http://httpunit.sourceforge.net/" style="font-size: 14px;">HttpUnit</a> (Java)<br />
+An alternative to HtmlUnit, but the last release is from 2008. This project seems to be dead.﻿<br />
+<br />
+<a href="http://github.com/brynary/webrat" style="font-size: 14px;">Webrat</a> (Ruby)<br />
+A browser simulation for testing ruby web applications. Primarily used for testing Rails, Merb or Sinatra applications. <br />
+Because  Webrat is a browser simulation, it is faster than in-browser testing  solutions. The drawback is, that it does not handle JavaScript at all. <br />
+Webrat  also can be configured to run on top of Selenium. In Selenium mode the  tests are run with selenium against a real browser, but the same webrat  API can be used as in the browser simulation mode. <br />
+In Selenium mode Webrat takes care of running the java selenium server. <br />
+Webrat is wildely used in combination with the Ruby testing libraries Cucumber and RSpec.<br />
+<br />
+<a href="http://github.com/brynary/rack-test" style="font-size: 14px;">Rack-Test</a> (Ruby)<br />
+A library that mocks http-request for Rack applications. Rack-Test is usually used in combination with&nbsp;Ruby web framworks like Rails, Merb or Sinatra.<br />
+<br />
+<a href="http://www.jboss.org/jsfunit" style="font-size: 14px;">JSFUnit</a> (Java)<br />
+JSFUnit  is a test framework for JSF applications. It is designed to allow  complete integration testing and unit testing of JSF applications using a  simplified API. <br />
+JSFUnit tests run inside the container. They have to be packaged and deployed with your application.<br />
+JSFUnit is built on top of <a href="http://jakarta.apache.org/cactus/">Cactus</a> (a java in-container testing framework)<br />
+<br />
+<br />
+<br />
+<b style="font-size: 18px;"><img alt="Aurora9.jpg" border="0" height="179" src="http://lh4.ggpht.com/_X3kaawac_g4/TK47r8ASHcI/AAAAAAAAA4Y/mjTsqQZXFE4/Aurora9.jpg?imgmax=800" style="float: left; margin-bottom: 3px; margin-right: 8px;" width="150" />Browser Automation Tools</b><br />
+<br />
+<a href="http://watir.com/" style="font-size: 14px;">Watir</a><span style="font-size: 14px;"></span>(including FireWatir and SafariWatir) (Ruby)<br />
+Watir is a driver for IE, Firefox, and Safari.&nbsp;Watir runns on Windows, Mac and Linux. Obviously IE and Safari are only available on Windows respectively Mac. <br />
+The IE and Firefox drivers are stable. <br />
+Technically IE is driven thorough the COM-Interop.&nbsp;Firefox is driven through a Firefox-Plugin. <br />
+The Safari driver is experimental.<br />
+<br />
+<a href="http://watij.com/" style="font-size: 14px;">Watij - WebSpec</a> (Java)<br />
+Watij was Initially a port of Watir to Java.<br />
+It seems to have become a project of its own. The latest release is called WebSpec and features a new and unique API. <br />
+Implemented in Java it runs on Windows, Mac and Linux and supports remoting of IE, Mozilla and Safari. <br />
+There is also a JRuby API for it.<br />
+<br />
+<a href="http://watin.sourceforge.net/" style="font-size: 14px;">WatiN</a> (.NET)<br />
+WatiN is a port of Watir to .NET. Implemented in .NET it offers a browser automation API.<br />
+It runs on Windows and supports remoting of IE. <br />
+The newest release also supports remoting of Firefox through a Firefos plugin. <br />
+Latest release is from December 2009, which is a bit scary...<br />
+<br />
+<a href="http://seleniumhq.org/" style="font-size: 14px;">Selenium</a> (Standalone, Integrating with Java, .NET, Ruby and more)<br />
+Selenium is a very sophisticated web-testing solution.<br />
+It  is an in-browser test driver. It automates the browser to run the  test steps. This automation is run from within the browser itself. The  runtime for automating the browser is actually a JavaScript library that  is loaded&nbsp; into the browser. This runtime then automates the browser  interactions which are executed in another frame or window.<br />
+On the  client the Selenium-RC-Server (remote control) is responsible for  controlling the in-browser runtime. The Selenium-RC-Server is is implemented in Java. So to run the server, you need Java installed.<br />
+Finally your tests written in any supported platform (Java, .NET, Ruby ...) are interacting with the Selenium-RC server.<br />
+Selenium  supports automating all major Browsers (IE, Firefox, Chrome, Safari,  Opera, Konqueror and more). Since the runtime is executed in the  browser, JavaScript has to be enabled.<br />
+Selenium is very powerful.  However it comes with a certain complexity and fragility since you  depend on the correct interactions of several involved components.<br />
+Selenium  also comes with SeleniumIDE, a Firefox Plugin to record interactions  with the browser. Note: The interactions recorded in Firefox can also be  run against other browsers later.<br />
+Another component is Selenium  Grid, an infrastructure which enables to run Selenium tests on multiple  servers against different browsers in parallel.<br />
+<br />
+<a href="http://webtest.canoo.com/" style="font-size: 14px;">Canoo WebTest</a> (Standalone, Java, Groovy)<br />
+Canoo WebTest is a free open source tool for automated testing of web applications in a very effective way.<br />
+WebTest is built on top of HtmlUnit. Tha means it is an out-of-browser testing tool. <br />
+Since  it is not an in-browser testing-tool, you cannot be sure that the  browser is behaving exactly the same, but HtmlUnit is very mature and  has reliable JavaScript support.<br />
+Test steps can be written in xml or  in Groovy. Those steps then can be easily combined to test scripts.  Almost no programming skills are required.<br />
+Canoo Web Test integrates with Ant and can be run as standalone tool.<br />
+Very nice reports out of the box. If a test is failing you get a screenshot of the last page where the failure occured.<br />
+You need Java installed.<br />
+<a href="http://mguillem.wordpress.com/2007/10/29/webtest-vs-selenium-webtest-wins-13-5/">Here is a good comparison</a> between Canoo Web Test and Selenium.<br />
+<br />
+<a href="http://msdn.microsoft.com/en-us/library/dd286726.aspx" style="font-size: 14px;">CodedUI</a> (.NET)<br />
+Visual Studio 2010 comes with CodedUI.<br />
+With CodedUI you can create tests that automate the browser. <br />
+All the tutorials show how to use CodedUI with a Recorder and with Visual Studio TestManager.<br />
+But behind the scenes CodedUI seems to be a purely programmatic API: the recorder generates C# code (although not very readable).<br />
+But  theoretically the programatic API of CodedUI can be used to write  UI-automatin tests from scratch. However I think an abstraction layer on  top of CodedUI would be needed to write those tests effectively.<br />
+<br />
+<span class="CodePlexPageHeader" id="gmht"><a href="http://aspnet.codeplex.com/releases/view/35501"><span style="font-size: 14px;">Lightweight Test Automation Framewor</span>k</a></span> (.NET)<br />
+<a href="http://blog.stevensanderson.com/2009/03/27/first-steps-with-lightweight-test-automation-framework/">For an introduction see this blog-post</a> by Steve Sanderson.<br />
+The <span class="CodePlexPageHeader" id="s1v3">Lightweight Test Automation Framework</span> is a framework to test ASP.NET applications. It works with WebForms and MVC).<br />
+Tests are written in any .NET language, deployed alongside with your application and then run in the browser.<br />
+Since test execution is started through the web-interface, r<a href="http://www.jacopretorius.net/2009/06/lightweight-test-automation-framework.html">unning the tests in a automated build is a bit tricky</a>.<br />
+<br />
+<br />
+<a href="http://www.getwindmill.com/" style="font-size: 14px;">Windmill</a> (Standalone, Python)<br />
+Windmill is a web testing tool designed to let you painlessly automate and debug your web application.<br />
+<br />
+<br />
+<br />
+<b style="font-size: 18px;"><img alt="egg-wrap-su-642319-l.jpg" border="0" height="150" src="http://lh3.ggpht.com/_X3kaawac_g4/TK47sgsGD8I/AAAAAAAAA4c/0iDPtg5UwaE/egg-wrap-su-642319-l.jpg?imgmax=800" style="float: left; margin-bottom: 3px; margin-right: 8px;" width="150" />Wrappers / Abstractions:</b><br />
+<br />
+<a href="http://celerity.rubyforge.org/" style="font-size: 14px;">Celerity</a><span style="font-size: 14px;"></span>(JRuby)<br />
+Celerity is a JRuby wrapper around HtmlUnit.<br />
+<br />
+<a href="http://github.com/langalex/culerity" style="font-size: 14px;">Culerity</a> (Ruby): <br />
+Culerity integrate celerity and cucumber running on ruby <br />
+Culerity is a wrapper around Celerity to allow it to be called from MRI<br />
+You need to have JRuby installed.<br />
+<br />
+<a href="http://github.com/jnicklas/capybara" style="font-size: 14px;">Capybara</a><br />
+Capybara is a DSL for interacting with a webapplication. It is agnostic about the  driver running your tests and currently comes bundled with rack-test,  Culerity, Celerity and Selenium support built in.﻿<br />
+Capybara provides a  common API (the DSL) that is then run either on rack-test, Culerity,  Celerity or Selenium. The newest addition is a driver that runs on  <a href="http://github.com/smparkes/capybara-envjs">env.js</a>, a JavaScript environment, that runs out of the browser.<br />
+It seems to become the de facto choice in combination with Cucumber, replacing Webrat.<br />
+<br />
+<a href="http://code.google.com/p/selenium/?redir=1" style="font-size: 14px;">WebDriver / Selenium2</a> (Java)<br />
+For an explanation what the relationship between WebDriver and Selenium2 <a href="http://seleniumhq.org/docs/09_webdriver.html">see the Selenium documentation</a>.<br />
+WebDriver  is another wrapper around other web-testing frameworks that provides a  consistent API how to interact with web applications.<br />
+WebDriver has been merged with Selenium 2. The resulting situation is not very clear yet...<br />
+The project seems promising but is still very much under development.<br />
+WebDriver  currently provides four different driver implementation: HtmlUnitDriver  for out-of-browser testing, FireFoxDriver, InternetExplorerDriver and  ChromeDriver for the respective browsers.<br />
+WebDriver is mainly a Java  project, however a .NET version exists, however it is not very clear  which features are supported in .NET.<br />
+<br />
+<br />
+<a href="http://jwebunit.sourceforge.net/" style="font-size: 14px;">JWebUnit</a> (Java)<br />
+Wrapper around HtmlUnit and Selenium, providing a unified Java API. In this regard the same goal as WebDriver.<br />
+<br />
+<a href="http://github.com/jarib/watir-webdriver" style="font-size: 14px;">Watir-Webdriver</a><br />
+This  is watir sitting on top of webdriver. This allows you to use the  Watir-API and control any browser that is supported by WebDriver.<br />
+<br />
+<a href="http://code.google.com/p/aost/" style="font-size: 14px;">Tellurium</a> (Groovy)<br />
+Tellurium  is a UI module-based automated testing framework for web applications.  The approach it takes is to describe the UI declaratively in modules and  then formulate test steps against those modules. When the web-site  changes you only have to update the modules, not the steps.<br />
+<br />
+<a href="http://mvccontrib.codeplex.com/" style="font-size: 14px;">MVCContib</a> (.NET)<br />
+The MVCContrib projects contains some abstractions over WatiN for testing ASP.NET MVC applications.<br />
+These are helpers in MvcContrib.TestHelper.Ui and WatinDriver.<br />
+However  the documentation of those helpers is poor. The best place is to look  at the CodeCampServer project and Chapter 20 in the book ASP.Net MVC 2  in Action.<br />
+<br />
+<br />
+<br />
+<img alt="bottles.jpg" border="0" height="158" src="http://lh6.ggpht.com/_X3kaawac_g4/TK47tltFEOI/AAAAAAAAA4g/CxJN24VuNlc/bottles.jpg?imgmax=800" style="float: left; margin-bottom: 3px; margin-right: 8px;" width="150" /> <b style="font-size: 18px;">Other libraries (for homebrew web-testing):</b><br />
+<br />
+<a href="http://github.com/tenderlove/mechanize" style="font-size: 14px;">Mechanize</a><br />
+The Mechanize library is used for automating interaction with websites.<br />
+<br />
+<a href="http://nokogiri.org/" style="font-size: 14px;">Nokogiri</a><br />
+An HTML, XML, SAX, &amp; Reader parser with the ability to search documents via XPath or CSS3 selectors.<br />
+Implemented in Ruby.<br />
+Usually  you don't use Nokogiri directly in your automated web-tests. However  this library is used by a lot of the higher level Ruby web-testing  libraries mentioned here.<br />
+<br />
+<a href="http://github.com/hpricot/hpricot" style="font-size: 14px;">hpricot</a><br />
+Hpricot is a library with a Ruby-API for parsing HTML. It is written in C and therefore very swift.<br />
+Hpricot is an alternative to Nokogiri.<br />
+As  with Nokogiri you don't usually use Hpricot directly in your automated  web-tests. However this library is used by someof the higher level Ruby  web-testing libraries mentioned here.<br />
+<br />
+<br />
+I would be interested in your experiences with web testing tools. Do you know other tools that fit the characteristics of &nbsp;"Agile Web Testing Tools"?
+<br />
+<div style="clear: right; font-size: 10px;">
+<br />
+<a href="http://twitter.com/jbandi"><img align="left" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" height="13px" src="http://www.google.com/s2/favicons?domain=twitter.com" style="margin: 0px;" /> follow me on twitter, I need some friends :-)</a></div>
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Your awesome title</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jekyll</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jekyllrb</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

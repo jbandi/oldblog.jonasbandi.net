@@ -1,0 +1,15 @@
+---
+layout: post
+title: ATDD for rewriting a legacy application
+date: '2010-05-25T22:24:00.001+02:00'
+author: Jonas Bandi
+tags:
+- testing
+- BDD
+modified_time: '2010-05-25T22:24:54.257+02:00'
+thumbnail: http://lh3.ggpht.com/_X3kaawac_g4/S8Ho8hgb38I/AAAAAAAAA0A/ovdMKvFQjjs/s72-c/71497pacman.gif?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-7613919291033249881
+blogger_orig_url: http://blog.jonasbandi.net/2010/05/atdd-for-rewriting-legacy-application.html
+---
+
+<p><img style="margin: 0px 0px 10px 10px;" src="http://lh3.ggpht.com/_X3kaawac_g4/S8Ho8hgb38I/AAAAAAAAA0A/ovdMKvFQjjs/71497pacman.gif?imgmax=800" border="0" alt="71497pacman.gif" width="150" align="right" /> In my recent interview with <a href="http://twitter.com/gojkoadzic">Gojko</a> for his <a href="http://groups.google.com/group/agileacceptancetesting/browse_thread/thread/ac368abe171cbe74">upcoming book</a>, I mentioned that I was not sure if the process of <em><a href="http://www.acceptancetesting.info/key-ideas/specification-by-example/">specification by example</a></em> that is promoted by <a href="http://www.methodsandtools.com/archive/archive.php?id=72">ATDD</a> makes sense in the case of rewriting a legacy application. <br /><br /> In this scenario the reference/acceptance criterias are definied by the existing application. Reverse engineering into plain-text examples does not necessary provide enough value in my opinion. <br /> In my opinion in this scenario it can be more efficient to just write high level user stories and reference the legacy application for the acceptance criterias. <br /><br /> Of course if access to the legacy application is not easily given for every developer or if the provided instance of the legacy application does not illustrate all behavior (for instance because the test-dataset is not representative), then specifying behavior with examples gets more attractive again. <br /><br /> Gojko mentioned also an interesting approach by <a href="http://twitter.com/lisacrispin/">Lisa Crispin</a>. She promoted to write tests first against the old application and then use those tests as examples for driving the implementation of the new application. <br /><br /> I came across this approach before (probably in <a href="http://www.amazon.de/dp/0321534468?tag=cl00-21&amp;camp=2906&amp;creative=19474&amp;linkCode=as4&amp;creativeASIN=0321534468&amp;adid=10DKPT0RSF42P3Y05CQ2&amp;">Agile Testing</a>) but I never considered it for my projects. <br /> I am wondering how applicable this approach is. Do you automate the tests also against the old application? Probably writing scenarios in plaintext would be enough. Automation does only make sense for the new application.</p>

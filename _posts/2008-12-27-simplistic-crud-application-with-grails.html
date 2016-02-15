@@ -1,0 +1,147 @@
+---
+layout: post
+title: 'Simplistic CRUD application with Grails on GlassFish V3 Prelude '
+date: '2008-12-27T00:05:00.001+01:00'
+author: Jonas Bandi
+tags:
+- grails
+- javablog
+- java
+modified_time: '2008-12-29T22:18:33.931+01:00'
+thumbnail: http://lh4.ggpht.com/_X3kaawac_g4/SVVj-BTejOI/AAAAAAAAAa0/4EQE9GNmCEo/s72-c/updatetool.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-1387402050449091488
+blogger_orig_url: http://blog.jonasbandi.net/2008/12/simplistic-crud-application-with-grails.html
+---
+
+My colleague <a href="http://blog.rueedlinger.ch">Matt</a> wrote a brilliant tutorial: <a href="http://blog.rueedlinger.ch/?p=17">EJB 3.1 and JSF 2.0 with GlassFish V3 Prelude</a>.
+<br/>
+<br/>
+A commenter on Matt's post claimed that using <a href="http://grails.org/">Grails</a> to create the same application would be a tremendous simplification.<br/>
+I wanted to find out if this was really true, and how much effort it would actually take to achieve the same functionality with Grails.
+<br/>
+<br/>
+This post is not a Grails tutorial, and it is also not the goal to create an intelligent application. The goal is to reimplement Matt's application as efficiently as possible.
+<br/>
+<br/>
+I assume, that you have <a href="https://glassfish.dev.java.net/downloads/v3-prelude.html">GlassFish V3 Prelude</a> installed.
+<br/>
+<br/>
+<strong>Step 1: Install Grails</strong>
+<br/>
+Start the updatetool or start glassfish an go to the updatetool inside the admin console. 
+
+Select Grails for installation and perform the installation.
+
+<div style="text-align:center;">
+<a href="http://lh4.ggpht.com/_X3kaawac_g4/SVVj-BTejOI/AAAAAAAAAa0/4EQE9GNmCEo/updatetool.png">
+<div style="text-align:center;"><img src="http://lh4.ggpht.com/_X3kaawac_g4/SVVj-BTejOI/AAAAAAAAAa0/4EQE9GNmCEo/updatetool.png?imgmax=800" alt="updatetool.png" border="0" width="400" /></div>
+</a>
+</div>
+
+Set the environment variable GRAILS_HOME to point to the Grails installation inside GlassFish, and include the Grails binary in your PATH.
+<br/>
+<br/>
+On my OS X system this meant putting the following lines in my .profile:
+
+<div style="border:solid 1px silver;width:410px;overflow:auto">
+<pre style="width:700px">export GRAILS_HOME=/Applications/NetBeans/glassfish-v3-prelude/glassfish/grails
+export PATH=$PATH:$GRAILS_HOME/bin</pre>
+</div>
+<br/>
+<br/>
+
+<strong>Step 2: Create a new Grails application</strong>
+<br/>
+Execute <code style="border: solid 1px silver; background-color:LightGray">grails create-app CRUD-GRAILS</code> in on the console.
+<br/>
+This creates a directory named CRUD-GRAILS with a fully functional Grails project skeleton.
+<br/>
+<br/>
+You can start your new Grails project with <code style="border: solid 1px silver; background-color:LightGray">grails run-app</code>. This starts up GlassFish and loads the application. The application is available at http://localhost:8080/CRUD-GRAILS.
+<br/>
+As you can see there is not much there apart from a welcome screen.
+<br/>
+<br/>
+<br/>
+<strong>Step 3: Create the Book entity</strong>
+<br/>
+Execute <code style="border: solid 1px silver; background-color:LightGray">grails create-domain-class book</code> from inside your project directory.
+<br/>
+This creates the file <code style="border: solid 1px silver; background-color:LightGray">grails-app/domain/Book.goovy</code> that contains a skeleton class for the book entity.
+<br/>
+You could also create the file manually, the grails command just also creates a file for tests...
+<br/>
+<br/>
+Edit Book.groovy to add properties:
+
+<div style="border:solid 1px silver;width:300px;overflow:auto">
+<pre name="code" class="java">
+class Book {
+	String name
+	String isbn
+}
+</pre>
+</div>
+<br/>
+<br/>
+<strong>Step 4: Create a controller</strong>
+<br/>
+Execute <code style="border: solid 1px silver; background-color:LightGray">grails create-controller book</code> from inside your project directory.
+<br/>
+This creates the file <code style="border: solid 1px silver; background-color:LightGray">grails-app/controllers/BookController.goovy</code> that contains a skeleton class for the book controller.
+<br/>
+<br/>
+As with the Book entity, you could also create the file manually, the grails command just also creates a file for tests...
+<br/>
+<br/>
+
+Edit BookController.groovy to provide the CRUD operations on the book entity (this is called scaffolding):
+<div style="border:solid 1px silver;width:300px;overflow:auto">
+<pre name="code" class="java">
+class BookController {
+
+    def scaffold = true;
+}
+</pre>
+</div>
+<br/>
+<br/>
+<strong>That's basically it!</strong> The application can create, update, show and delete books.
+<br/>
+<br/>
+It took <strong>typing three commands</strong> and <strong>writing three lines of code</strong> ... all completed in less than 10 minutes ... not bad I would say!
+<br/>
+<br/>
+Let's see what Grails has to say: <code style="border: solid 1px silver; background-color:LightGray">grails stats</code>
+<pre>
+	+----------------------+-------+-------+
+	| Name                 | Files |  LOC  |
+	+----------------------+-------+-------+
+	| Controllers          |     1 |     3 | 
+	| Domain Classes       |     1 |     4 | 
+	| Integration Tests    |     2 |     8 | 
+	+----------------------+-------+-------+
+	| Totals               |     4 |    15 | 
+	+----------------------+-------+-------+
+</pre>
+<br/>
+Ok, using dynamic scaffolding is a bit like comparing apples with oranges ... lets change that:
+<code style="border: solid 1px silver; background-color:LightGray">grails generate-all</code>
+<br/>
+This generates the concrete views and the controller for the book entity, that have been generated dynamically by scaffolding up to now...
+<br/>
+... now you can look at the code and adjust it to your needs.
+<br/>
+<br/>
+Another little thing is getting rid of the Grails logo. Edit <code style="border: solid 1px silver; background-color:LightGray">grails-app/view/layouts/main.gsp</code>: Delete the lines between the <code style="border: solid 1px silver; background-color:LightGray">&lt;body&gt;&lt;/body&gt;</code> tags except <code style="border: solid 1px silver; background-color:LightGray">&lt;g:layoutBody /&gt;</code> ... I think we stay with the nice CSS and icons :-)
+<br/>
+<br/>
+Ok, I don't claim that Grails is a silver bullet, but it is quite impressive how fast you can achieve some core functionality! The question is now how well it scales for real-world-requirements ... 
+<br/>
+<br/>
+Matt are you ready to implement some entity-relations, validations, conversations, AJAX-UI ... ? I would be ready for the challenge :-)
+
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

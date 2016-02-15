@@ -1,0 +1,17 @@
+---
+layout: post
+title: 'QuickTip: Logging SQL statements in EclipseLink'
+date: '2011-09-07T08:41:00.001+02:00'
+author: Jonas Bandi
+tags:
+- object-relational mapping
+- quicktip
+modified_time: '2011-09-07T08:45:29.939+02:00'
+thumbnail: http://lh6.ggpht.com/_X3kaawac_g4/TWQ2pInJsjI/AAAAAAAAA8A/E_2L681OTJQ/s72-c/1279316_question_mark.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8730644810748249495
+blogger_orig_url: http://blog.jonasbandi.net/2011/09/quicktip-logging-sql-statements-in.html
+---
+
+<p><img style="float: right; margin-left: 10px; margin-bottom: 10px;" src="http://lh6.ggpht.com/_X3kaawac_g4/TWQ2pInJsjI/AAAAAAAAA8A/E_2L681OTJQ/1279316_question_mark.jpg?imgmax=800" border="0" alt="1279316 question mark" width="130" /></p><p>Documentation for <a href="http://www.eclipse.org/eclipselink/">EclipseLink</a> is quite lacking.</p><p>While for Hibernate it is <a href="http://docs.jboss.org/hibernate/core/3.3/reference/en/html/session-configuration.html#configuration-optional">quite easy</a> to <a href="http://www.mkyong.com/hibernate/how-to-display-hibernate-sql-parameter-values-log4j/">find out</a> how <a href="http://stackoverflow.com/questions/2536829/hibernate-show-real-sql">to log SQL statements</a>, I had some trouble <a href="http://stackoverflow.com/questions/2374395/is-it-possible-to-output-generated-sql-using-eclipselink-without-having-to-increa">to find out</a> how to accomplish this in EclipseLink.</p><p>The solution are the following properties in <code>persistence.xml</code>:</p><div style="border: solid 1px silver; width: 410px; overflow: auto;"><code><pre> &lt;property name="eclipselink.logging.level.sql" value="FINE"/&gt;
+ &lt;property name="eclipselink.logging.parameters" value="true"/&gt;
+</pre></code></div><p style="font-size: 10px;">This solution I finally found <a href="http://web.archiveorange.com/archive/v/N2Kao4wIbJyy3j4mrCLR">here</a>.</p><p>An alternative is also to use <a href="http://code.google.com/p/log4jdbc/">log4jdbc</a> or <a href="http://code.google.com/p/log4jdbc-remix/">log4jdbc-remix</a> (the latter is available in the sonatype maven repository). An <a href="https://code.google.com/p/jpaworkshop/source/browse/trunk/exercise/10-eager-loading/src/main/resources/META-INF/persistence.xml?r=40">example is available</a> in exercise 10 of my <a href="https://code.google.com/p/jpaworkshop/">jpaworkshop</a>.</p>

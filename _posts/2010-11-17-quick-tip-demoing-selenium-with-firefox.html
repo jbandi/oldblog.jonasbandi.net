@@ -1,0 +1,42 @@
+---
+layout: post
+title: 'Quick Tip: Demoing Selenium with Firefox on OSX'
+date: '2010-11-17T22:42:00.003+01:00'
+author: Jonas Bandi
+tags:
+- testing
+- presentation
+modified_time: '2010-11-24T16:11:05.768+01:00'
+thumbnail: http://lh4.ggpht.com/_X3kaawac_g4/SgszqfAjBTI/AAAAAAAAAdY/djRoZj6GMAE/s72-c/innovation.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8105868548264697722
+blogger_orig_url: http://blog.jonasbandi.net/2010/11/quick-tip-demoing-selenium-with-firefox.html
+---
+
+<img src="http://lh4.ggpht.com/_X3kaawac_g4/SgszqfAjBTI/AAAAAAAAAdY/djRoZj6GMAE/innovation.jpg?imgmax=800" alt="innovation.jpg" border="0" width="180"  style="float:right; margin-left:5px" /><p>Whenever I prepare a presentation that contains a demo with Selenium for web automation, I am fighting with the same stumbling blocks again and again.</p><br/>
+Also see my post <a href="http://blog.jonasbandi.net/search?q=selenium">Quick Tip: Running Selenium on OS X Snow Leopard</a>.
+<br/><br/>
+Another thing is the offline-mode of Firefox: If you don't have internet connection during your presentation, selenium-server will start firefox, but firefox will drop into offline mode from which selenium cannot run its browser automation.
+<br/><br/>
+Here is a way around this:
+<br/><br/>
+
+1. Create a Firefox profile which will then be used by selenium:
+<list><li>Start Firefox with the profile manager:
+<code style="border:solid 1px silver">/Applications/Firefox.app/Contents/MacOS/firefox-bin -ProfileManager -no-remote</code></li><li>In the profile manager: Create a new profile. I called it 'selenium'. Remember the path to this profile directory that is displayed in the wizard. In my case the path is: <code style="border:solid 1px silver">/Users/jbandi/Library/Application\ Support/Firefox/Profiles/qd79pvsv.selenium</code></li><li>Then start the selenium server with the new profile:
+<br/><code style="border:solid 1px silver">java -jar selenium-server.jar -firefoxProfileTemplate /Users/jbandi/Library/Application\ Support/Firefox/Profiles/qd79pvsv.selenium</code></li></list><br/><br/>
+
+2. Configure the profile to <a href="http://support.mozilla.com/en-US/questions/704453">not use offline mode</a>:
+<list><li>Start Firefox with the selenium profile (i.e. by running selenium without internet connection).</li><li>Enter <code style="border:solid 1px silver">about:config</code> in the location bar.</li><li>Create (right click) a new boolean preference <code style="border:solid 1px silver">network.manage-offline-status</code> with the value <code style="border:solid 1px silver">false</code>.</li></list><br/><br/><div style="font-size:11px">This worked for me with Firefox 3.6.12, Selenium 1.0.3 on OSX 10.6.5.
+<br/>
+There is a lot of <a href="http://support.mozilla.com/tiki-view_forum_thread.php?locale=ro&comments_parentId=424591&forumId=1">info on the net</a> about setting the preference <code style="border:solid 1px silver">toolkig.networkmanager.disable</code>' to <code style="border:solid 1px silver">false</code>. This did not work, I think this is only valid on Linux. Also the extension '<a href="https://addons.mozilla.org/en-US/firefox/addon/13233/">StayInOnlineMode</a>' did not solve the problem.
+</div><br/><br/>
+A trick for better demos with selenium is executing these commands on startup (in my case from java):
+
+<div style="border:solid 1px silver;width:410px;overflow:auto"><code><pre>selenium.getEval("window.moveTo(140, 25);");
+selenium.getEval("window.resizeTo(1000, 600);");
+selenium.setSpeed("1000");</pre></code></div><br/>
+
+This places and resizes the automated browser window and slows down the automation, so that the audience can actually see what is going on.
+<br/><br/>
+However I did not manage to bring the browser window automatically to the front, it always starts in the background and I have to bring it to front manually (any tip would be appreciated).
+<br/><br/><div style="align:right; font-size: 10px; clear:right; "><br/><p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px; border:none" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

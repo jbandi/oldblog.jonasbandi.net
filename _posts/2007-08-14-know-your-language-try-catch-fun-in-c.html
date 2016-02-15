@@ -1,0 +1,46 @@
+---
+layout: post
+title: 'Know Your Language: Try-Catch-Fun in C#'
+date: '2007-08-14T17:03:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-08-14T18:41:20.874+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-1882868539628334392
+blogger_orig_url: http://blog.jonasbandi.net/2007/08/know-your-language-try-catch-fun-in-c.html
+---
+
+<p>I am currently going through several interview-processes. During the last technical interview I realized, that my knowledge of my favorite programming languages is not as profound as I would like it to be. I always dismissed this shortcoming with the excuse, that such "low-level stuff" was not my primary concern. But now I remembered a quote from my German teacher:</p> <blockquote> <p><strong>Those without sophisticated vocabulary will stay unredeemed!</strong></p> <p align="right">- Markus Lüdin</p></blockquote> <p align="left"><span style="color: rgb(102, 102, 102);">Thinking about the truth of this, I set out to learn to express myself: My first stop was the try-catch-playground in C#-world. </span></p> <table unselectable="on" border="0" cellpadding="2" cellspacing="0" width="400"> <tbody> <tr> <td valign="top" width="200"> <p align="left"><span style="color: rgb(102, 102, 102);">In the sandbox a toddler had built the following:</span></p><pre class="code"><span style="color: rgb(0, 0, 255);">try</span>{
+  <span style="color: rgb(0, 0, 255);">return</span> <span style="color: rgb(0, 0, 255);">true</span>;
+}
+<span style="color: rgb(0, 0, 255);">finally</span>{
+  <span style="color: rgb(0, 0, 255);">return</span> <span style="color: rgb(0, 0, 255);">false</span>;
+}</pre></td>
+<td valign="top" width="200"><span style="color: rgb(102, 102, 102);"><img style="border: 0px none ;" alt="image" src="http://realityloop.net/blog/KnowYourLanguageTryCatchFuninC_EFEF/image_thumb.png" border="0" height="157" width="200" /></span></td></tr></tbody></table>
+<p align="left"><span style="font-family:Verdana;">I stopped and began to stare ... schizophrenia started to fill my head ... but fortunately my buddy, the C#-Compiler, stepped in and rebuked the toddler: This was not allowed!</span></p><p align="left"><span style="font-family:Verdana;">But the toddler was not so easily intimidated: He dug and sculpted with his little hands, and as I stayed and watched, schizophrenia slowly crept back into my head:
+</span></p><pre class="code"><span style="color: rgb(0, 0, 255);">try
+</span>{
+  <span style="color: rgb(0, 0, 255);">throw</span> <span style="color: rgb(0, 0, 255);">new</span> <span style="color: rgb(43, 145, 175);">ArgumentException</span>(<span style="color: rgb(163, 21, 21);">"First Ex!"</span>);
+}
+<span style="color: rgb(0, 0, 255);">finally
+</span>{
+  <span style="color: rgb(0, 0, 255);">throw</span> <span style="color: rgb(0, 0, 255);">new</span> <span style="color: rgb(43, 145, 175);">ApplicationException</span>(<span style="color: rgb(163, 21, 21);">"Second Ex!"</span>);
+}</pre><a href="http://11011.net/software/vspaste"></a><a href="http://11011.net/software/vspaste"></a>
+<table unselectable="on" border="0" cellpadding="2" cellspacing="0" width="400">
+<tbody>
+<tr>
+<td valign="top" width="200"><a href="http://realityloop.net/blog/KnowYourLanguageTryCatchFuninC_EFEF/image.png" atomicselection="true"><img style="border: 0px none ;" alt="image" src="http://realityloop.net/blog/KnowYourLanguageTryCatchFuninC_EFEF/image_thumb_3.png" border="0" height="127" width="186" /></a> </td>
+<td valign="top" width="200"><span style="font-family:Verdana;">A inexplicable urge came over me, and I started to build fervently my own constructs in the sand around those of the toddler:</span></td></tr></tbody></table><pre class="code">[<span style="color: rgb(43, 145, 175);">Test</span>]
+<span style="color: rgb(0, 0, 255);">public</span> <span style="color: rgb(0, 0, 255);">void</span> First_Exception_Is_Lost()
+{
+  <span style="color: rgb(43, 145, 175);">SchizophreniaTrap</span> trap = <span style="color: rgb(0, 0, 255);">new</span> <span style="color: rgb(43, 145, 175);">SchizophreniaTrap</span>();
+  <span style="color: rgb(0, 0, 255);">try</span>{
+      trap.TryFinallyException();
+  }
+  <span style="color: rgb(0, 0, 255);">catch</span>(<span style="color: rgb(43, 145, 175);">ArgumentException</span> ex){
+      <span style="color: rgb(43, 145, 175);">Debug</span>.WriteLine(<span style="color: rgb(163, 21, 21);">"Caught First Ex"</span>);
+      <span style="color: rgb(43, 145, 175);">Assert</span>.Fail(<span style="color: rgb(163, 21, 21);">"Ha! Things dont just disappear!"</span>);
+  }
+  <span style="color: rgb(0, 0, 255);">catch</span>(<span style="color: rgb(43, 145, 175);">ApplicationException</span> ex){
+      <span style="color: rgb(43, 145, 175);">Debug</span>.WriteLine(<span style="color: rgb(163, 21, 21);">"Caught Second"</span>);
+  }
+}</pre><a href="http://11011.net/software/vspaste"></a><a href="http://realityloop.net/blog/KnowYourLanguageTryCatchFuninC_EFEF/image_3.png" atomicselection="true"><img style="border: 0px none ;" alt="image" src="http://realityloop.net/blog/KnowYourLanguageTryCatchFuninC_EFEF/image_thumb_4.png" align="right" border="0" height="98" width="124" /></a> Oh no! The test passed! I started to scream! The first exception was lost! It had to be there somewhere in the sand! I started digging...

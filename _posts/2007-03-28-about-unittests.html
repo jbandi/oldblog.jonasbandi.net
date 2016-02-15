@@ -1,0 +1,18 @@
+---
+layout: post
+title: About UnitTests
+date: '2007-03-28T23:49:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-03-28T23:53:01.969+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-73384464164515630
+blogger_orig_url: http://blog.jonasbandi.net/2007/03/about-unittests.html
+---
+
+<p><a href="http://devlicio.us/blogs/billy_mccafferty/archive/2007/03/27/refactoring-from-ayende-s-nhibernate-generics-to-nhibernate-1-2.aspx">Here</a> is an interesting article, that describes how to migrate an existing NHibernate-application to the new NHibernate release 1.2. <br /><br />The migration is described in a nice how-to guide. The different steps are set up as small incremental refacorings. The end result of all the refactorings is the migrated application. <br /><br />What I think is remarkable about the article is, that it is taken as a fact that there exist exhaustive unit-tests for the application: The author does not even state that the existence of unit-tests is an assumption or precondition for the article. <strong>He just takes the existence of unit-tests for any application as the most natural thing on the world!</strong> <br /><br />I hope the article reflects a trend that using UnitTests is becoming a mainstream practice. <br /><br />The article nicely demonstrates the advantages of (good) UnitTests: </p>
+<ul>
+<li>UnitTests are your first <strong>safety-net</strong>. They provide immediate feedback: You always know if your changes have the desired effect and if they have undesired side-effects. </li>
+<li>UnitTests are a <strong>development-tool that increases productivity</strong>: They enable fast-paced iterative. secure and focused development cycles and refactorings. The UnitTests show the state of the system at any time. They point you to the problems of the current iteration cycle, so that they can be solved before you start focusing on the next iteration cycle. This is very important for a conscious and structured process. It also encourages you to divide all the work into small manageable steps, which is always a desirable approach. </li>
+<li>UnitTests allow you to <strong>minimize the time that your system is in an inconsistent state</strong>. First they indicate that the system is in fact in a inconsistent state, which is the premise for any improvement. Second they point you to the root of the problem and allow you to fix it as soon as it occurs, ideally before they have effects on the development process (like co-developers that are prevented from working or testers that are going crazy ...) </li>
+<li>The more code you write the bigger gets the risk of drifting into <a href="http://www.pragmaticprogrammer.com/ppbook/extracts/coincidence.html"><strong>Programming by Coincidence</strong></a>! UnitTests are one way to fight this risk, because they show you immediately and relentlessly the effects of new or changed code. If you are not using UnitTests you have to find another way to actively fight this risk (no, hoping and praying is not enough)! </li></ul>
+<p>And for all those who still not have seen the light (including my current employers) or are actively resisting to get enlightened: It seems you are more and more swimming against the stream... denial only works to some point, after that Darwin stops by to prove that 'survival of the fittest' still rules us all. <br /></p>

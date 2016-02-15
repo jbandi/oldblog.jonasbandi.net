@@ -1,0 +1,72 @@
+---
+layout: post
+title: 
+date: '2012-12-18T23:49:00.000+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2012-12-18T23:49:20.742+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8988941903909368139
+blogger_orig_url: http://blog.jonasbandi.net/2012/12/cucumber-makes-no-sense-to-me-unless.html
+---
+
+<div style="width: 400px;">
+<blockquote style="font-size: 11pt;">
+Cucumber makes no sense to me unless you have clients reading the tests. Why would you build a test-specific parser for English? </blockquote>
+<div align="right">
+David Heinemeier Hansson <a href="http://twitter.com/#%21/dhh/status/52807649145782272">on twitter</a>  </div>
+<br />
+<blockquote style="font-size: 11pt;">
+There's a cargo cult of Cucumbering going on and people need a reminder for when it's a good fit. </blockquote>
+<div align="right">
+David Heinemeier Hansson <a href="http://twitter.com/#%21/dhh/status/52814923046191105">on twitter</a>  </div>
+<blockquote style="font-size: 11pt;">
+Many teams focus acceptance testing at the story level, but this can lead to a large number of hard to maintain tests, and a focus on completing individual stories instead of coherent functionality needed to go live. A more holistic approach is to group user stories into journeys for which we create acceptance tests. </blockquote>
+<div align="right">
+ThoughtWorks Technology Radar <a href="http://www.thoughtworks.com/sites/www.thoughtworks.com/files/files/thoughtworks-tech-radar-january-2011-US-color.pdf">on twitter</a>  </div>
+</div>
+<br />
+<br />
+<br />
+Above quotes are from a recent flame war on twitter initiated by <a href="http://en.wikipedia.org/wiki/David_Heinemeier_Hansson">DHH</a>. The target were Cucumber and RSpec and the applicability of ATDD and BDD as methodology in general. <a href="http://codinghorror.typepad.com/.a/6a0120a85dcdae970b0120a86db600970b-pi">As usual</a> DHH expressed his opinion quite provocatively ...<br />
+<br />
+I think the core problem behind all the argumentation is nothing new in the BDD / ATDD community.<br />
+Basically BDD/ATDD is about changing the methodology how software is developed. BDD tools are only there to support these concepts.<br />
+I have blogged about his before:<br />
+- Danger<br />
+- Requirements Analysis<br />
+<br />
+If you are looking at BDD tools from a non-BDD standpoint (agile or not, does not matter), then BDD-tools certainly look like a lot of overhead and additional complexity. It certainly does not look like that the effort is worth it...<br />
+<br />
+But BDD is not the tool. BDD is not about testing or improving testing.<br />
+Improved acceptance testing is a side-effect of BDD like it is a side-effect of TDD to have improved unit testing.<br />
+<br />
+While TDD is mainly about improving your design, BDD is abou improving your requirements analysis and specification process.<br />
+BDD is about building a shared understanding among all involved individuals and roles (dev, test, business, operation, users ...)<br />
+<br />
+Gojko Adzic says it best (http://specificationbyexample.com/key_ideas.html):<br />
+“Living documentation is a reliable and authoritative source of information on system functionality, which anyone can easily access. It is as reliable as the code, but much easier to read and understand. Support staff can use it to find out what the system does and why. Developers can use it as a target for development. Testers can use it for testing. Business analysts can use it as a starting point when analyzing the impact of a requested change of functionality. And it gives us regression testing for free.” <br />
+<br />
+This is change compared to traditional development.<br />
+It is not only about sharing readable tests among developers to illustrate the code. It is about sharing expected behavior of the system with non-coders.<br />
+It is about specifying this behavior with concrete and precise examples that everybody agrees on. The agreement is about the correctness of the single examples it is also a concise agreement about expectations of the next software delivery (call it iteration, release or milestone ...).<br />
+There are grown and matured concepts behind BDD: Specification by Example, Shared Understanding, Outside-In development, Executable Specification and Living Documentation.<br />
+<br />
+The point is, that for traditional development teams those concepts need a change in the methodology how they develop software. This change is going deep, it cannot be done with a tool.<br />
+Even worse, the change not only concerns the programmers, but also more or less all the other roles, especially the business itself.<br />
+This makes it very difficult to introduce BDD bottom up by a development team. Business is usually skeptical by changes that are required from them and corporate organization usually is afraid of something that sounds like creative collective hugging and cannot be planned upfront and drawn on a organization chart.<br />
+<br />
+It is also difficult for the developers itself, since changes in methodology are much harder to grasp and require discipline. Introducing a new tool only require technical skills ...<br />
+A danger here is that the development teams focuses only on the tool ... and often is disappointed after a while because there are no positive results.<br />
+<br />
+Gojko summarizes this in his Sine of Death:<br />
+<br />
+<br />
+Of course it is a chicken and egg problem. Where to start? Methodologies can't be changed from one day to the other. Small steps are important. Success stories are important. Introducing a BDD tool can help to leverage the change it can motivate a team to go for deeper changes... but don't think its a silver bullet. Prepare to embrace deeper changes.<br />
+<br />
+There are several recent articles about applying bdd.<br />
+I also blogged about it before<br />
+http://blog.jonasbandi.net/2010/05/bdd-antipattern-business-readable-but.html<br />
+<br />
+http://antonymarcano.com/blog/2011/03/cucumber-pains/<br />
+http://lizkeogh.com/2011/03/04/step-away-from-the-tools/<br />
+http://testobsessed.com/2011/02/25/the-atdd-arch/ http://www.timonv.nl/2011/03/09/cucumber/ http://neelnarayan.blogspot.com/2011/04/bdd-is-not-about-tools.html?spref=tw

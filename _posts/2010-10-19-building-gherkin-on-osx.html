@@ -1,0 +1,90 @@
+---
+layout: post
+title: Building the Gherkin on OSX
+date: '2010-10-19T23:42:00.005+02:00'
+author: Jonas Bandi
+tags:
+- cucumber
+- programming
+- quicktip
+modified_time: '2011-09-01T23:52:31.216+02:00'
+thumbnail: http://lh3.ggpht.com/_X3kaawac_g4/TL4QzG_YonI/AAAAAAAAA4w/5fquySR70IA/s72-c/cucumber64x64.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4271757335429303024
+blogger_orig_url: http://blog.jonasbandi.net/2010/10/building-gherkin-on-osx.html
+---
+
+<img alt="cucumber64x64.png" border="0" height="64" src="http://lh3.ggpht.com/_X3kaawac_g4/TL4QzG_YonI/AAAAAAAAA4w/5fquySR70IA/cucumber64x64.png?imgmax=800" style="float: right; margin-left: 20px;" width="64" />
+
+<b>Update 2011-09-01:</b> Updated changes of github repositories and changes in rake build.
+<br/>
+<br/>
+Recently I wanted to build the <a href="http://github.com/aslakhellesoy/gherkin">Gherkin project </a>to reproduce a certain behavior we observed in <a href="http://techtalk.github.com/SpecFlow/">SpecFlow</a>.<br />
+These were the steps that were necessary to build the Java version of the Gherkin parser on OS X:
+<br />
+<b>Ragel installation:</b><br />
+I am using <a href="http://www.macports.org/">MacPorts</a>. Installing <a href="http://www.complang.org/ragel/">Ragel</a> is a breeze:
+<br />
+<div style="border: 1px solid silver;">
+<code>
+sudo port install ragel
+</code></div>
+<br />
+<b>rvm installation</b><br />
+I figured that <a href="http://rvm.beginrescueend.com/">rvm</a> is the best option to install JRuby side by side of other Rubies.<br />
+I followed the <a href="http://rvm.beginrescueend.com/rvm/install/">installation instructions of rvm</a>.<br />
+<br />
+<b>JRuby installation</b><br />
+... again a breeze with rvm:
+<br />
+<div style="border: 1px solid silver;">
+<code>
+rvm install jruby
+</code></div>
+<br />
+<b>Switch to JRuby</b><br />
+<div style="border: 1px solid silver;">
+<code>
+rvm use jruby
+</code></div>
+<br />
+<b>Clone gherkin:</b><br />
+<div style="border: 1px solid silver;">
+<code>
+git clone&nbsp;﻿http://github.com/cucumber/gherkin.git
+</code></div>
+<br />
+<b>Clone cucumber:</b><br />
+To build gherkin you need the cucumber sources lying beside your gherkin sources.<br />
+<div style="border: 1px solid silver;">
+<code>
+git clone&nbsp;﻿http://github.com/cucumber/cucumber.git
+</code></div>
+<br />
+<b>Required gems:</b><br />
+You need some gems to build gherkin:
+<br />
+<div style="border: 1px solid silver;">
+<code>
+gem install rspec json term-ansicolor rake_compiler&nbsp;﻿awesome-print builder
+</code></div>
+(other gems like rake, bundler were already installed ...)<br />
+<br />
+<b>Java dependencies:</b><br />
+The rake build needs json-simple lying in your local Maven repository
+<br />
+<div style="border: 1px solid silver;">
+<code>cd java<br />mvn clean compile</code></div>
+The maven compile step of the maven build will fail, but it will download the json-simple dependency into your local repository.<br />
+<br />
+<b>Executing the rake build:</b><br />
+<div style="border: 1px solid silver;">
+<code>
+rake clean<br />rake jar
+</code></div>
+<br />
+<b>Executing the java build:</b><br />
+<div style="border: 1px solid silver;">
+<code>
+cd java<br />mvn clean compile test
+</code></div>
+All tests should pass. Now you can open the java project in your favorite IDE.

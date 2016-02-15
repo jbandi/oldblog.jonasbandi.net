@@ -1,0 +1,75 @@
+---
+layout: post
+title: Quo Vadis JavaScript?
+date: '2015-11-21T23:31:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2015-11-23T18:27:02.892+01:00'
+thumbnail: https://lh3.googleusercontent.com/-a-0JAXtAE7w/VlDzvsPAoMI/AAAAAAAACgY/StAcm8Wowz8/s72-c-Ic42/JSC.png
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6256342868381414387
+blogger_orig_url: http://blog.jonasbandi.net/2015/11/quo-vadis-javascript.html
+---
+
+<img class="jb-main-img" src="https://lh3.googleusercontent.com/-a-0JAXtAE7w/VlDzvsPAoMI/AAAAAAAACgY/StAcm8Wowz8/s912-Ic42/JSC.png" width="600px">
+<p>JavaScript went through a <em>makeover extraordinaire</em> with ES2015 which was <a href="http://www.ecma-international.org/ecma-262/6.0/">finalized this summer</a>.</p>
+<p>This is not your grandma’s JavaScript any more:</p>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token keyword">import</span> React from <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Catalog</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">buy</span><span class="token punctuation">(</span>product<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>But  it seems this was just the beginning… the metamorphosis is far from done for JavaScript.</p>
+<p>For future versions of JavaScript there are many <a href="https://github.com/tc39/ecma262">proposed new language features</a>. Among the most outstanding proposals for me are <a href="https://github.com/wycats/javascript-decorators/blob/master/README.md">decorators</a>, <a href="https://github.com/tc39/ecmascript-asyncawait">async functions</a> and <a href="https://github.com/wycats/javascript-private-state">private state</a></p>
+<p>Some years ago nobody would have believed that the following snippets are (will be) valid JavaScript.</p>
+<p><strong>Decorators:</strong></p>
+<pre class=" language-javascript"><code class="prism  language-javascript">@<span class="token function">createStore</span><span class="token punctuation">(</span>alt<span class="token punctuation">)</span>
+@<span class="token function">datasource</span><span class="token punctuation">(</span>CatalogSource<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">CatalogStore</span> <span class="token punctuation">{</span>
+    
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    
+    @<span class="token function">bind</span><span class="token punctuation">(</span>CatalogActions<span class="token punctuation">.</span>searchLoaded<span class="token punctuation">)</span>
+    <span class="token function">onSearchLoaded</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>Async Functions:</strong></p>
+<pre class=" language-javascript"><code class="prism  language-javascript">async <span class="token keyword">function</span> <span class="token function">fetchJson</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> request <span class="token operator">=</span> await <span class="token function">fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> text <span class="token operator">=</span> await request<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>`ERROR<span class="token punctuation">:</span> $<span class="token punctuation">{</span>error<span class="token punctuation">.</span>stack<span class="token punctuation">}</span>`<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> 
+</code></pre>
+<p><strong>Private State:</strong></p>
+<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token keyword">class</span> <span class="token class-name">DataObj</span> <span class="token punctuation">{</span>
+  <span class="token keyword">private</span> #data1<span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    #data1 <span class="token operator">=</span> d<span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">get</span> <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> #data1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>I think its now safe to say that Silverlight and Flex were failed attempts to bring other languages than JavaScript into browsers … but looking at the snippets above, it might sure look like some C#/Java infiltration squad sneaked into the Ecma building …</p>
+<p><a href="https://babeljs.io/">Babel</a> and <a href="http://www.typescriptlang.org/">TypeScript</a> both already support decorators and Babel also <a href="http://babeljs.io/docs/plugins/syntax-async-functions/">supports async functions</a> (TypeScript is <a href="http://blogs.msdn.com/b/typescript/archive/2015/11/03/what-about-async-await.aspx">working on it</a>). So you can use those language features right now in a modern JavaScript project setup.</p>
+<p>Of course the JavaScript ecosystem/community is going through a tremendous development and learning process right now. We are slowly getting the new features piece by piece and figuring out how to use them … while that slow metamorphosis process can be healthy, it can also be painful…</p>
+<p>In the future, once JavaScript has completed it’s metamorphosis, people might legitimately ask why we did not just integrate C# or Java into the browsers … ?</p>

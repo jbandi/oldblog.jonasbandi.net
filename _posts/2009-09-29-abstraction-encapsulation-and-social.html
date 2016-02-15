@@ -1,0 +1,84 @@
+---
+layout: post
+title: Abstraction, Encapsulation and social Darwinism (The Antipattern of Framework-
+  vs. Business-Programmers)
+date: '2009-09-29T12:50:00.001+02:00'
+author: Jonas Bandi
+tags:
+- work
+- methodology
+- programming
+- javablog
+modified_time: '2009-09-29T13:08:31.540+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-2255488117203845427
+blogger_orig_url: http://blog.jonasbandi.net/2009/09/abstraction-encapsulation-and-social.html
+---
+
+
+<blockquote>Responsibility trap number one: Building a platform to make other (lesser) programmers more productive.</blockquote>
+<p align="right">- Eric Evans at SET 2008</p> 
+<br/>
+<blockquote>Hiding things from developers often requires more effort in the long run than simply trying to educate your developers as to how they should properly do their job.</blockquote>
+<p align="right">- <a href="http://davybrion.com/blog/2009/04/educate-developers-instead-of-protecting-them/">Educate Developers Instead Of Protecting Them</a> by Davy Brion</p>
+<br/>
+
+<blockquote>Making development "safe" for lesser skilled developers by taking choices away from developers [...] does far more to hamper the efforts of your best developers than it does to make weaker developers more productive.
+I'll say that there is a silver bullet(s), it's: Skill. Knowledge. Experience. Passion. Discipline.</blockquote>
+<p align="right">- <a href="http://codebetter.com/blogs/jeremy.miller/archive/2007/05/21/thoughts-rants-and-arguments-my-devteach-2007-rollup.aspx">Jeremy Miller</a></p>
+<br/>
+
+Again and again I come across projects, teams and companies that misuse the concepts of <a href="http://en.wikipedia.org/wiki/Abstraction_%28computer_science%29">Abstraction</a> and <a href="http://en.wikipedia.org/wiki/Information_hiding">Encapsulation</a> to establish a two class society among the developers.
+<br/>
+<br/>
+
+<img style="margin: 10px 0px 10px 10px"src="http://lh4.ggpht.com/_X3kaawac_g4/SsHokfvFdCI/AAAAAAAAAqU/z4-LrYlJhUw/mind_the_gap-logo.jpg?imgmax=800" alt="mind_the_gap-logo.jpg" border="0" width="190" align="right" />
+In those setups you usually find on one side a framework-team that is responsible for a supposedly productivity-boosting, supposedly well crafted framework / platform / infrastructure. On the other side you find an army of business programmers that have to use the provided framework / platform / infrastructure to actually realize business value.
+<br/>
+<br/>
+Usually the framework-team members think of themselves as the gurus, the elite, the "real" programmers, while the business programmers are considered as "lesser" foot soldiers.
+<br/>
+These attitudes are mostly shared and therefore promoted by management. Indeed the framework-programmers often have the better education and/or more technical expertise.
+<br/>
+If the situation is really bad then the framework team does not like to mingle with the business-programmers and the worst thing is, when they are not even co-located.
+<br/>
+<br/>
+<img style="margin: 10px 10px 0px 0px"src="http://lh6.ggpht.com/jonas.bandi/SFrOQe6K3gI/AAAAAAAAAPo/bWF2jNFEr3U/Teamwork.gif?imgmax=800" alt="Teamwork.gif" border="0" width="140" align="left" />
+I heavily oppose this setup. It is an antipattern, that prevents team enabling. Agile, self-enabling, highly-motivated teams will never evolve in such a structured and divided team setup. This is not an environment where individuals are allowed to grow, this is an environment where employees are assigned! <strong>In such an environment, people just start to not care any more:</strong> framework-developers do not really care about business value, business-developers dont't feel like being able to make a difference...
+<br/>
+<br/>
+
+<a href="http://blog.jonasbandi.net/2008/01/why-software-factory-analogy-fails.html">As I don't believe in the factory analogy</a>, I don't believe there is a situation where lesser developers have to be shielded/protected by a technical framework. The time to create a patronizing framework, would be better invested in teaching and exchanging knowledge.
+<br/>
+In my experience, if a developer is not productive, then this is usually a management failure. Simple measures like assigning another task,  changing the setup, pair programming, coaching, reviews etc. would usually improve the situation. I have seen projects where this has been achieved successfully, but in the above setup, this is usually not going to happen.
+<br/>
+And in the rare case that you are really dealing with a <a href="http://en.wikipedia.org/wiki/NNPP">net negative producing programmer (NNPP)</a>, no technological solution will save you...
+
+<a href="http://en.wikipedia.org/wiki/Abstraction_(computer_science)">Abstraction</a> and <a href="http://en.wikipedia.org/wiki/Information_hiding">Encapsulation</a> are pillars of object-oriented design. They are intellectual constructs to tackle complexity. They are technical tools and <em>not a mechanism to legitimate team structure</em>.
+<br/>
+
+<br/>
+Using engineering techniques from object-oriented design to enforce team structure and separation feels just as wrong as <a href="http://en.wikipedia.org/wiki/Social_darwinism">applying Darwin's evolution theory to human societies</a>.
+<br/>
+<br/>
+<img style="margin: 0px 0px 10px 10px"src="http://lh5.ggpht.com/_X3kaawac_g4/SjpAxtFUwBI/AAAAAAAAAeU/wlisjzOno20/medicine20logo.jpg?imgmax=800" alt="medicine20logo.jpg" border="0" width="150" align="right" />
+Possible remedies and counter measures for the situation are:
+
+<list>
+<li>
+<strong>Eat your own dogfood:</strong> Framework-developers have to use their own framework. They have to be involved in business-programming.
+</li>
+<li>
+<strong>Empower the business developers:</strong> Establish an environment where it is absolutely clear, that the business developers are the ones that are providing value. 
+The framework-team has the sole purpose to enable the business-developers.
+</li>
+<li>
+<strong>Productize the framework:</strong> Nobody is forced to use the framework. The framework-programers have to actively sell their work, the business developers can freely decide if they want to use it. (According to a disscussion with Mark Striebeck, this philosophy is very successful at Google)
+</li>
+<li>
+<strong>Collective ownership of the code</strong>, including the framework.
+</li>
+</list>
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://a1.twimg.com/a/1253141863/images/favicon.ico" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

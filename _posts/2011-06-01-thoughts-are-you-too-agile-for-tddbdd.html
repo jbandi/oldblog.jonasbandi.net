@@ -1,0 +1,57 @@
+---
+layout: post
+title: 'Thoughts: Are you too agile for TDD/BDD?'
+date: '2011-06-01T16:38:00.001+02:00'
+author: Jonas Bandi
+tags:
+- methodology
+- BDD
+modified_time: '2011-06-01T18:38:32.403+02:00'
+thumbnail: http://lh4.ggpht.com/-GT4b4mESP4Q/TeGHfokkhKI/AAAAAAAAA-8/1fKLozYZRes/s72-c/NewImage.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4968259678131530097
+blogger_orig_url: http://blog.jonasbandi.net/2011/06/thoughts-are-you-too-agile-for-tddbdd.html
+---
+
+<div style="width: 400px;">
+<blockquote style="font-size: 14px;">
+There was no requirement for Twitter!</blockquote>
+<div style="font-size: 10px; text-align: right;">
+- Kevlin Henney, <a href="http://www.infoq.com/presentations/Putting-the-re-into-Architecture">Putting the "re" into Architecture</a></div>
+<br/>
+<blockquote style="font-size: 14px;">
+Return on investment from software is far from certain.</blockquote>
+<div style="font-size: 10px; text-align: right;">
+- Jeff Patton, <a href="http://www.infoq.com/presentations/Design-Thinking">Using Design Thinking to Stop Building Worthless Software</a></div>
+</div>
+<br />
+<br />
+Two recent blog posts seem to indicate that there are software development environments where core agile development practices like <a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD</a> and especially <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">BDD</a> do not fit. Those "high-ceremony" practices are even considered as <a href="http://en.wikipedia.org/wiki/Lean_Thinking">waste</a>:<br />
+<br />
+<br />
+<a href="http://www.m3p.co.uk/blog/2011/04/25/tdd-embracing-failure/" style="font-size: 15px; font-weight: bold;">Test-Driven Development and Embracing Failure</a> 
+<br />
+by Steve Freeman<br />
+<br />
+Steve draws the difference between <b>ordered</b> and <b>unordered domains</b> and between <b>fail-save</b> and <b>save-fail</b> approaches.<br />
+TDD/BDD are fail-save approaches. We are assuming an &nbsp;ordered domain: we know the relation between cause and effect and we can write specifications/expectations and we can verify them pretty reliably.<br />
+Here we have a "specify-verify" feedback-loop:<br />
+<img alt="NewImage" border="0" height="187" src="http://lh4.ggpht.com/-GT4b4mESP4Q/TeGHfokkhKI/AAAAAAAAA-8/1fKLozYZRes/NewImage.png?imgmax=800" style="display: block; margin-left: auto; margin-right: auto;" width="305" /><br />
+In unordered domains we don't know the relation between cause and effect. Here it is pretty difficult to write specifications/expectations and to verify them a priori. It's mostly only possibly to gain insights after having been exposed to the "real world".<br />
+Here we have a "try-error" feedback loop:<br />
+<img alt="NewImage" border="0" height="224" src="http://lh3.ggpht.com/-l9zL5JRKNao/TeGHgZ-UVkI/AAAAAAAAA_A/-RI-_zA5Xig/NewImage.png?imgmax=800" style="display: block; margin-left: auto; margin-right: auto;" width="343" />The most important thing is that the effects of failure will not have too bad and that you can react very quickly and make improvements based on the insights of those failures (and successes).<br />
+<b>Agile is about embracing change. Some domains are best tackled by embracing failure.</b><br />
+<br />
+<br />
+<a href="http://blog.obiefernandez.com/content/2011/05/the-dark-side-beckons.html" style="font-size: 15px; font-weight: bold;">The Dark Side Beckons?</a><span style="font-size: 14px;"></span>
+<br />
+by Obie Fernandez<br />
+<br />
+Obie argues that classic web startups have to find their place in the market. The real test here is feedback that is gained from success (or failures) of the deployed app.<br />
+It's much more important to be testing against business metrics (user-count, ratings, click-throughs ...) than anything having to do with code. Those insights can only be gained from the market itself.<br />
+So the feedback-loop here goes not "spec-implement-verify" but it must include deployment and market response: "spec-implement-deploy-inspect".<br />
+Having an <a href="http://www.blogger.com/">instant deployment pipeline</a> is crucial to be able to react in this feedback loop.<br />
+<br />
+My personal feeling is still that TDD (and even BDD) might make sense in the implementation phase of projects that tackle unordered domains. <br />
+I see that TDD/BDD in the sense of "discovering" behavior, in the sense of requirements gathering makes not much senese here. But they still help to ensure the correctness of the implementation, without a "correct" implementation, inspection makes no sense ...<br />
+But the "high-ceremony" aspect must be kept low and very pragmatic.<br />
+... however I might be clinging to my perception of the world... there are also people that claim that you can do agile development inside the phases of a waterfall...

@@ -1,0 +1,38 @@
+---
+layout: post
+title: IntelliJ IDEA Caret Placement
+date: '2008-05-25T20:20:00.001+02:00'
+author: Jonas Bandi
+tags:
+- technology
+- programming
+modified_time: '2008-05-25T21:10:23.917+02:00'
+thumbnail: http://lh6.ggpht.com/jonas.bandi/SDmsRQxnFnI/AAAAAAAAAO4/esZZLET-N84/s72-c/Picture%202.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-7163822636354294202
+blogger_orig_url: http://blog.jonasbandi.net/2008/05/intellij-caret-placement.html
+---
+
+One of the most annoying behaviors in <a href="http://www.jetbrains.com/idea/index.html">IntelliJ IDEA</a> is the placement of the caret in the text editor. When you click in the editor, the cursor is paced exactly at the position where you pointed the mouse, even if there is no text anywhere nearby!
+<br/>
+
+I cant see the benefit or a sensible use-case for this behavior...
+<br/>
+<br/>
+<div style="text-align:center;"><img src="http://lh6.ggpht.com/jonas.bandi/SDmsRQxnFnI/AAAAAAAAAO4/esZZLET-N84/Picture%202.png?imgmax=800" alt="Picture 2.png" border="0" width="494" height="89" /></div>
+<br/>
+<br/>
+
+In every other graphical text editor I know of, the cursor jumps to the end of the text on the respective line.
+
+<br/>
+<br/>
+Now I finally found the setting that lets IntelliJ behave like the other text editors I know:
+<br/>
+Under Settings->Editor->Behavior switch off "Allow placement of caret after end of line" (in the box "Virtual Space").
+<br/>
+<br/>
+<div style="text-align:center;"><img src="http://lh5.ggpht.com/jonas.bandi/SDmtmAxnFoI/AAAAAAAAAPA/UA3gcksyuGM/Picture%201.png?imgmax=800" alt="Picture 1.png" border="0" width="352" height="108" /></div>
+<br/>
+<br/>
+
+I think this should be the default , new users probably expect this behavior. 

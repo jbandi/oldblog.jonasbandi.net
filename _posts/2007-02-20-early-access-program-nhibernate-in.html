@@ -1,0 +1,31 @@
+---
+layout: post
+title: |-
+  Early Access Program: NHibernate in Action ... and some DataSet-bashing
+  for my part.
+date: '2007-02-20T21:52:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-02-20T21:52:38.770+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4558061577292527513
+blogger_orig_url: http://blog.jonasbandi.net/2007/02/early-access-program-nhibernate-in.html
+---
+
+<p>According to&nbsp;Amazon&nbsp;<a href="http://www.amazon.de/gp/product/1932394923/ref=wl_it_dp/302-9062310-2266463?ie=UTF8&amp;coliid=I1GND8COKJ3C6V&amp;colid=159IG4ASM4T5E">NHibernate in Action </a>is going to be released in July. I am looking forward to get a copy.</p>
+<p>But&nbsp;you can already start reading the book today through the <a href="http://www.manning.com/kuate/">Manning Early Access Program</a>.</p>
+<p>The first chapter is free. Chapters 2&ndash;4 are available if you are willing to pay for the Early Access Program.</p>
+<p>If OR-Mapping is not completely new territory for you, the first chapter does not offer much. It is basically an introduction to OR-Mapping and the concepts around OR-Mapping (Domain-Model, Layered-Architecture, some Patterns and the Impedance Mismatch). You can find the same information in several other books like <a href="http://www.amazon.de/Java-Persistence-Hibernate-Christian-Bauer/dp/1932394885/sr=1-1/qid=1170968353/ref=sr_1_1/302-9062310-2266463?ie=UTF8&amp;s=books-intl-de"><span class="srTitle">Java Persistence with Hibernate</span></a>, <a href="http://www.amazon.de/Hibernate-Action-Practical-Relational-Mapping/dp/193239415X/sr=1-2/qid=1170968353/ref=sr_1_2/302-9062310-2266463?ie=UTF8&amp;s=books-intl-de"><span class="srTitle">Hibernate in Action</span></a>, <a href="http://www.amazon.de/Applying-Domain-Driven-Design-Patterns-Examples/dp/0321268202/sr=1-1/qid=1170968438/ref=sr_1_1/302-9062310-2266463?ie=UTF8&amp;s=books-intl-de"><span class="srTitle">Applying Domain-Driven Design and <font color="#000000">Patterns</font></span></a>&nbsp;and <a href="http://www.amazon.de/Action-Lightweight-Frameworks-Enterprise-Applications/dp/1932394583/sr=1-1/qid=1170968483/ref=sr_1_1/302-9062310-2266463?ie=UTF8&amp;s=books-intl-de"><span class="srTitle">POJOs in Action.</span></a></p>
+<p>However there is one interesting difference to the books above: It discusses OR-Mapping as alternative to DataSets.</p>
+<p>The book points out, that DataSets are a very efficient way to implement an initial Data-Access-Layer and for displaying (tabular) data in a GUI. But DataSets&nbsp;do heavily restrict your freedom in modeling the business domain and applying OO-Analysis and OO-Design. </p>
+<p>These summarizes the feeling I have about datasets. I hope I will find the time to explore the reasons behind this, and write a post about it.</p>
+<p>But for now lets look at the good and the bad of DataSets</p>
+<ul>
+<li>good: helps with DB-access and&nbsp;Data binding -&gt; these are both technical/infrastructure-concerns</li>
+<li>bad: limits modeling in your business logic -&gt; for non-trivial applications this should be your main concern!</li></ul>
+<p>So if your application has no&nbsp;business logic, then&nbsp;Dataset are optimal: The GUI is basically directly bound to the database, although DataSets make it possible to have several layers/tears between database an GUI, you&nbsp;basically don't do anything of business value (security, distribution, transactions, basic validation do not count as <em>business value </em>they are <em>technical/infrastructure-concerns</em>).</p>
+<p>But if you have non-trivial business logic, you have to decide where your priorities lie. Is it more important to easily solve the technical/infrastructural-concerns or is it more important to develop an elegant, maintainable and extensible business-model?<br />You don't have to answer right now ;-) but put into consideration that DB-access and Databinding without DataSets is not as hard as it used to be some years ago (thinking of <a href="http://www.nhibernate.org/">NHibernate</a>, <a href="http://www.genom-e.com/">Genome</a>, <a href="http://www.vanatec.com/">OpenAccess </a>and <a href="http://www.google.ch/search?q=object+databinding">Object-DataBinding</a>) &hellip; well, can you guess my answer to the above question? ;-)</p>
+<p>I think DataSets are still very popular, because for non-experienced programmers they allow to quickly develop a <a href="http://www.voelter.de/data/pub/ArchitecturePatterns.pdf">vertical prototype </a>for an application. The goal of the vertical prototype is often to prove that the technical concerns can be solved. So the prototype is mostly about infrastructure. The prototype seldom provides a lot of the business functionality (well after all its a prototype ;-), and it certainly does not have to manage complexity, maintainability and extensibility.</p>
+<p>Problems arise only later when the application should evolve horizontally and&nbsp;provide the real&nbsp;business functionality. But at this point the architecture is often fixed, and the door is closed: Welcome in a world of pain!</p>
+<p>So here my final blow for today: DataSets are misleading, they&nbsp;promise a multi layered/multi tiered architecture but basically the programming model is the same as in a client-server app with the business logic in the database. With DataSets&nbsp;the code is just not executed in the database but in some other layer/tier but even that is questionable a good thing&hellip;</p>
+<p><br />&nbsp;</p>
+<p>&nbsp;</p>

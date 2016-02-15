@@ -1,0 +1,31 @@
+---
+layout: post
+title: C# on the journey to functional programming
+date: '2008-01-03T20:15:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2008-01-03T22:10:41.794+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-1989244330065103122
+blogger_orig_url: http://blog.jonasbandi.net/2008/01/c-on-journey-to-functional-programming.html
+---
+
+From old-school imperative...   <pre class="code" style="border: 1px solid silver; padding: 2px;"><span style="color:blue;">var </span>list = <span style="color:blue;">new </span><span style="color: rgb(43, 145, 175);">List</span>&lt;<span style="color:blue;">int</span>&gt;(){1, 2, 3};
+<span style="color:blue;">int </span>sum = 0;
+<span style="color:blue;">foreach </span>(<span style="color:blue;">int </span>n <span style="color:blue;">in </span>list)
+{
+   sum += n;
+}
+<span style="color: rgb(43, 145, 175);">Assert</span>.AreEqual(6, sum);</pre>
+...over clumsy delegate...
+
+<pre class="code" style="border: 1px solid silver; padding: 2px;"><span style="color:blue;">var </span>list = <span style="color:blue;">new </span><span style="color: rgb(43, 145, 175);">List</span>&lt;<span style="color:blue;">int</span>&gt;(){1, 2, 3};
+<span style="color:blue;">int </span>sum = 0;
+list.ForEach(<span style="color:blue;">delegate</span>(<span style="color:blue;">int </span>number) { sum += number; });
+<span style="color: rgb(43, 145, 175);">Assert</span>.AreEqual(6, sum);</pre>
+...to sexy lambda.
+
+<pre class="code" style="border: 1px solid silver; padding: 2px;"><span style="color:blue;">var </span>list = <span style="color:blue;">new </span><span style="color: rgb(43, 145, 175);">List</span>&lt;<span style="color:blue;">int</span>&gt;(){1, 2, 3};
+<span style="color:blue;">int </span>sum = 0;
+list.ForEach(number =&gt; sum += number);
+<span style="color: rgb(43, 145, 175);">Assert</span>.AreEqual(6, sum);</pre>
+<a href="http://11011.net/software/vspaste"></a>

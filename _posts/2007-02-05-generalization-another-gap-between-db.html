@@ -1,0 +1,26 @@
+---
+layout: post
+title: Generalization - Another Gap between DB- and OO-Models
+date: '2007-02-05T21:26:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-02-05T21:26:56.764+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6716266685635427567
+blogger_orig_url: http://blog.jonasbandi.net/2007/02/generalization-another-gap-between-db.html
+---
+
+<p>I was just reading a moderately interesting article about MUCKs (Massively Unified Code-Key tables).</p>
+<p>Here is the article: </p>
+<p class="citation"><cite cite="http://www.sqlservercentral.com/columnists/dpeterson/lookuptablemadness.asp"><a href="http://www.sqlservercentral.com/columnists/dpeterson/lookuptablemadness.asp">Lookup Table Madness</a></cite></p>
+<p class="citation"><cite cite="http://www.sqlservercentral.com/columnists/dpeterson/lookuptablemadness.asp">(you have to register&hellip;)</cite></p>
+<p>However there are two&nbsp;interesting thoughts in the article which I want to repeat here.</p>
+<p>The first point is a very general statement:</p>
+<blockquote cite="http://www.sqlservercentral.com/columnists/dpeterson/lookuptablemadness.asp">
+<p>Be careful that you don't generalize your database into irrelevance, building in so much flexibility that your system degenerates into chaos (chaos being the ultimate in flexibility).</p></blockquote>
+<p>This statement is certainly valid for any part of a system not just for the database. Generalization is a two edged blade and it is the characteristic of a good design to apply as much generalization as possible&nbsp;while keeping the model still usable.</p>
+<p>The second point elaborates on Generalization in respect&nbsp;to the differences between the OO-model and the DB-model:</p>
+<blockquote>
+<p>Generalization is a good thing, in the right context, but it is a tool and should not be used indiscriminately. Generalization is something that can be very useful in the Object Oriented (OO) programming world where you are concerned with what things <strong>do</strong>, or how they <strong>act</strong>. If two things act the same way they can be brought together under a single class. Even if they differ significantly, they might be able to inherit their common characteristics from a parent class, relying on subclasses to provide their unique behaviors. In the world of relational database design we really don't care so much about how things act, we care about what they <strong>are</strong>. In that context, generalization is very seldom useful. In the world of OO programming generalization helps improve code reuse, modularity, and maintainability. By contrast, generalization in a database leads to ambiguity, or loss of meaning.</p></blockquote>
+<p dir="ltr" style="MARGIN-RIGHT: 0px">This once more shows that there are fundamental differences between concept of a relational data store and a object oriented application. If the business logic of the application is non-trivial, the behavior of our business entities is getting very important. Generalization then is a useful instrument to introduce abstractions and therefore to reduce complexity. In the Database on the other hand we are not interested in behavior, so in most cases we don't want abstraction!</p>
+<p dir="ltr" style="MARGIN-RIGHT: 0px">This leads us back to the good old object-relational-mismatch. And for me its another sign, that you should definitely not build your business logic around a relational model. Because sooner or later you will have the need for abstraction and your relational model will not be able to deliver this abstraction, nor can it be changed, because it is tied to the DB-schema.</p>
+<p dir="ltr" style="MARGIN-RIGHT: 0px">Personally I believe the only real solution is to design a Domain Model for the business logic separately from the DB-schema. Ideally the two tasks are performed by different persons/teams. When both models are completed OR-Mapping is applied to bridge the gap between them. Almost certainly some compromises on both models will be necessary to make the mapping feasible, but those compromises will be made very conscious, and the different purposes of the two models will be kept intact,</p>

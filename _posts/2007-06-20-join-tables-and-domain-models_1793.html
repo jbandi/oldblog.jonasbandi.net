@@ -1,0 +1,28 @@
+---
+layout: post
+title: Join Tables and Domain Models
+date: '2007-06-20T02:39:00.001+02:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-06-20T02:44:23.381+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8233865669987524301
+blogger_orig_url: http://blog.jonasbandi.net/2007/06/join-tables-and-domain-models_1793.html
+---
+
+<p align="left">In Domain Models arises&nbsp;often a design problem, when there is a relation between two entities and the relation itself holds additional attributes.</p>
+<p align="left">As an example a relational model would basically look like this:</p>
+<p align="left"><img alt="Erd" src="http://www.realityloop.net/blog/erd_small1.jpg" border="0" /></p>
+<p align="left"><strong>Readings</strong> is basically a Join Table between <strong>articles</strong> and <strong>users</strong>, but it has additional columns on top of the two obligatory foreign keys.<br />When designing the associated object-model we are basically forced to create an entity for the reading, since there is no construct for &lsquo;<strong>associations with attributes</strong>&rsquo; in current OO-Languages. But this often leaves a tainted feeling, because <strong>readings</strong> does not feel like a first-class entity in our model. Often we just want to navigate from articles to users, and for this scenario the <strong>reading</strong> should be transparent.</p>
+<p><a href="http://wiki.rubyonrails.org/rails/pages/ActiveRecord">ActiveRecord</a> in Ruby offers an interesting construct for this situation:</p>
+<p><code><strong>class</strong> Article &lt; ActiveRecord::Base<br />&nbsp; has_many :readings<br />&nbsp; has_many :users, :through =&gt; :readings<br /><strong>end</strong></code></p>
+<p>This allows direct navigation from an Article-Entity to its User-Entities like this:</p>
+<p><font face="Courier New">article.users.each <strong>do</strong> |reader|<br />&nbsp; puts reader.name<br /><strong>end</strong></font></p>
+<p><br />Now I was thinking of an elegant way to do something similar in C#, when the <strong>yield </strong>keyword came to mind:</p><pre><pre><font size="1"><span style="COLOR: blue">public</span> <span style="COLOR: blue">class</span> <span style="COLOR: teal">Article<br /></span></font><font size="1">{<br /></font><font size="1">&nbsp;&nbsp;&nbsp;<span style="COLOR: blue">private</span> <span style="COLOR: blue">readonly</span> <span style="COLOR: teal">List</span>&lt;<span style="COLOR: teal">Reading</span>&gt; readings = <span style="COLOR: blue">new</span> <span style="COLOR: teal">List</span>&lt;<span style="COLOR: teal">Reading</span>&gt;();<br /></font><font size="1"><span style="COLOR: blue">&nbsp;&nbsp; public</span> <span style="COLOR: blue">void</span> AddReading(<span style="COLOR: teal">User</span> user, <span style="COLOR: teal">DateTime</span> readTime, <span style="COLOR: blue">int</span> rating)<br /></font><font size="1">&nbsp; &nbsp;{<br /></font><font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readings.Add(<span style="COLOR: blue">new</span> <span style="COLOR: teal">Reading</span>(user, readTime, rating));<br /></font><font size="1">&nbsp;&nbsp; }<br /></font><font size="1">&nbsp;&nbsp; <span style="COLOR: blue">public</span> <span style="COLOR: teal">IEnumerable</span>&lt;<span style="COLOR: teal">User</span>&gt; Readers<br /></font><font size="1"> &nbsp; {<br /> </font><font size="1">&nbsp;&nbsp;&nbsp; <span style="COLOR: blue">get<br /> </span></font><font size="1">&nbsp;&nbsp;&nbsp; {<br /> </font><font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="COLOR: blue">foreach</span> (<span style="COLOR: teal">Reading</span> reading <span style="COLOR: blue">in</span> readings)<br /></font><font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="COLOR: blue">yield</span> <span style="COLOR: blue">return</span> reading.Reader;<br /></font><font size="1">&nbsp;&nbsp;&nbsp;&nbsp; }<br /></font><font size="1">&nbsp; }<br /></font><font size="1">}</font></pre></pre>
+<p>The client code then looks like this:</p>
+<p style="FONT-SIZE: 10pt; BACKGROUND: white; MARGIN: 0px; COLOR: black; FONT-FAMILY: Courier New"><span style="COLOR: #2b91af"><font size="1"><span style="COLOR: blue">foreach</span> (<span style="COLOR: teal">User</span> reader <span style="COLOR: blue">in</span> article.Readers)</font></p>
+<div style="FONT-SIZE: 10pt; BACKGROUND: white; COLOR: black; FONT-FAMILY: Courier New">
+<div style="FONT-SIZE: 10pt; BACKGROUND: white; COLOR: black; FONT-FAMILY: Courier New">
+<p style="MARGIN: 0px"><font size="1">{</font></p>
+<p style="MARGIN: 0px"><font size="1">&nbsp; <span style="COLOR: teal">Debug</span>.WriteLine(reader.Name);</font></p>
+<p style="MARGIN: 0px"><font size="1">}</font></p></div><!--EndFragment--></span></div><!--EndFragment--><!--EndFragment-->
+<p>Ok, thats just the object model, mapping the whole thing to the database is another topic of its own &hellip;</p>

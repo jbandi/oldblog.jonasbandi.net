@@ -1,0 +1,37 @@
+---
+layout: post
+title: Megalomania - trust me, I know the answer!
+date: '2008-08-19T13:38:00.001+02:00'
+author: Jonas Bandi
+tags:
+- nonsense
+- programming
+- humor
+modified_time: '2008-09-18T22:01:42.739+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6203558642323184534
+blogger_orig_url: http://blog.jonasbandi.net/2008/08/megalomania-trust-me-i-know-answer.html
+---
+
+<p>In a recent project we had a code-review. The following piece of code turned up:</p> 
+<div style="border:solid 1px silver;width:95%;overflow:auto">
+
+<div style="width:1100px;"> 
+<pre class="java" name="code" >	
+public static void configure(File cfgFile) {
+		Configuration cfg = new Configuration();
+		try {
+			File mappingResources = new File("resource-gen/hibernate.cfg.xml");
+			cfg.configure(mappingResources); // get configuration of mapping ressources from the generated hibernate.cfg.xml in src-gen
+			cfg.configure(cfgFile); // get additional configuration from the passed file
+			sessionFactory = cfg.buildSessionFactory();
+		} catch (Exception e) {
+			int n = 42;
+		}
+	}
+</pre>
+</div>
+
+</div>
+
+
+<p>I seem quite confident, that I know the <a href="http://en.wikipedia.org/wiki/The_Answer_to_Life,_the_Universe,_and_Everything">answer to everything</a> ...</p>  

@@ -1,0 +1,173 @@
+---
+layout: post
+title: 'Help needed: Mapping a bidirectional list with Hibernate'
+date: '2009-02-03T00:20:00.001+01:00'
+author: Jonas Bandi
+tags:
+- object-relational mapping
+- programming
+- hibernate
+- javablog
+- java
+modified_time: '2009-02-06T19:24:30.046+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-9012328045033725072
+blogger_orig_url: http://blog.jonasbandi.net/2009/02/help-needed-mapping-bidirectional-list.html
+---
+
+I don't understand the behavior of Hibernate when mapping a bidirectional list. The SQL statements that Hibernate produces seem not optimal to me. Can somebody enlighten me?
+<br/>
+<br/>
+The scenario is the following: I have a one-to-many parent-child relationship. I map this relationship with a bidirectional list. 
+<br/>
+<br/>
+According to the <a href="http://www.hibernate.org/hib_docs/annotations/reference/en/html/entity.html#entity-hibspec-collection-extratype">Hibernate Annotation Reference Guide</a> (Chapter 2.4.6.2.3. Bidirectional association with indexed collections) the mapping should look like this:
+<div style="border:solid 1px silver;width:390px;overflow:auto">
+<pre name="code" class="java:nogutter">
+@Entity
+public class Parent {
+
+    @Id  @GeneratedValue private long id;
+    @Version  private int version;
+    private String name;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "parent_id", nullable=false)
+    @org.hibernate.annotations.IndexColumn(name = "parent_index")
+    List&lt;Child&gt; children = new ArrayList&lt;Child&gt;();
+
+	...
+</pre>
+</div>
+<br/>
+
+<div style="border:solid 1px silver;width: 390px;overflow:auto">
+<pre name="code" class="java:nogutter">
+@Entity
+public class Child {
+
+    @Id @GeneratedValue private Long id;
+    @Version private int version;
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id", updatable = false, insertable = false, nullable=false)
+    private Parent parent;
+
+	...
+</pre>
+</div>
+<br/>
+
+But in this case Hibernate produces three SQL statements when persisting a parent with one child:
+
+<div style="border:solid 1px silver;width: 390px;overflow:auto">
+<pre name="code" class="java:nogutter">
+Hibernate: insert into Parent (name, version, id) values (?, ?, ?)
+Hibernate: insert into Child (name, price, version, parent_id, parent_index, id) values (?, ?, ?, ?, ?, ?)
+Hibernate: update Child set parent_id=?, parent_index=? where id=?
+</pre>
+</div>
+<br/>
+The third statement seems to be redundant, because parent_id and parent_index seem to be set already in the second statement.
+<br/>
+<br/>
+
+When I change the mapping and repeat the attributes '<em>updatable = false, insertable = false</em>' to the declaration of the <em>@JoinColumn</em> in the Parent like this:
+<div style="border:solid 1px silver;width: 390px;overflow:auto">
+<pre name="code" class="java:nogutter">
+@Entity
+public class Parent {
+
+    @Id  @GeneratedValue private long id;
+    @Version  private int version;
+    private String name;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "parent_id", updatable = false, insertable = false, nullable=false)
+    @org.hibernate.annotations.IndexColumn(name = "parent_index")
+    List&lt;Child&gt; children = new ArrayList&lt;Child&gt;();
+
+	...
+</pre>
+</div>
+<br/>
+
+<div style="border:solid 1px silver;width: 390px;overflow:auto">
+<pre name="code" class="java:nogutter">
+@Entity
+public class Child {
+
+    @Id @GeneratedValue private Long id;
+    @Version private int version;
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id", updatable = false, insertable = false, nullable=false)
+    private Parent parent;
+
+	...
+</pre>
+</div>
+<br/>
+...then Hibernate seems to produce much more optimized SQL:
+<div style="border:solid 1px silver;width: 390px;overflow:auto">
+<pre name="code" class="java:nogutter">
+Hibernate: insert into Parent (name, version, id) values (?, ?, ?)
+Hibernate: insert into Child (name, price, version, parent_id, parent_index, id) values (?, ?, ?, ?, ?, ?)
+</pre>
+</div>
+<br/>
+<br/>
+The client code looks like this:
+<div style="border:solid 1px silver;width: 390px;overflow:auto">
+<pre name="code" class="java:nogutter">
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        Parent newParent = new Parent();
+        newParent.setName("Parent1");
+
+        Child newChild = new Child();
+        newChild.setName("Child1");
+
+        newParent.getChildren().add(newChild);
+        newChild.setParent(newParent);
+
+        em.persist(newParent);
+
+        em.flush();
+        tx.commit();
+</pre>
+</div>
+<br/>
+I am using hibernate-entitymanager 3.4.0.GA.
+<br/>
+<br/>
+
+What am I missing? Is the Hibernate Reference Guide not correct, or am I overlooking something?
+<br/>
+<br/>
+
+
+<strong>Update 2009-01-06:</strong>
+<br/>
+Ok, I was not reading the Annotations Reference Guide thoroughly enough.
+<br/>
+<br/>
+
+In <a href="http://www.hibernate.org/hib_docs/annotations/reference/en/html/entity.html#entity-mapping-association-collections">Chapter 2.2.5.3.2.1</a> it is stated clearly:
+<br/>
+<br/>
+
+<cite>To map a bidirectional one to many, with the one-to-many side as the owning side, you have to remove the mappedBy element and set the many to one @JoinColumn as insertable and updatable to false. This solution is obviously not optimized and will produce some additional UPDATE statements.</cite>
+<br/>
+<br/>
+
+
+It probably would not hurt to repeat this information in <a href="http://www.hibernate.org/hib_docs/annotations/reference/en/html/entity.html#entity-hibspec-collection-extratype">Chapter 2.4.6.2.3</a> .
+<br/>
+<br/>
+
+But a question remains: If I repeat the @JoinColumn attributes 'updatable = false' and 'insertable = false' on the Parent (see code above) the additional update statements seem not to get produced... is this a legitimate workaround? Or does this result in another problem?

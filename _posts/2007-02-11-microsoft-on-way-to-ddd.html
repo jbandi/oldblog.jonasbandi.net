@@ -1,0 +1,24 @@
+---
+layout: post
+title: Microsoft on the way to DDD?
+date: '2007-02-11T20:52:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2007-02-11T20:52:30.113+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4859637702882410762
+blogger_orig_url: http://blog.jonasbandi.net/2007/02/microsoft-on-way-to-ddd.html
+---
+
+<p>I just listened to the newest <a href="http://www.dotnetrocks.com/default.aspx?showNum=213">episode </a>of Dot Net Rocks!</p>
+<p>Jesse Liberty and Alex Horovitz make&nbsp;some interesting&nbsp;statements at the beginning of the show:</p>
+<ul>
+<li>With .Net 3.0 it is now sometimes possible to start a project from the business-model and work up to the GUI and down to the DB</li>
+<li>On the .Net-Platform it&nbsp;should be easier for the developers to focus on he real business problems.</li>
+<li>Right now we are stuck with DataSets, which do not allow to implement business-logic in an intuitive way (think of: <font face="Consolas">Customer.Address.PhoneNumber.AreaCode = 097; )</font></li>
+<li><font face="ver">Microsoft is working on technologies (e.g. <a href="http://msdn2.microsoft.com/en-us/netframework/aa904594.aspx">LINQ</a>) that will make it easier in the future to solve the real business problems.</font></li></ul>
+<p>Of course this is fuel for the flames of my current crusade against DataSets and for DDD!</p>
+<p>My comments:</p>
+<ul>
+<li>Every project that has non-trivial business-logic should start from the business-model! Thats how domain-crunching is applied! Thats the only way all the insights from the OO-Analysis and Design can be applied. All the rest is infrastructure (persistence, distribution, deployment &hellip;) and nice wrapping (GUI).</li>
+<li>If even Microsoft is moving away from DataSets you should get rid of them as fast as possible! There are technologies available right now (<a href="http://www.hibernate.org/">NHibernate</a>, <a href="http://www.genom-e.com/">Genome</a>, <a href="http://www.vanatec.com/">OpenAccess</a>, <a href="http://lhotka.net/">CSLA </a>&hellip;), you dont have to wait for Microsoft!</li>
+<li>It seems that Microsoft is moving towards DDD and ORM. In Java EE this&nbsp;has been&nbsp;State of the Art for some time! I am glad Microsoft seems to accept, that it is the way to go.</li></ul>

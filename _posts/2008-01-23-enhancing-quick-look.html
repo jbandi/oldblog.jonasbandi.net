@@ -1,0 +1,106 @@
+---
+layout: post
+title: Enhancing Quick Look
+date: '2008-01-23T20:22:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2008-01-23T20:52:16.657+01:00'
+thumbnail: http://lh4.google.com/jonas.bandi/R5eFsddfeqI/AAAAAAAAAFw/O_G4nwxNxL4/s72-c/QuickLook.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-2387565828976169786
+blogger_orig_url: http://blog.jonasbandi.net/2008/01/enhancing-quick-look.html
+---
+
+I fell in love with <a href="http://www.apple.com/macosx/features/quicklook.html">Quick Look</a>, the new feature in OS X Leopard (Love on first Look?):
+
+
+<br />
+<br />
+
+
+
+<div style="text-align:center;"><img src="http://lh4.google.com/jonas.bandi/R5eFsddfeqI/AAAAAAAAAFw/O_G4nwxNxL4/QuickLook.jpg?imgmax=800" alt="QuickLook.jpg" border="0" width="430" height="338" /></div>
+
+<br />
+
+
+
+
+It is very useful to quickly skim through your directories... just hit space and have a look!
+
+<br />
+<br />
+
+
+
+
+However, as it comes out of the box it's not yet very useful for a programmer, since for a lot of file types there is no useful preview-generator ...
+<br />
+<br />
+
+
+
+
+
+Fortunately there are several possibilities to extend/enhance the Quick Look functionality:
+<br />
+<br />
+
+
+
+
+
+The most convenient is downloading a generator and installing it into <code>/Library/QuickLook</code> or <code>~/Library/QuickLook</code>. After putting a generator into one of those directories you have to wait some time, until the new generator is recognized. If you are impatient, you can execute <code>qmanage -r</code> in a terminal.
+
+
+<br />
+<br />
+
+
+
+
+A good source for <a href="http://www.apple.com/macosx/features/quicklook.html">Quick Look</a> Plugins is <a href="http://www.qlplugins.com/">qlplugins.com</a>
+
+
+<br />
+<br />
+
+
+
+But I still could not use <a href="http://www.apple.com/macosx/features/quicklook.html">Quick Look</a> to look at my <code>.properties</code>-files. These are plain text-files, but you have to tell this to Quick Look. I achieved this by adding the following passage to the <code>Info.plist</code> of <a href="http://macromates.com/">TextMate</a> <font size="1">(-> Show Contents)</font>.
+<br />
+
+
+
+<pre width="60%" style="line-height: 100%;font-family:monospace;background-color:#ffffff; border:0.01mm solid silver;   padding:4px;"><span style="background-color:#ffffff;">  </span><span style="color:#808080;background-color:#ffffff;font-style:italic;">&lt;!-- inserted jb, 2080119 for QuickLook improvement --&gt;
+</span><span style="background-color:#ffffff;">  </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">UTExportedTypeDeclarations</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">  </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">array</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">    </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">dict</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">UTTypeConformsTo</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">array</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">        </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">public.text</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">        </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">public.plain-text</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">array</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">UTTypeDescription</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">Properties</span><span style="background-color:#ffffff;"> </span><span style="background-color:#ffffff;font-weight:bold;">in</span><span style="background-color:#ffffff;"> </span><span style="background-color:#ffffff;font-weight:bold;">plain</span><span style="background-color:#ffffff;"> </span><span style="background-color:#ffffff;font-weight:bold;">text</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">UTTypeIdentifier</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">com.macromates.textmate</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">UTTypeTagSpecification</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">dict</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">        </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">com.apple.ostype</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">        </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">TEXT</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">        </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">public.filename-extension</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">key</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">        </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">array</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">          </span><span style="background-color:#efefef;">&lt;</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;</span><span style="background-color:#ffffff;font-weight:bold;">properties</span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">string</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">        </span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">array</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">      </span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">dict</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">    </span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">dict</span><span style="background-color:#efefef;">&gt;
+</span><span style="background-color:#ffffff;">  </span><span style="background-color:#efefef;">&lt;/</span><span style="color:#000080;background-color:#efefef;font-weight:bold;">array</span><span style="background-color:#efefef;">&gt;
+</span></pre>
+<br />
+
+Then you have to <code>touch /Applications/TextMate.app/</code> on a terminal. The same should work for any other text-editor.
+<br />
+<br />
+
+
+I found this last tip <a href="http://www.macosxhints.com/article.php?story=20071028184428583">here</a>.

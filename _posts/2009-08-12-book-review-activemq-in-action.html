@@ -1,0 +1,165 @@
+---
+layout: post
+title: 'Book Review: ActiveMQ in Action'
+date: '2009-08-12T17:28:00.001+02:00'
+author: Jonas Bandi
+tags:
+- programming
+- javablog
+- java
+modified_time: '2009-08-12T18:56:47.883+02:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-4192526125262823589
+blogger_orig_url: http://blog.jonasbandi.net/2009/08/book-review-activemq-in-action.html
+---
+
+<img style="margin: 2px 10px 10px 0px"src="http://lh6.ggpht.com/_X3kaawac_g4/SoLg0Z5KMLI/AAAAAAAAApQ/zvnZ1hp0tR0/ActiveMQinAction.jpg?imgmax=800" alt="ActiveMQinAction.jpg" border="0" width="144" height="181" align="left" />
+<a href="http://lh6.ggpht.com/_X3kaawac_g4/SoLg0Z5KMLI/AAAAAAAAApQ/zvnZ1hp0tR0/ActiveMQinAction.jpg?imgmax=800" alt="snyder_cover150.jpg" border="0" width="150" height="188" align="left" /></a>
+<a href="http://www.manning.com/">Manning</a> was so kind to send me a copy of <a href="http://www.manning.com/snyder/"><strong>ActiveMQ in Action</strong></a>.
+<br/>
+<br/>
+Note that this review is based on the July MEAP version of the book. Not all chapters are available in this version yet.
+<br/>
+<br/>
+<br/>
+
+<strong>Chapter 1: Understanding Message-Oriented Middleware and JMS</strong>
+<br/>
+This is a solid introduction to JMS. The chapter first touches briefly the topics of Enterprise Messaging and Message-Oriented Middleware and then dives into an overview of JMS. The core concepts of JMS are explained and the main Java APIs are introduced.
+<br/>
+For readers who don't know JMS, this chapter offers a clear and concise overview. It is written in an easily understandable way which helps to get you a kickstart on the topic. If you have already worked with JMS, then this chapter offers nothing new, but it can be a valuable repetition.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 2: Introduction to Apache ActiveMQ</strong>
+<br/>
+This chapter first gives a theoretical overview over ActiveMQ: What is it and why, when and where should you use it. Then the chapter explains how to set up a basic installation of ActiveMQ and how to run the basic examples. Finally some usecases are explained, that will be used as reference throughout the rest of the book.
+<br/>
+This chapter is very hands on. Don't expect any grand insights. But it provides a quick and reliable way to get ActiveMQ up and running.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 3: Understanding Connectors</strong>
+<br/>
+This chapter takes a profound look at connectors, which provide the core mechanism for communication in JMS. The chapter explains the different configuration options that are available and the advantages and disadvantages of them. The provided information is quite detailed and extensive. There are a lot of code examples that illustrate the different configuration options.
+<br/>
+While this chapter is quite low-level (meaning it deals a lot with networks protocols) it also provides the base concepts for different broker topologies, which is one of the major design decisions when creating a messaging system.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 4: Message Persistence</strong>
+<br/>
+At the beginning of this chapter there is a short theoretical explanation about the differences concerning storage for Queues and Topics. The rest of the chapter is again a hands on. It explains the different storage options that are provided by ActiveMQ and discusses their advantages and disadvantages. Again a lot of code examples illustrate how to configure the different persistence options.
+<br/>
+This chapter gives you a good overview and is useful a reference when you have to evaluate and set up ActiveMQ in a concrete project.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 5: Securing ActiveMQ</strong>
+<br/>
+This is rather short chapter that discusses the security mechanisms that are provided by ActiveMQ and shows different strategies for authentication and authorization with concrete examples. The chapter is a pragmatic introduction to the topic, don't expect anything fancy about security concepts or how to secure applications.
+<br/>
+<br/>
+<br/>
+
+
+<strong>Chapter 6: Creating Java Applications With ActiveMQ</strong>
+<br/>
+Up to this chapter the book dicusses ActiveMQ as an infrastructure that could be run standalone or embedded. This chapter bow shows how to integrate ActiveMQ in a Java application. Two ways of integration are shown: basic Java integration and Spring integration.
+<br/>
+This chapter is quite short. I was a bit disappointed, because I hoped for some information or guidelines about the architecture and design of applications using ActiveMQ (or more generally MOM/JMS). This kind of high-level overview is not part of this chapter. The chapter simply explains how to instantiate, configure and get running ActiveMQ with plain Java or with Spring.
+<br/>
+<br/>
+<br/>
+
+
+
+<strong>Chapter 8: Connecting to ActiveMQ With Other Languages</strong>
+<br/>
+This chapter is mainly a big collections of examples how to use ActiveMQ with other languages/platforms. In this use-case ActiveMQ is set-up as a MOM-service and different clients are used as message producers and consumers.
+<br/>
+There are examples for the scripting languages Ruby, Python, PHP and Perl. Those are using the text-oriented STOMP protocol and some third-party APIs for the respective language.
+<br/>
+The examples for .NET and C++ use the NMS resp. CMS APIs that are also provided by the ActiveMQ project.
+<br/>
+Finally there are examles for the REST and Ajax interfaces that ActiveMQ provides out of the box.
+<br/>
+The chapter is a good overview and tutorial to get up working examples with the different clients. However the examples are very simplistic, and I guess for a real world project some more information will be necessary very soon.
+<br/>
+<br/>
+<br/>
+
+<strong>Chapter 12: Tuning ActiveMQ For Performance</strong>
+<br/>
+This chapter shows and explains some different factors that can influence performance in a system based on ActiveMQ. Different options and configurations are discussed and a complete example is shown.
+<br/>
+The discussed options reach from low-level network/protocol configurations (like cacheSize, tcpDelay ...) over application-level design-options (like embedding a broker in the same VM) to system-level considerations (like transactions or flow-control from producer to consumer).
+<br/>
+In my opinion that is the most interesting chapter of the book, since it treats some topics that have an influence on the architecture and the design of a system that is based on ActiveMQ (or more generally MOM/JMS).
+<br/>
+<br/>
+<br/>
+
+<strong>Chapter 14: Administering and Monitoring ActiveMQ</strong>
+<br/>
+This chapter shows several ways how to monitor and manage ActiveMQ at runtime. This starts with discussing the possibilities to get or set information via JMX and shows how to get monitoring information by special JMS-Messages ("Advisory Messages"). Then several tools for monitoring/managing are shown: command-line, JConsole, and WebConsole. Especially cool is the possibility to use a XMMP-chat-client instead of the commandline. Finally logging configurations for client and broker are discussed.
+<br/>
+Again, this is a very hand-on chapter. The different options are explained in great detail with the necessary code-examples and screenshots.
+
+<br/>
+<br/>
+<br/>
+
+<strong>Conclusion:</strong>
+<br/>
+This is a very solid hands-on book, that lets you smoothly dive into the details of ActiveMQ. However do not expect an epiphany while reading the book.
+<br/>
+<br/>
+This is the perfect book if you have one of the following goals:
+
+<list>
+<li>
+Get to know the features of ActiveMQ
+</li>
+<li>
+Get ActiveMQ up and running
+</li>
+<li>
+Get a reference and explanations for the most important configurations and options that ActiveMQ offers
+</li>
+<li>
+Get guidance for advanced usage scenarios when using ActiveMQ 
+</li>
+</list>
+<br/>
+
+However do not expect the following from the book:
+
+<list>
+<li>
+Learning how to architect and design applications/systems that use ActiveMQ (or generally MOM/JMS)
+</li>
+<li>
+How to evaluate if ActiveMQ is the right technology for a new system
+</li>
+<li>
+For me the book did not contain any real eye-openers nor did I feel that it did widen my horizon (unlike other Manning titles like <a href="http://manning.com/gsmith/">Grails in Action</a> or <a href="http://www.manning.com/bibeault2/">jQuery in Action</a>)
+</li>
+<li>
+There is not much to learn if you are just a plain "user" of JMS and it is not your task to run the JMS infrastucture.
+</li> 
+</list>
+<br/>
+
+If the above criteria matches your needs, I can fully recommend <a href="http://www.manning.com/snyder/"><strong>ActiveMQ in Action</strong></a>. 
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

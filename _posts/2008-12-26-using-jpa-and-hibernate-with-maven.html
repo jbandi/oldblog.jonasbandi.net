@@ -1,0 +1,111 @@
+---
+layout: post
+title: Using JPA and Hibernate with Maven
+date: '2008-12-26T01:03:00.001+01:00'
+author: Jonas Bandi
+tags:
+- object-relational mapping
+- programming
+- hibernate
+- javablog
+- java
+modified_time: '2008-12-26T01:11:43.786+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-7844502017703505172
+blogger_orig_url: http://blog.jonasbandi.net/2008/12/using-jpa-and-hibernate-with-maven.html
+---
+
+I have been fighting a bit to set up a Maven project with JPA and Hibernate as persistence provider.
+<br/>
+<br/>
+The final solution is very simple. But when you get on a wrong track at the beginning, you end up in a terrible maze...
+<br/>
+<br/>
+So here the most important hint: 
+<br/>
+<strong>The JBoss repository</strong> (<a href="http://repository.jboss.org/maven2/">http://repository.jboss.org/maven2/</a>) <strong>is quite a mess.</strong> 
+<br/>
+In the root of the repository you find directories (matching Maven GroupIds) for <code style="border: solid 1px silver; background-color:LightGray">hibernate</code> , <code style="border: solid 1px silver; background-color:LightGray">hibernate-annotations</code> and <code style="border: solid 1px silver; background-color:LightGray">hibernate-entitymanager</code>.
+<br/>
+
+<strong>Do not use them!</strong>
+<br/>
+They are outdated, do not provide current versions and most annoying do not declare their dependencies... so your pom will get a mess.
+<br/>
+<br/>
+<strong>All dependencies should use the GroupId <code style="border: solid 1px silver; background-color:LightGray">org.hibernate</code></strong> (browse into the <code style="border: solid 1px silver; background-color:LightGray">org</code> directory in the Maven repository).
+<br/>
+<br/>
+
+So here is my working pom.xml:
+
+<div style="border:solid 1px silver;width:410px;overflow:auto">
+<div style="width:1100px;"> 
+<pre name="code" class="xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;domain&lt;/groupId&gt;
+  &lt;artifactId&gt;cascaded-locking&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;cascaded-locking&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+  &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.0.2&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;source&gt;1.5&lt;/source&gt;
+                    &lt;target&gt;1.5&lt;/target&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+  &lt;/build&gt;
+    
+  &lt;dependencies&gt;
+	
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+		&lt;artifactId&gt;hibernate-entitymanager&lt;/artifactId&gt;
+		&lt;version&gt;3.4.0.GA&lt;/version&gt;
+	&lt;/dependency&gt;
+	
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+        &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+        &lt;version&gt;1.5.2&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.apache.derby&lt;/groupId&gt;
+		&lt;artifactId&gt;derby&lt;/artifactId&gt;
+		&lt;version&gt;10.3.2.1&lt;/version&gt;
+		&lt;scope&gt;test&lt;/scope&gt;
+	&lt;/dependency&gt;
+	
+  &lt;/dependencies&gt;
+  
+  &lt;repositories&gt;
+      &lt;repository&gt;
+          &lt;id&gt;jboss&lt;/id&gt;
+          &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt;
+      &lt;/repository&gt;
+  &lt;/repositories&gt;
+
+&lt;/project&gt;
+
+</pre>
+</div>
+</div>
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

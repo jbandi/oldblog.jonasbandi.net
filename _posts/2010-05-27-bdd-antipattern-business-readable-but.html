@@ -1,0 +1,15 @@
+---
+layout: post
+title: 'BDD Antipattern: Business readable but no business involved'
+date: '2010-05-27T23:04:00.001+02:00'
+author: Jonas Bandi
+tags:
+- BDD
+- specflow
+modified_time: '2010-05-27T23:36:17.016+02:00'
+thumbnail: http://lh3.ggpht.com/_X3kaawac_g4/S_7eXU6rXLI/AAAAAAAAA0k/INP7DpYzQxU/s72-c/danger.will.robinson.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-951373309039119054
+blogger_orig_url: http://blog.jonasbandi.net/2010/05/bdd-antipattern-business-readable-but.html
+---
+
+<p><img style="float: right; margin-left: 5px; margin-bottom: 5px;" src="http://lh3.ggpht.com/_X3kaawac_g4/S_7eXU6rXLI/AAAAAAAAA0k/INP7DpYzQxU/danger.will.robinson.jpg?imgmax=800" border="0" alt="danger.will.robinson.jpg" width="200" height="253" /></p><p><a href="http://twitter.com/marcusoftnet/">Marcus</a> blogged about <a href="http://www.marcusoft.net/2010/05/using-atdd-in-conversion-project.html">using ATDD in projects of rewriting legacy applications</a>. He describes the problem of missing business involvement in those kind of projects.</p><p>He describes a possible approach for a project like this and a technical setup how to bind formalized examples (scenarios) to the new application.</p><p>What I miss in his explanations is any advice how to get from the legacy application to the formalized examples (scenarios). In my experience that is a very important aspect and I am afraid that many developers ignore or underestimate the importance of this for the whole BDD process!</p><p>Finding the relevant examples, formalize them in a maintainable way that can drive the development process and formulating them in a business readable language is is a lot of work and has to be justified and has also to be made transparent to stakeholders.</p><p>I would ask: Is the business involved in this process at all?﻿ Is any stakeholder except the developers interested in those examples at all?</p><p>If the answer to those questions is '<em>no</em>', I am not sure if it makes sense to take the effort to go for scenarios in a business readable format.﻿ (note that I still think formalized examples <em>do</em> make sense, but not in a business readable format)</p><p>The real value of  business readable examples lies in the discussions between stakeholders they provide a base for. They should be the baseline for prioritizing and re-thinking the functionality of the application. If there is no chance of involving business, they loose pretty much all of their value.</p><p><strong>Business readable examples have to be an artifact that business cares about!</strong> Else there is the imminent risk that the whole BDD effort degrades to a petty effort of over-eager developers (I have been one of those, believe me).﻿</p>

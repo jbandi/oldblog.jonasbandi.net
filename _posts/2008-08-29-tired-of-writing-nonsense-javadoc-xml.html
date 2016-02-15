@@ -1,0 +1,57 @@
+---
+layout: post
+title: Tired of writing nonsense javadoc / xml-comments?
+date: '2008-08-29T18:08:00.001+02:00'
+author: Jonas Bandi
+tags:
+- work
+- programming
+modified_time: '2008-08-29T18:11:46.505+02:00'
+thumbnail: http://lh5.ggpht.com/jonas.bandi/SLgeiAK449I/AAAAAAAAAR0/b6C5wFlDcdQ/s72-c/images.jpg?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-7885052627753128616
+blogger_orig_url: http://blog.jonasbandi.net/2008/08/tired-of-writing-nonsense-javadoc-xml.html
+---
+
+<blockquote style="font-size:14px">Getting Real is about skipping all the stuff that represents real and actually building the real thing.</blockquote>
+<p align="right">
+-- <a href="http://gettingreal.37signals.com/">37signals</a>
+</p>
+I can't make up my mind if writing javadoc (or xml-comments in .NET) is falling in the above category ... but often I have the feeling it is preventing me from getting real.
+<br/>
+<br/>
+Very often it just doesn't generate any additional value. Usually JSF-Backing-Beans are a good example for this: In most cases the comment does add exactly nothing compared to the property name...
+
+
+<pre class="java:nogutter" name="code" >
+
+/**
+* Get the name
+* @return name
+*/
+public String getName(){
+...
+}
+</pre>
+
+People from the <a href="http://store.northshoreshirts.com/deofredet.html">department of redundancy department</a> would be delighted ... the <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a>-gang just left the building ... 
+<br/>
+<br/><img style="margin: 10px 10px 10px 0px" src="http://lh5.ggpht.com/jonas.bandi/SLgeiAK449I/AAAAAAAAAR0/b6C5wFlDcdQ/images.jpg?imgmax=800" alt="images.jpg" border="0" width="123" height="123" align="left" />
+
+I do not want to dispute that <em>sometimes</em> comments are absolutely necessary. But I don't think that it is a good solution to rigorously require comments on everything, just to catch the few spots that need them... 
+<br/>
+<br/>
+... thats like requiring that everybody wears a helmet at work!
+<br/>
+<br/>
+Nevertheless in most projects this is the case... as a consequence the quality of the comments is mostly bad and nobody reads them... 
+<br/>
+But writing them costs many hours and even can give reason for passing or failing a milestone including the the whole traffic on the escalation-ladder ... bummer!
+<br/>
+<br/>
+At least there are some tools that can outomate this nonsense (even though this results in an excuse for <em>not getting real</em>!):
+<list>
+<li>
+<a href="http://jautodoc.sourceforge.net/index.html">JAutodoc</a> for Eclipse</li>
+<li>
+<a href="http://www.roland-weigelt.de/ghostdoc/">GhostDoc</a> for Visual Studio</li>
+</list>

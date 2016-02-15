@@ -1,0 +1,35 @@
+---
+layout: post
+title: IntelliJ IDEA 8 on OSX crashes on 64-bit JVM
+date: '2008-11-19T17:55:00.001+01:00'
+author: Jonas Bandi
+tags:
+- programming
+- java
+modified_time: '2008-11-19T17:57:55.885+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-522367799578621739
+blogger_orig_url: http://blog.jonasbandi.net/2008/11/intellij-idea-8-on-osx-crashes-on-64.html
+---
+
+<a href="http://www.jetbrains.com/idea/features/java_ejb.html" style="float:right; display:block; background:#0D3A9E url(http://www.jetbrains.com/idea/opensource/img/banners/idea210x60_blue.gif) no-repeat 0 0; border:solid 1px #0D3A9E; margin:0;padding:0;text-decoration:none;text-indent:0;letter-spacing:-0.001em; width:208px; height:58px" alt="Smart Java Beans 3.0 Ready IDE for Error Free EJB Development" title="Smart Java Beans 3.0 Ready IDE for Error Free EJB Development"><span style="margin:33px 0 0 8px;padding:0 0 2px 0; line-height:11px;font-size:10px;cursor:pointer;  background-image:none;border:0;display:block;width:200px; color:#ACC4F9; font-family:trebuchet ms,arial,sans-serif;">Smart Java Beans 3.0 Ready IDE <br/>for Error Free EJB Development</span></a>
+
+I am playing around with <a href="http://www.jetbrains.com/idea/index.html">IntelliJ IDEA 8</a>.
+<br/>
+<br/>
+The IDE kept crashing on me after building a project.
+<br/>
+<br/>
+The problem did not occur any more after configuring the default JVM to J2SE 5.0 32-bit (with Java Preferences).
+<br/>
+For some reasons I had changed that to Java SE 6 64-bit ...
+<br/>
+<br/>
+I am using:
+OSX Leopard 10.5.5 and IntelliJ IDEA IDEA 8 build #9013
+<br/>
+<br/>
+This could be the same problem as reported <a href="http://www.jetbrains.net/jira/browse/IDEA-20542">here</a>. But I did not test the suggested solution (delete growl.jar).
+<br/>
+<div style="align:right; font-size: 10px; clear:right; ">
+<br/>
+<p><a  href="http://twitter.com/jbandi"><img style="margin: 0px 0px 0px 0px" src="http://www.google.com/s2/favicons?domain=twitter.com" alt="http://www.google.com/s2/favicons?domain=twitter.com" border="0" align="left" height="13px"/> follow me on twitter, I need some friends :-)</a></p></div>

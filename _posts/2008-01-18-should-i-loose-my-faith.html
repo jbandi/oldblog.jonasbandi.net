@@ -1,0 +1,24 @@
+---
+layout: post
+title: Faith no More?
+date: '2008-01-18T21:36:00.001+01:00'
+author: Jonas Bandi
+tags: 
+modified_time: '2008-01-19T01:42:41.898+01:00'
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8841133440193763570
+blogger_orig_url: http://blog.jonasbandi.net/2008/01/should-i-loose-my-faith.html
+---
+
+<p>Microsoft has launched the .NET Reference Source project. They provide the source code of some parts of the .NET framework for reference and debugging for everybody. You can read more about it <a href="http://blogs.msdn.com/sburke/archive/2008/01/16/configuring-visual-studio-to-debug-net-framework-source-code.aspx#faq">here</a>.</p>  <p>With a lot of enthusiasm I went to experiment with it ...</p>  <p>... and about the first lines of code that crossed my way were the following ones: </p>  <pre class="code" style="border-right: silver 0.01mm solid; border-top: silver 0.01mm solid; font-size: 80%; border-left: silver 0.01mm solid; line-height: 120%; border-bottom: silver 0.01mm solid" width="85%"><span style="color: blue">try </span>{
+    <span style="color: blue">using</span>( Graphics graphics = Graphics.FromHwndInternal(<span style="color: #2b91af">IntPtr</span>.Zero <span style="color: green">/*screen*/</span>) ) { 
+        <span style="color: blue">string </span>magicString = <span style="color: #a31515">&quot;The quick brown fox jumped over the lazy dog.&quot;</span>;
+        <span style="color: blue">double </span>magicNumber = 44.549996948242189; <span style="color: green">// chosen for compatibility with older versions of windows forms, but approximately magicString.Length
+        </span><span style="color: blue">float </span>stringWidth = graphics.MeasureString(magicString, font).Width;
+        width = (<span style="color: blue">float</span>) (stringWidth / magicNumber); 
+    }
+} 
+<span style="color: blue">catch </span>{ <span style="color: green">// We may get an bogus OutOfMemoryException 
+        // (which is a critical exception - according to ClientUtils.IsCriticalException())
+        // from GDI+. So we can't use ClientUtils.IsCriticalException here and rethrow. 
+</span>}</pre>
+That is productive code from System.Windows.Forms.Form.

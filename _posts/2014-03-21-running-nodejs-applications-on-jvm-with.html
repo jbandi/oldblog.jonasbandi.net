@@ -1,0 +1,45 @@
+---
+layout: post
+title: Running Node.js applications on the JVM with Nashorn and Java 8
+date: '2014-03-21T00:12:00.001+01:00'
+author: Jonas Bandi
+tags:
+- javascript
+- nashorn
+- java
+modified_time: '2014-03-28T22:52:22.411+01:00'
+thumbnail: http://lh3.ggpht.com/-fPyCmCGVfDk/Uyt12CZrZNI/AAAAAAAABrA/PQArzqaRWu4/s72-c/jjs.png?imgmax=800
+blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-8985628325796380666
+blogger_orig_url: http://blog.jonasbandi.net/2014/03/running-nodejs-applications-on-jvm-with.html
+---
+
+<img alt="Jjs" border="0" src="http://lh3.ggpht.com/-fPyCmCGVfDk/Uyt12CZrZNI/AAAAAAAABrA/PQArzqaRWu4/jjs.png?imgmax=800" height="81" style="border: none; box-shadow: none; float: left; margin-bottom: 10px; margin-right: 10px;" title="jjs.png" width="81" />
+<br />
+I am naively playing around with <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/index.html">Nashorn</a>. <a href="http://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/index.html">Nashorn</a> is the new JavaScript Runtime that comes with Java 8 and runs on the JVM.<br />
+<br />
+In this post I show how to run simple <a href="http://nodejs.org/">Node.js</a> applications with Nashorn on the JVM.<br />
+<br />
+<a href="https://avatar-js.java.net/">Avatar.js</a> is a project to bring the node programming model, APIs and module ecosystem to the Java platform. Unfortunately Avatar.js does not officially provide a binary distribution and the build process looks quite intricate (involving Python and C++).<br />
+<br />
+There is also <a href="https://avatar.java.net/">Project Avatar</a>, an upcoming web-platform by Oracle. Project Avatar builds upon <a href="https://avatar-js.java.net/">Avatar.js</a>.<br />
+<br />
+By reverse-engineering Project Avatar I found the necessary artefacts of Avatar.js in the java.net Maven repository. These artefacts can be used to run Node applications with Avatar.js without having to build Avatar.js yourself.<br />
+<br />
+The following steps show how to run a simple Node.js web application on OSX. The steps should be very similar for Linux or Windows.<br />
+<ol>
+<li>Download <code>avatar-js.jar</code> from the java.net Maven Repo.<br />Current version is here: <a href="https://maven.java.net/content/repositories/public/com/oracle/avatar-js/0.10.25-SNAPSHOT/">https://maven.java.net/content/repositories/public/com/oracle/avatar-js/0.10.25-SNAPSHOT/</a><br />Example file: avatar-js-0.10.25-20140313.063039-43.jar&nbsp;</li>
+<br />
+<li>Download the native library <code>avatar-js.dylib</code> from the java.net Maven Repo.<br />Current version is here: <a href="https://maven.java.net/content/repositories/public/com/oracle/libavatar-js-macosx-x64/0.10.25-SNAPSHOT/">https://maven.java.net/content/repositories/public/com/oracle/libavatar-js-macosx-x64/0.10.25-SNAPSHOT/</a><br />Example file: libavatar-js-macosx-x64-0.10.25-20140312.062209-35.dylib<br />For Linux you would download the corresponding <code>.so</code> file from <a href="https://maven.java.net/content/repositories/public/com/oracle/libavatar-js-linux-x64/0.10.25-SNAPSHOT/">../libavatar-js-linux-x64/0.10.25-SNAPSHOT/</a><br />For Windows you would download the corresponding <code>.dll</code> file from&nbsp;<a href="https://maven.java.net/content/repositories/public/com/oracle/libavatar-js-win-x64/0.10.25-SNAPSHOT/">../libavatar-js-win-x64/0.10.25-SNAPSHOT/</a></li>
+<br />
+<li>Rename the native library to <code>avatar-js.dylib</code> and rename the jar to <code>avatar-js.jar</code> and put both in a directory called <code>dist</code></li>
+<br />
+<li>Create a simple Node.js app in the a file called <code>app.js</code>:</li>
+<br />
+
+
+<script src="https://gist.github.com/jbandi/9675493.js" type="text/javascript"></script>
+<br />
+<li>Run the command: <br /> <code>java -Djava.library.path=dist -jar dist/avatar-js.jar app.js</code></li>
+The output should be:<br /> <code>Server running at http://127.0.0.1:8000/</code> <br /> <br />
+<li>Navigate to&nbsp;<a href="http://localhost:8000/">http://localhost:8000/</a></li>
+</ol>
