@@ -13,7 +13,7 @@ layout: default
 
     {% if page.blogger_orig_url %}
     <br/>
-    This post was originally posted <a class="post-link" href="{{ post.blogger_orig_url | replace:'blog.jonasbandi','blog3.jonasbandi' }}">on my old blog</a>.
+    This post was originally posted <a class="post-link" href="{{page.blogger_orig_url | replace:'blog.jonasbandi','blog3.jonasbandi'}}">on my old blog</a>.
     {% endif %}
   </p>
 
