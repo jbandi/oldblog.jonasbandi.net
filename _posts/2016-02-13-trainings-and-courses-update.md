@@ -8,8 +8,6 @@ tags:
 - javascript
 modified_time: '2016-02-14T23:15:55.223+01:00'
 thumbnail: https://lh3.googleusercontent.com/-objLJIOpVyI/Vr9jAyaXRmI/AAAAAAAADII/RqrLf34B_Dc/s72-c-Ic42/ES6BabelWebPack.png
-blogger_id: tag:blogger.com,1999:blog-5763764290649132593.post-6711985610169863118
-blogger_orig_url: http://blog.jonasbandi.net/2016/02/trainings-and-courses-update.html
 ---
 
 The first month in 2016 was very busy in regard to [my trainings](http://www.ivorycode.com/#schulung). I updated my courses to reflect the latest trends in web development:

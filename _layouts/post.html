@@ -8,8 +8,16 @@ layout: default
       </div>
   {% endif %}
   <h1 class="postTitle">{{ page.title }}</h1>
-  <p class="meta">{{ page.date | date: '%B %d, %Y' }} | <span class="time">{{ page.content | number_of_words | divided_by:180 }}</span> Minute Read</p>
-  
+  <p class="meta">
+    {{ page.date | date: '%B %d, %Y' }} | <span class="time">{{ page.content | number_of_words | divided_by:180 }}</span> Minute Read
+
+    {% if page.blogger_orig_url %}
+    <br/>
+    This post was originally posted <a class="post-link" href="{{ post.blogger_orig_url | replace:'blog.jonasbandi','blog3.jonasbandi' }}">on my old blog</a>.
+    {% endif %}
+  </p>
+
+
   {{ content }}
 
   <!-- POST NAVIGATION -->
