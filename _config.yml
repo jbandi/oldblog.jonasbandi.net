@@ -1,7 +1,7 @@
 title: Reality-Loop
 description: Blog of Jonas Bandi
 
-url: http://blog.jonasbandi.net/
+url: http://blog.jonasbandi.net
 baseurl: ""
 paginate_path: "blog/page:num/"
 #permalink: blog/:title/
