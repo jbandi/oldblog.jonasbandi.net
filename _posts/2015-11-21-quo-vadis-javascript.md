@@ -15,28 +15,26 @@ blogger_orig_url: http://blog.jonasbandi.net/2015/11/quo-vadis-javascript.html
 
 JavaScript went through a *makeover extraordinaire* with ES2015 which was [finalized this summer](http://www.ecma-international.org/ecma-262/6.0/).
 
-This is not you grandma's JavaScript any more:
+This is not your grandma's JavaScript any more:
 
-~~~javascript
-
-import React from 'react';
-
-export default class Catalog extends React.Component {
-    constructor(){
-        super();
-        ...
+```javascript
+    import React from 'react';
+    
+    export default class Catalog extends React.Component {
+        constructor(){
+            super();
+            ...
+        }
+        buy(product) {
+            ...
+        }
+        render() {
+            ...
+        }
     }
-    buy(product) {
-        ...
-    }
-    render() {
-        ...
-    }
-}
+```
 
-~~~
-
-But  it seems this was just the beginning... the metamorphosis is far from done for JavaScript.
+But it seems this was just the beginning... the metamorphosis is far from done for JavaScript.
 
 For future versions of JavaScript there are many [proposed new language features](https://github.com/tc39/ecma262). Among the most outstanding proposals for me are [decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md), [async functions](https://github.com/tc39/ecmascript-asyncawait) and [private state](https://github.com/wycats/javascript-private-state)
 
@@ -44,56 +42,48 @@ Some years ago nobody would have believed that the following snippets are (will 
 
 **Decorators:**
 
-~~~javascript
-
-@createStore(alt)
-@datasource(CatalogSource)
-export default class CatalogStore {
+	@createStore(alt)
+	@datasource(CatalogSource)
+	export default class CatalogStore {
     
-    ...
+    	...
     
-    @bind(CatalogActions.searchLoaded)
-    onSearchLoaded() {
-        ...
-    }
-}
+    	@bind(CatalogActions.searchLoaded)
+    	onSearchLoaded() {
+        	...
+    	}
+	}
 
-~~~
+
 
 **Async Functions:**
 
-~~~javascript
+    async function fetchJson(url) {
+        try {
+            let request = await fetch(url);
+            let text = await request.text();
+            return JSON.parse(text);
+        }
+        catch (error) {
+            console.log(`ERROR: ${error.stack}`);
+        }
+    } 
 
-async function fetchJson(url) {
-    try {
-        let request = await fetch(url);
-        let text = await request.text();
-        return JSON.parse(text);
-    }
-    catch (error) {
-        console.log(`ERROR: ${error.stack}`);
-    }
-} 
-
-~~~
 
 **Private State:**
 
-~~~javascript
+    class DataObj {
+      private #data1;
+    
+      constructor(d) {
+        #data1 = d; 
+      }
+    
+      get data() {
+        return #data1;
+      }
+    }
 
-class DataObj {
-  private #data1;
-
-  constructor(d) {
-    #data1 = d; 
-  }
-
-  get data() {
-    return #data1;
-  }
-}
-
-~~~
 
 I think its now safe to say that Silverlight and Flex were failed attempts to bring other languages than JavaScript into browsers ... but looking at the snippets above, it might sure look like some C#/Java infiltration squad sneaked into the Ecma building ... 
 
