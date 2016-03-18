@@ -18,7 +18,7 @@ body {
 	overflow-x: hidden;
 
 	p , ul {
-		margin: 0 0 2rem;
+		//margin: 0 0 2rem;
 	}
 }
 
@@ -315,6 +315,7 @@ POST STYLING
 		display: block;
 		margin: auto;
 		max-width: 600px;
+		padding-bottom: 15px;
 	}
 
 	.highlight {

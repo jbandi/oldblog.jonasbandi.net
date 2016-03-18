@@ -5,6 +5,14 @@
     <meta name="description" content="">
     <title>{{ page.title }}</title>
 
+    <meta content="{{ page.url | prepend: site.baseurl | prepend: site.url }}" property="og:url">
+
+    {% if post.main_image %}
+    <meta content="{{ page.main_image}}" property="og:image">
+    {% else %}
+    <meta content="{{ site.post_default_image}}" property="og:image">
+    {% endif %}
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ "/assets/img/favicon.ico" | prepend: site.baseurl }}" />
 
