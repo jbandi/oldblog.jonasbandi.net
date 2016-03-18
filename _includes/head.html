@@ -7,10 +7,20 @@
 
     <meta content="{{ page.url | prepend: site.baseurl | prepend: site.url }}" property="og:url">
 
+
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="@jbandi" name="twitter:site"/>
+    <meta content="@jbandi" name="twitter:creator"/>
+    <meta content="{{ page.title }}" name="twitter:title"/>
+    <meta content="{{ page.content | strip_html | strip_newlines | truncate: 250 }}" name="twitter:description"/>
+
+
     {% if post.main_image %}
-    <meta content="{{ page.main_image}}" property="og:image">
+    <meta content="{{ page.main_image }}" name="twitter:image"/>
+    <meta content="{{ page.main_image }}" property="og:image">
     {% else %}
-    <meta content="{{ site.post_default_image}}" property="og:image">
+    <meta content="{{ site.post_default_image }}" name="twitter:image"/>
+    <meta content="{{ site.post_default_image }}" property="og:image">
     {% endif %}
 
     <!-- Favicon -->
