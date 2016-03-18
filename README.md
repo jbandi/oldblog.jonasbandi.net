@@ -1,6 +1,6 @@
 Jekyll theme for my blog based on [Long Haul](http://github.com/brianmaierjr/long-haul)
 
-####[View Demo](...)
+####[View My Blog](http://blog.jonasbandi.net/)
 
 ## Features
 
@@ -24,7 +24,7 @@ Jekyll theme for my blog based on [Long Haul](http://github.com/brianmaierjr/lon
 3. Clone it
 4. Install susy `gem install susy` 
 5. Install normalize `gem install normalize-scss`
-6. Run Jekyll `jekyll serve -w`
+6. Run Jekyll `jekyll serve`
 7. Run `compass watch`
 8. Customize!
 
