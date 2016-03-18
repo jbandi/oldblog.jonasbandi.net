@@ -188,8 +188,17 @@ PAGE STYLES
 
 .content {
 	padding-top: 1em;
+	display: flex;
+	justify-content:center;
 }
 
+#left-sidebar {
+	display: none;
+}
+
+#right-sidebar {
+	display: none;
+}
 
 /***************
 HEADER STYLING
@@ -302,9 +311,10 @@ POST STYLING
 		margin-bottom: 2rem;
 	}
 
-	.jb-main-img {
+	.jb-main-img, .jb-main-img-sm, .jb-main-img-xs {
 		display: block;
 		margin: auto;
+		max-width: 600px;
 	}
 
 	.highlight {

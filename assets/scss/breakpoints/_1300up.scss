@@ -1,0 +1,29 @@
+
+
+#left-sidebar, #right-sidebar{
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	padding: 10px;
+	background: whiteSmoke;
+	font-size: 0.7em;
+	font-family: Helvetica, Roboto, 'Segoe UI', Calibri, sans-serif;
+	line-height: 1.5em;
+
+	.sidebar-section {
+		padding-bottom: 3em;
+	}
+
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.2em;
+		text-align: center;
+		padding:0 0 1.5em 0;
+		margin:0;
+	}
+	p {
+		margin: 5px 0 5px 0;
+	}
+}
+
+

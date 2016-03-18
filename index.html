@@ -16,6 +16,10 @@ title: Reality Loop
         <a href="{{ post.url | prepend: site.baseurl }}">
           <img class="thumbnail" src="{{post.thumbnail}}">
         </a>
+        {% else %}
+        <a href="{{ post.url | prepend: site.baseurl }}">
+          <img class="thumbnail" src="{{site.post_default_thumbnail}}">
+        </a>
         {% endif %}
 
         <p class="description">{% if post.description %}{{ post.description | strip_html | strip_newlines | truncate: 250 }}{% else %}{{ post.content | replace:'</h2>','</h2>.' | replace:'</h3>','</h3>.' | replace:'</h4>','</h4>.'| strip_html | truncate: 250 }}{% endif %}</p>

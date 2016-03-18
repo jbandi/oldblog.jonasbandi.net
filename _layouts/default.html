@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 
 {% include head.html %}
 
 <body>
 
-   {% include header.html %}
+{% include header.html %}
 
-   <div class="content">
-      <div class="container">
-         {{ content }}
-      </div>
-   </div><!-- end .content -->
+<div class="content">
 
-   {% include footer.html %}
-   {% include scripts.html %}
+    <div class="container" style="order:2">
+        {{ content }}
+    </div>
+
+    <div id="left-sidebar" style="order:1">
+        {% include sidebar_left.html %}
+    </div>
+
+    <div id="right-sidebar" style="order:3">
+        <a class="twitter-timeline" href="https://twitter.com/jbandi"
+           data-widget-id="708033907430703104"
+           data-tweet-limit="6"
+           data-width="180">
+        </a>
+    </div>
+
+
+</div><!-- end .content -->
+
+{% include footer.html %}
+{% include scripts.html %}
 
 </body>
 

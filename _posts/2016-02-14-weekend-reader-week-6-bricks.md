@@ -69,11 +69,8 @@ If you like it, here are more scam baiting stories: [419 Eater](http://www.419ea
 ### Tweets of the week:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="da" dir="ltr">Optional Type System <a href="https://t.co/R5ZS5Xx9Jm">pic.twitter.com/R5ZS5Xx9Jm</a></p>&mdash; Mario Fusco (@mariofusco) <a href="https://twitter.com/mariofusco/status/696296466831298560">February 7, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">2 unit tests. 0 integration tests <a href="https://t.co/V2Z9F4G1sJ">pic.twitter.com/V2Z9F4G1sJ</a></p>&mdash; Practical Developer (@ThePracticalDev) <a href="https://twitter.com/ThePracticalDev/status/687672086152753152">January 14, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">A guide to software development job advertisements (via <a href="https://twitter.com/antichason">@antichason</a>) <a href="https://t.co/Kvr6NxmGqX">pic.twitter.com/Kvr6NxmGqX</a></p>&mdash; Annie Lin (@annielin) <a href="https://twitter.com/annielin/status/690103420800372737">January 21, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
