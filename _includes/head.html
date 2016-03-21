@@ -15,7 +15,7 @@
     <meta content="{{ page.content | strip_html | strip_newlines | truncate: 250 }}" name="twitter:description"/>
 
 
-    {% if post.main_image %}
+    {% if page.main_image %}
     <meta content="{{ page.main_image }}" name="twitter:image"/>
     <meta content="{{ page.main_image }}" property="og:image">
     {% else %}
