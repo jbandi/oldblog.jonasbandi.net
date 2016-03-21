@@ -21,7 +21,11 @@ layout: default
     </p>
 
     {% unless content contains 'img class="jb-main-img' %}
+        {% if page.main_image %}
+        <img src="{{page.main_image}}" class="jb-main-img">
+        {% else %}
         <img src="{{site.post_default_image}}" class="jb-main-img">
+        {% endif %}
     {% endunless %}
 
     {{ content }}
