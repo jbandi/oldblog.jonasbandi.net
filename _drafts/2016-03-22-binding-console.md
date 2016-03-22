@@ -41,7 +41,7 @@ In every modern browser:
 
 But in IE9:
 
-    >console.error instanceof Function 
+    > console.error instanceof Function 
     false 
 
 To get the construct working in IE9 you have to be slightly more verbose:
