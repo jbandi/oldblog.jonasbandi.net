@@ -20,7 +20,7 @@ layout: default
         {% endif %}
     </p>
 
-    {% unless content contains 'img class="jb-main-img' %}
+    {% unless content contains 'img class="jb-main-img' or page.blogger_orig_url%}
         {% if page.main_image %}
         <img src="{{page.main_image}}" class="jb-main-img">
         {% else %}
