@@ -250,7 +250,7 @@ POST STYLING
 
 	blockquote {
 		clear: both;
-		margin: 2.5em 0;
+		//margin: 2.5em 0;
 		padding: 0;
 		//line-height: 1.8;
 		position: relative;
@@ -261,27 +261,27 @@ POST STYLING
 			padding-top: 5px;
 		}
 
-		&:before {
-			content: "";
-			position: absolute;
-			top: -1.25em;
-			background: $grey;
-			display: block;
-			height: 2px;
-			width: 150px;
-			left: calc(50% - 75px);
-		}
-
-		&:after {
-			content: "";
-			position: absolute;
-			bottom: -1.25em;
-			background: $grey;
-			display: block;
-			height: 2px;
-			width: 150px;
-			left: calc(50% - 75px);
-		}
+		//&:before {
+		//	content: "";
+		//	position: absolute;
+		//	top: -1.25em;
+		//	background: $grey;
+		//	display: block;
+		//	height: 2px;
+		//	width: 150px;
+		//	left: calc(50% - 75px);
+		//}
+        //
+		//&:after {
+		//	content: "";
+		//	position: absolute;
+		//	bottom: -1.25em;
+		//	background: $grey;
+		//	display: block;
+		//	height: 2px;
+		//	width: 150px;
+		//	left: calc(50% - 75px);
+		//}
 	}
 
 	.meta {
