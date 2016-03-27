@@ -53,7 +53,7 @@ What would be the proper way to avoid such a scenario? Building an [enterprise n
 
 
 
-### Netflix JavaScript Talks - RxJS Version 5
+### [Netflix JavaScript Talks - RxJS Version 5](https://www.youtube.com/embed/COviCoUtwx4)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/COviCoUtwx4" frameborder="0" allowfullscreen></iframe>
 
