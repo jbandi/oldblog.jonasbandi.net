@@ -32,3 +32,20 @@ These are amazing numbers they fling around on Quora ... hard to believe for me 
 
 An interesting opinion on what skills matter today in programming ...
 
+
+### [Is there really a developer shortage?](https://www.quora.com/Is-there-really-a-developer-shortage)
+
+> In fact, cheating efficiently is what makes the best developers/programmers and the art of effective cheating is in fact engineering.
+
+An interesting opinion on what skills matter today in programming ...
+
+
+
+### [GitHub: Poster child no more?](http://uk.businessinsider.com/github-identity-crisis-2016-2)
+
+For a long time GitHub seemed the paradise for programmers:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/i-qpexZE8Yc?list=FL47T0bLSKg2AqYyimBC47fA" frameborder="0" allowfullscreen></iframe>
+
+But GitHub seems to suffer from [the curse of growing](http://uk.businessinsider.com/github-identity-crisis-2016-2):
+
+> As the company has grown to nearly 500 employees, it has tried to change cultures and impose an old-fashioned hierarchy.
