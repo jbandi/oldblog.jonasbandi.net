@@ -13,18 +13,16 @@ Each year Stackoverflow conducts a survey. This year, 56,033 coders in 173 count
 As in the previous two years [JavaScript and SQL are the most popular technologies](http://stackoverflow.com/research/developer-survey-2016#technology-most-popular-technologies)
 
 As I am living in Switzerland I found the [following chart](http://stackoverflow.com/research/developer-survey-2016#money-matters-more-in-some-countries) interesting: Developers in the US earn more than in Switzerland and salary matters more over there ...
-![enter image description here](https://i.imgur.com/TEj6gx4.png)
+![Stackoverflow](https://i.imgur.com/TEj6gx4.png)
 
 
-
-### About Salary
-
-#### [Am I wrong to think that programmers are overpaid?](https://www.quora.com/Am-I-wrong-to-think-that-programmers-are-overpaid)
+### [Am I wrong to think that programmers are overpaid?](https://www.quora.com/Am-I-wrong-to-think-that-programmers-are-overpaid)
 
 > Programmers are in effect the "necessary evil" in modern civilization
 > these days - loved and vilified.
 
-#### [Is it possible to earn 500k (all included) per year after working as a Software Engineer at Google for 6 years?](https://www.quora.com/Is-it-possible-to-earn-500k-all-included-per-year-after-working-as-a-Software-Engineer-at-Google-for-6-years)
+
+### [Is it possible to earn 500k (all included) per year after working as a Software Engineer at Google for 6 years?](https://www.quora.com/Is-it-possible-to-earn-500k-all-included-per-year-after-working-as-a-Software-Engineer-at-Google-for-6-years)
 
 These are amazing numbers they fling around on Quora ... hard to believe for me when comparing against the stackoverflow survey above.
 
