@@ -10,9 +10,9 @@ thumbnail: https://farm2.staticflickr.com/1513/26052025126_50bb990074_q.jpg
 
 Each year Stackoverflow conducts a survey. This year, 56,033 coders in 173 countries answered the call. The results are always interesting interesting.
 
-As in the previous two years [JavaScript and SQL are the most popular technologies](http://stackoverflow.com/research/developer-survey-2016#technology-most-popular-technologies)
+As in the previous two years [JavaScript and SQL are the most popular technologies](http://stackoverflow.com/research/developer-survey-2016#technology-most-popular-technologies).
 
-As I am living in Switzerland I found the [following chart](http://stackoverflow.com/research/developer-survey-2016#money-matters-more-in-some-countries) interesting: Developers in the US earn more than in Switzerland and salary matters more over there ...
+As I am living in Switzerland, I found the [following chart](http://stackoverflow.com/research/developer-survey-2016#money-matters-more-in-some-countries) interesting: Developers in the US earn more than in Switzerland and salary matters more over there ...
 ![stackoverflow](https://i.imgur.com/TEj6gx4.png)
 
 
