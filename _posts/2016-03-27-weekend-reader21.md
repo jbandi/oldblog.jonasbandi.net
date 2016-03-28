@@ -36,10 +36,10 @@ An interesting opinion on what skills matter today in programming ...
 
 ### [GitHub: Poster child no more?](http://uk.businessinsider.com/github-identity-crisis-2016-2)
 
-For a long time GitHub seemed the paradise for programmers:
+For a long time GitHub seemed the paradise for programmers, the following video from 2013 depicts the perfect company:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i-qpexZE8Yc?list=FL47T0bLSKg2AqYyimBC47fA" frameborder="0" allowfullscreen></iframe>
 
-But GitHub seems to suffer from [the curse of growing](http://uk.businessinsider.com/github-identity-crisis-2016-2):
+According to the linked article the culture at Github has changed a lot since 2013. GitHub seems to suffer from [the curse of growing](http://uk.businessinsider.com/github-identity-crisis-2016-2):
 
 > As the company has grown to nearly 500 employees, it has tried to change cultures and impose an old-fashioned hierarchy.
 
