@@ -65,7 +65,7 @@ This video gives a very good overview of concepts for asynchronous programming i
 
 > 10 years ago, Eclipse was such a huge force. Jetbrains was expected to die eventually. However they have managed to eclipse Eclipse.
 
-A nice analysis on what matters to make your product successfull in the long run ...
+A nice analysis on what matters to make your product successful in the long run ...
 
 
 
