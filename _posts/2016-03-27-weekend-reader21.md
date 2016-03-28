@@ -8,7 +8,7 @@ thumbnail: https://farm2.staticflickr.com/1513/26052025126_50bb990074_q.jpg
 
 ### [Stackoverflow Developer Survey Results 2016](http://stackoverflow.com/research/developer-survey-2016)
 
-Each year Stackoverflow conducts a survey. This year, 56,033 coders in 173 countries answered the call. The results are always interesting interesting.
+Each year Stackoverflow conducts a survey. This year, 56'033 coders in 173 countries answered the call. The results are always interesting interesting.
 
 As in the previous two years [JavaScript and SQL are the most popular technologies](http://stackoverflow.com/research/developer-survey-2016#technology-most-popular-technologies).
 
