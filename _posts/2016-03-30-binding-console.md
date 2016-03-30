@@ -40,11 +40,15 @@ In every modern browser:
 
     > console.error instanceof Function
     true
+    > typeof console.error
+	"function"
 
 But in IE9:
 
     > console.error instanceof Function 
-    false 
+    false
+    > typeof console.error
+    "object"
 
 To get the construct working in IE9 you have to be slightly more verbose:
 
