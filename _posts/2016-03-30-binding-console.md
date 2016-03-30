@@ -7,6 +7,8 @@ thumbnail: https://c2.staticflickr.com/2/1502/25338298114_7bedb619da_q.jpg
 
 One of the slightly strange constructs in JavaScript is to `bind` methods of `console`.
 
+	console.error.bind(console)
+
 You typically stumble upon that construct in tutorials using [SystemJS](https://github.com/systemjs/systemjs), like the official [Angular 2 quickstart](https://angular.io/docs/ts/latest/quickstart.html):
 
 ```html
@@ -23,7 +25,7 @@ You typically stumble upon that construct in tutorials using [SystemJS](https://
             .then(null, console.error.bind(console));
 </script>
 ```
-The construct passes the `error` method of `console` as a callback function. By passing the function to another function, it looses its context. When it is called later in time, the function is no longer a method of console, and does not work correctly.
+The construct passes the `error` method of `console` as a callback function. By passing the function to another function, it looses its context. When it is called later in time, the function is no longer a method of console, and does not work correctly (which I already find somehow unexpected ...).
 
 The above problem is fixed, by using [ES5 bind](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind): A wrapper function is created, which captures the `console` in its scope and then internally passes the `console` to the actual function as context (via `call` or `apply`).
 
