@@ -29,8 +29,6 @@ This is a great talk about the maturity and un-scientific nature of the programm
 
 > All the work that has been done on software estimation to date is pretty much pointless.
 
-> ...
-
 > Code review is the best technique known for fixing bugs. Don't write more unit-tests, go read somebody else's code.
 
 
