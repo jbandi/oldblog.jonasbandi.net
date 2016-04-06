@@ -20,7 +20,7 @@ universe::sayHello(world); // -> Hello to world from universe
 
 Currently the "Function Bind Syntax" proposal is at [stage 0](https://github.com/tc39/ecma262/blob/master/stage0.md) of the specification process.
 
-However [Babel](babeljs.io) already supports that features if you configure the [stage-0 preset](http://babeljs.io/docs/plugins/preset-stage-0/) or the [transform-function-bind plugin](http://babeljs.io/docs/plugins/transform-function-bind/).
+However [Babel](babeljs.io) already supports that feature if you configure the [stage-0 preset](http://babeljs.io/docs/plugins/preset-stage-0/) or the [transform-function-bind plugin](http://babeljs.io/docs/plugins/transform-function-bind/).
 
 You can also try the above code in the online [Babel REPL](http://babeljs.io/repl/).
 
