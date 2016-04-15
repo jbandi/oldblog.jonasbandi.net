@@ -20,14 +20,13 @@ However RoboVM turned out to be the collatoral damage of the Xamarin acquisition
 
 
 ### [RedHat loves .NET](http://redhatloves.net)
-Sleeping with the enemy ... but this is the shiny new world. [Microsoft loves Linux](https://blogs.technet.microsoft.com/windowsserver/2015/05/06/microsoft-loves-linux/), RedHat loves .NET ... the only one who is sitting in the corner without getting any love seems to be Java.  
-It will be interesting to see how RedHat will be able to invest into this new romance with .NET without endangering it's old relation Java ...
+Sleeping with the enemy ... but this is the shiny new world: [Microsoft loves Linux](https://blogs.technet.microsoft.com/windowsserver/2015/05/06/microsoft-loves-linux/), RedHat loves .NET ... only Java is sitting in the corner not getting any love.
+It will be interesting however to see how RedHat will be able to invest into this new romance with .NET without endangering it's old relation Java ...
 
 
 ### [Oracle JET](http://www.oracle.com/webfolder/technetwork/jet/index.html)
-Yet another web framework ... this time from a big commercial vendor.  
-On the second glance, it is more like a super-framework, aggregating other frameworks: jQuery, jQuery UI, Knockout ...  
-Suffering currently from the churn in the React ecosystem, this might actually make sense for the enterprise ecosystem ...
+Yet another web framework ... this time from a big commercial vendor. On the second glance, it is more like a super-framework, aggregating other frameworks: jQuery, jQuery UI, Knockout ...  
+I am currently suffering from the churn in the React ecosystem, so this might actually make sense for the enterprise ...
 
 
 ### [Why JavaScript development is crazy](http://www.planningforaliens.com/blog/2016/04/11/why-js-development-is-crazy/)
@@ -38,7 +37,7 @@ Another rant about the current complexity in the JavaScript ecosystem.
 
 
 ### JavaScript is everywhere:[OSX iMessage Exploit using JavaScript](http://www.bishopfox.com/blog/2016/04/if-you-cant-break-crypto-break-the-client-recovery-of-plaintext-imessage-data/)
-Building desktop applications based on web technologies seems the new hotness. Who would have guessed that iMessage on OSX is actually a browser view? But this opens you up for web security problems too ...
+Building desktop applications based on web technologies is the new hotness. Who would have guessed that iMessage on OSX is actually a browser view? But this opens you up for web security problems too ...
 
 
 ### [How We Build Code at Netflix](http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html)
@@ -64,4 +63,4 @@ Classic paintings with a geeky subtitle. Some are hilarious ...
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="sl" dir="ltr">Ctrl+C, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V <a href="https://t.co/Lg935kl0bw">pic.twitter.com/Lg935kl0bw</a></p>&mdash; Tannhäuser Post (@TannhauserPost) <a href="https://twitter.com/TannhauserPost/status/719824910156173313">April 12, 2016</a></blockquote>
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="sl" dir="ltr">Ctrl+C, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V, Ctrl+V <a href="https://t.co/Lg935kl0bw">pic.twitter.com/Lg935kl0bw</a></p>&mdash; Tannhäuser Post (@TannhauserPost) <a href="https://twitter.com/TannhauserPost/status/719824910156173313">April 12, 2016</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr">CSS. <a href="https://t.co/ZVKoGwOOIU">pic.twitter.com/ZVKoGwOOIU</a></p>&mdash; Sahil Lavingia (@shl) <a href="https://twitter.com/shl/status/706596960057200641">March 6, 2016</a></blockquote>
