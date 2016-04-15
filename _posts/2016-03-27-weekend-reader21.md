@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Weekend Reader Week 21 - Salary
+title: Weekend Reader Week 12 - Salary
 main_image: https://farm2.staticflickr.com/1513/26052025126_50bb990074_b.jpg
 thumbnail: https://farm2.staticflickr.com/1513/26052025126_50bb990074_q.jpg
 ---
@@ -70,7 +70,7 @@ A nice analysis on what matters to make your product successful in the long run 
 
 
 ### [SQL Server on Linux](http://blogs.microsoft.com/blog/2016/03/07/announcing-sql-server-on-linux/)
-For all those who missed it: Microsoft is changing ... 
+For all those who missed it: Microsoft is changing ...
 
 
 

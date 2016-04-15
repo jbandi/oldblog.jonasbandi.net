@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Weekend Reader Week 22 - Linux on Windows
+title: Weekend Reader Week 13 - Linux on Windows
 main_image: https://c8.staticflickr.com/2/1687/25616892103_7a43aec53c_b.jpg
 thumbnail: https://c8.staticflickr.com/2/1687/25616892103_7a43aec53c_q.jpg
 ---
@@ -15,7 +15,7 @@ This makes Windows much more attractive for many development scenarios. It's jus
 
 ### [Xamarin for Everyone](https://blog.xamarin.com/xamarin-for-all)
 
->.NET is now open source and native on every single device, from mobile to desktop to cloud. 
+>.NET is now open source and native on every single device, from mobile to desktop to cloud.
 
 
 Ah, did I already mention it? Microsoft is changing ...
@@ -41,7 +41,7 @@ This is a great talk about the maturity and un-scientific nature of the programm
 
 Interesting presentation about how mobile is taking over the world.
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/e8apLGIsmfqmZU" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/e8apLGIsmfqmZU" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 
 
