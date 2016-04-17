@@ -16,12 +16,12 @@ In October 2015 RoboVM was acquired by Xamarin. Xamarin basically offers the sam
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I am wondering about the long term future of <a href="https://twitter.com/hashtag/RoboVM?src=hash">#RoboVM</a> after the acquisition of <a href="https://twitter.com/xamarinhq">@xamarinhq</a> by Microsoft ...</p>&mdash; Jonas Bandi (@jbandi) <a href="https://twitter.com/jbandi/status/702802337232982017">February 25, 2016</a></blockquote>
 
-However RoboVM turned out to be the collatoral damage of the Xamarin acquisition: Probably Microsoft does not have any interest in keeping Java attractive as a platform. So be it, no cool play-stuff for Java, go back to your dusty servers and stay there along with Cobol and Fortran.
+Now RoboVM turned out to be the collateral damage of the Xamarin acquisition: Probably Microsoft does not have any interest in keeping Java attractive as a platform. So be it, no cool play-stuff for Java, go back to your dusty servers and stay there along with Cobol and Fortran.
 
 
 ### [RedHat loves .NET](http://redhatloves.net)
 Sleeping with the enemy ... but this is the shiny new world: [Microsoft loves Linux](https://blogs.technet.microsoft.com/windowsserver/2015/05/06/microsoft-loves-linux/), RedHat loves .NET ... only Java is sitting in the corner not getting any love.
-It will be interesting however to see how RedHat will be able to invest into this new romance with .NET without endangering it's old relation Java ...
+It will be interesting however to see how RedHat will be able to invest into this new romance with .NET without endangering it's standing relation to Java ...
 
 
 ### [Oracle JET](http://www.oracle.com/webfolder/technetwork/jet/index.html)
