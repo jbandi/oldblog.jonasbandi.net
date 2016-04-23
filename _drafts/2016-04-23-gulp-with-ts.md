@@ -5,7 +5,7 @@ main_image: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_z.jpg
 thumbnail: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_q.jpg
 ---
 
-I recently found out, that you can easily write your [Gulp](http://gulpjs.com/) tasks with [TypeScript](https://www.typescriptlang.org/).
+You can easily write your [Gulp](http://gulpjs.com/) tasks with [TypeScript](https://www.typescriptlang.org/).
 
 This is achieved with [ts-node](https://github.com/TypeStrong/ts-node), the TypeScript environment for node.
 
