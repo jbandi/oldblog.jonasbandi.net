@@ -1,8 +1,8 @@
 ---
 layout: post
 title: JavaScript Tip - Using Gulp with TypeScript   
-main_image: https://farm2.staticflickr.com/1502/25338298114_7bedb619da_z.jpg
-thumbnail: https://c2.staticflickr.com/2/1502/25338298114_7bedb619da_q.jpg
+main_image: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_z.jpg
+thumbnail: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_q.jpg
 ---
 
 I recently found out, that you can easily write your [Gulp](http://gulpjs.com/) tasks with [TypeScript](https://www.typescriptlang.org/).
