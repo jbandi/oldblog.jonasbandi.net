@@ -6,9 +6,10 @@
                  {% for link in site.navigation %}{% assign current = nil %}{% if page.url contains link.url %}{% assign current = 'current' %}{% endif %}
                  <li class="element {% if forloop.first %}first{% endif %} {{ current }} {% if forloop.last %}last{% endif %}">
                      <a href="{{ link.url | prepend: site.baseurl }}">{{ link.title }}</a>
-                 </li> 
+                 </li>
                  {% endfor %}
                  <li> <a href="http://jonasbandi.net/" target="_blank">About Me</a></li>
+                 <li> <a href="https://sites.google.com/site/jonasbandi/speaking" target="_blank">Speaking</a></li>
                  <li> <a href="https://twitter.com/jbandi" target="_blank">Twitter</a></li>
                  <li> <a href="https://www.xing.com/profile/Jonas_Bandi" target="_blank">Xing</a></li>
                  <li> <a href="http://www.ivorycode.com/" target="_blank">My Company</a></li>
