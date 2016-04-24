@@ -17,7 +17,7 @@ I am surprised about and a bit skeptical how representative those those high num
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1zj7M1LnJV4" frameborder="0" allowfullscreen></iframe>
 
-A great presentation about architecting modern user interface applications. Ultimately leading to the concepts implemented in Cycle.js, but the concepts are explained very nicely. I reccomend watching this presentation for everybody who is currently programming web applications with current JavaScript frameworks ...
+A great presentation about architecting modern user interface applications. Ultimately leading to the concepts implemented in [Cycle.js](http://cycle.js.org/), however the concepts are explained very nicely and are valuable eeven if you don't use Cycle.js. I recommend watching this presentation for everybody who is currently programming web applications with current JavaScript frameworks ...
 
 
 ### [What's New in TypeScript?](https://channel9.msdn.com/Events/Build/2016/B881)
