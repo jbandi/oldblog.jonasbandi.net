@@ -55,7 +55,7 @@ While this looks nice on the first glance, on second thought I don't see much be
 I believe your build should be simple enough so that typical arguments for TypeScript (big code base with many execution paths, long-term maintenance, refactoring ...) are not applicable.
 If you change your build and your build still runs successfully, you can be confident, that your changes are ok.
 
-On the other hand, changing a build should be possible with the least amount of friction. And TypeScript introduces more friction, because you need to provide typings for each 3rd-party plugin you are using. This adds complexity since most plugins do not provide those typings, so you have to get them from somewhere else (i.e. the [DefinitelyTyped repo](https://github.com/DefinitelyTyped/DefinitelyTyped)), but for some plugins you don't find any typings at all (i.e. `gulp-jshint`)
+On the other hand, changing a build should be possible with the least amount of friction. And TypeScript introduces more friction, the friction comes mostly from providing typings for each 3rd-party plugin you are using (this is optional, but if you don't do it, you don't get the benefits of TypeScript). This adds complexity since most plugins do not provide those typings, so you have to get them from somewhere else (i.e. the [DefinitelyTyped repo](https://github.com/DefinitelyTyped/DefinitelyTyped)). This introduces yet another dependency and for some plugins you don't find any typings at all (i.e. `gulp-jshint`).
 
 In my opinion this is not worth it, so I stay with plain gulp or [gulp with ES6](https://markgoodyear.com/2015/06/using-es6-with-gulp/).
 
