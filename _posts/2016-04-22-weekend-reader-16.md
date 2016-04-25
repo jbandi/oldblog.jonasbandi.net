@@ -10,7 +10,7 @@ So it is no longer good enough to understand one of those two frameworks ... now
 
 
 ### [Google, Facebook, Amazon and Microsoft Salaries](https://blog.step.com/2016/04/08/an-open-source-project-for-tech-salaries/)
-I am surprised about and a bit skeptical how representative those those high numbers are. The salaries for engineering positions at those big tech companies seem to be extraordinary, especially compared to numbers I see here in Europe ...
+I am surprised about those high numbers and a bit skeptical how representative those are. The salaries for engineering positions at those big tech companies seem to be extraordinary, especially compared to numbers I see here in Europe ...
 
 
 ### [What if the user was a function? ](https://www.youtube.com/watch?v=1zj7M1LnJV4)
