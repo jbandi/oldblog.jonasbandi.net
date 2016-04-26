@@ -1,6 +1,7 @@
-Jekyll theme for my blog based on [Long Haul](http://github.com/brianmaierjr/long-haul)
+The sources for my complete blog: [http://blog.jonasbandi.net/](http://blog.jonasbandi.net/).  
+Based on Jekyll. Theme based on [Long Haul](http://github.com/brianmaierjr/long-haul)
 
-####[View My Blog](http://blog.jonasbandi.net/)
+
 
 ## Features
 
