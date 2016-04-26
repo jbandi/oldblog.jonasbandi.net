@@ -16,7 +16,7 @@ This half-day seminar on June 8th is organized by [M&F Engineering](http://www.m
 ### [Digicomp DevDay 2016](https://www.digicomp.ch/events/softwareentwicklung-events/devday-zuerich-2016)
 I am giving a talk on the main event (June 22nd) about ["What's new in Angular 2"](https://www.digicomp.ch/events/softwareentwicklung-events/devday-zuerich-2016#a005700000fom3jAAA). On the following day I will hold a [workshop "Hands-on Angular 2"](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/hands-on-angular-2). Registration is open ...
 
-### M&F Engineering Trainee Programming
+### M&F Engineering Trainee Program
 [M&F Engineering](http://www.m-f.ch/) has a very attractive [trainee program for university graduates](http://www.m-f.ch/kompetenzen#JUMP3). Part of the trainee program are regular workshops. I am glad that I was invited to hold a two day workshop about "Modern JavaScript development for Java & .NET developers" in September/October.
 
 ### [Course "Angular 2, JavaScript and TypeScript" in Vienna](http://techtalk.at/trainings/front-end-entwicklung-mit-angular-2-javascript-und-typescript/)
