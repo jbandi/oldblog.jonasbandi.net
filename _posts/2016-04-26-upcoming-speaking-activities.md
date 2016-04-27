@@ -13,6 +13,10 @@ The semester has just started. I am teaching for the third time the main part in
 ### [Seminar "JavaScript conquers the world - An introduction to the concepts and tools"](http://www.m-f.ch/events/event/0/13-javascript/2-javascript-erobert-die-welt)
 This half-day seminar on June 8th is organized by [M&F Engineering](http://www.m-f.ch/).
 
+### Workshop at ERNI Development Day
+[ERNI Consulting](https://www.erni-consultants.com/en) is regularly organizing internal development days. I was invited to hold a Workshop about "Modern JavaScript Development" at the next development day on June 16th in Bern.
+
+
 ### [Digicomp DevDay 2016](https://www.digicomp.ch/events/softwareentwicklung-events/devday-zuerich-2016)
 I am giving a talk on the main event (June 22nd) about ["What's new in Angular 2"](https://www.digicomp.ch/events/softwareentwicklung-events/devday-zuerich-2016#a005700000fom3jAAA). On the following day I will hold a [workshop "Hands-on Angular 2"](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/hands-on-angular-2). Registration is open ...
 
