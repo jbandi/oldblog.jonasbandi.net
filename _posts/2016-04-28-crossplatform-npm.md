@@ -27,7 +27,7 @@ One of our npm script triggers [eslint](http://eslint.org/) to analyze the JavaS
 
 This worked well on Windows (from within WebStorm, from a cmd shell and also from [babun](http://babun.github.io/)).
 
-Unfortunately it did not work on our Linux build server (using bash). The worst part about it was that the command did not throw an error but the linting process just never reported any problems ...
+Unfortunately it **did not work on our Linux** build server (using bash). The worst part about it was that the command did not throw an error but the linting process just never reported any problems ...
 
 I suspect the path was not properly passed to eslint.
 
@@ -46,11 +46,11 @@ _(note the extra single quotes around the path)_
 
 
 Running the npm script on Linux worked now (eslint found actual problems). With the additional quotes, somehow the path now got correctly passed to eslint ...
-Unfortunately the above script did not work on Windows any more. Now eslint on Windows did not find any problems any more ... somehow the additional quotes had probably the effect, that eslint did not get the correct path (again the behavior was consistent accross WebStorm, cmd shell and babun).
+Unfortunately the above script **did not work on Windows any more**. Now eslint on Windows did not find any problems any more ... somehow the additional quotes had probably the effect, that eslint did not get the correct path (again the behavior was consistent accross WebStorm, cmd shell and babun).
 
 Bummer!
 
-The final fix that currently works on Linux and Windows looks like this:
+The **final fix that currently works on Linux and Windows** looks like this:
 
       // package.json
     ...
@@ -63,6 +63,6 @@ The final fix that currently works on Linux and Windows looks like this:
 
 _(note the escaped double quotes around the path)_
 
-  Now it seems that the correct path is passed to eslint from npm running on both Windows or Linux ... something on the way between npm and eslint seems to need some escaping-help :-(
+Now it seems that the correct path is passed to eslint from npm running on both Windows or Linux ... something on the way between npm and eslint seems to need some escaping-help :-(
 
-  We are using npm 2.14.4 and eslint 2.3.0.
+We are using npm 2.14.4 and eslint 2.3.0.
