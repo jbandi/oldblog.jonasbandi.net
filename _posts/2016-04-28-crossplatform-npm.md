@@ -41,6 +41,7 @@ The problem could be fixed on Linux by changing the npm script like this:
       ...
     },
     ...
+
 (note the extra single quotes around the path)
 
 
@@ -59,6 +60,7 @@ The final fix that currently works on Linux and Windows looks like this:
       ...
     },
     ...
+    
 (note the escaped double quotes around the path)
 
   Now it seems that the correct path is passed to eslint from npm running on both Windows or Linux ... something on the way between npm and eslint seems to need some escaping-help :-(
