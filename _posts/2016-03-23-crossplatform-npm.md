@@ -1,6 +1,6 @@
 ---
 layout: post
-title: JavaScript Tip - Cross-platform issues with npm scripts    
+title: JavaScript Tip - Cross-Platform Issues with NPM Scripts    
 main_image: https://farm2.staticflickr.com/1502/25338298114_7bedb619da_z.jpg
 thumbnail: https://c2.staticflickr.com/2/1502/25338298114_7bedb619da_q.jpg
 ---
@@ -14,6 +14,7 @@ In our project however we ran into annoying little cross-platform issue with npm
 We are developing on Windows machines but our continuous build server (Jenkins) is running on Linux.
 
 One of our npm script triggers [eslint](http://eslint.org/) to analyze the JavaScript sources:
+
 
     // package.json
     ...
@@ -58,7 +59,7 @@ The final fix that currently works on Linux and Windows looks like this:
       ...
     },
     ...
-(note the escaped dpible quotes around the path)
+(note the escaped double quotes around the path)
 
   Now it seems that the correct path is passed to eslint from npm running on both Windows or Linux ... something on the way between npm and eslint seems to need some escaping-help :-(
 
