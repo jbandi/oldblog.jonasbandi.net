@@ -46,7 +46,7 @@ _(note the extra single quotes around the path)_
 
 
 Running the npm script on Linux worked now (eslint found actual problems). With the additional quotes, somehow the path now got correctly passed to eslint ...
-Unfortunately the above script **did not work on Windows any more**. Now eslint on Windows did not find any problems any more ... somehow the additional quotes had probably the effect, that eslint did not get the correct path (again the behavior was consistent accross WebStorm, cmd shell and babun).
+Unfortunately the above script **did not work on Windows any more**. Now eslint on Windows did not find any problems any more ... somehow the additional quotes had probably the effect, that eslint did not get the correct path (again the behavior was consistent across WebStorm, cmd shell and babun).
 
 Bummer!
 
