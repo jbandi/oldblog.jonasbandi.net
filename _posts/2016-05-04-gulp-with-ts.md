@@ -48,7 +48,7 @@ gulp.task('test', () => {
 });
 ```
 
-Voila, you get type-checking and editor-support by TypeScript while writing your build-tasks.
+Voilà, you get type-checking and editor-support by TypeScript while writing your build-tasks.
 
 While this looks nice on the first glance, on second thought I don't see much benefits in using TypeScript in your build-tasks...
 
