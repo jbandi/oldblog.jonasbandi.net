@@ -41,7 +41,7 @@ Next you need to provide the configuration for the TypeScript compiler in `tscon
 
 Now you can write your build-tasks in TypeScript in `gulpfile.ts`:
 
-```JavaScript
+```javascript
 import * as gulp from 'gulp';
 gulp.task('test', () => {
 	  console.log('Gulp is running!');
