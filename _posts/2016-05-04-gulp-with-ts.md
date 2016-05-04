@@ -7,6 +7,8 @@ thumbnail: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_q.jpg
 
 You can easily write your [Gulp](http://gulpjs.com/) tasks with [TypeScript](https://www.typescriptlang.org/).
 
+Here is my sample project illustrating this post: [ts-gulp-experiment](https://github.com/jbandi/ts-gulp-experiment)
+
 This is achieved with [ts-node](https://github.com/TypeStrong/ts-node), the TypeScript environment for node.
 
 The following steps set up a minimal project using Gulp with TypeScript:
@@ -25,18 +27,19 @@ touch gulpfile.ts
 
 Next you need to provide the configuration for the TypeScript compiler in `tsconfig.json`:
 
-    {
-      "compilerOptions": {
-        "noFallthroughCasesInSwitch": true
-      },
-      "exclude": [
-        "node_modules",
-        "dist",
-        "typings/browser.d.ts",
-        "typings/browser",
-        "src"
-      ]
-    }
+  {
+    "compilerOptions": {
+      "allowUnreachableCode": false,
+      "noImplicitAny": true,
+      "noImplicitReturns": true
+    },
+    "exclude": [
+      "node_modules",
+      "typings/browser.d.ts",
+      "typings/browser"
+    ]
+  }
+
 
 
 Now you can write your build-tasks in TypeScript in `gulpfile.ts`:
