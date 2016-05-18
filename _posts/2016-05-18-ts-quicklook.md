@@ -7,17 +7,17 @@ thumbnail: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_q.jpg
 
 [QuickLook](https://en.wikipedia.org/wiki/Quick_Look) is a very productive features in OSX for me.
 
-It is very convenient to quickly look into a file from the filesystem without  having to open an editor.
+It is very convenient to quickly look into a file from the filesystem without  having to open an editor:
 
 ![](http://imgur.com/tfYQHzs.png)
 
 There are a [many QuickLook plugins](https://github.com/sindresorhus/quick-look-plugins) that make my life easier as a developer by providing improved rendering for code files.
 
-Unfortunately QuickLook does not work with TypeScript files which end with the `.ts` extension.
+Unfortunately QuickLook does not work with [TypeScript](https://www.typescriptlang.org/) files which end with the `.ts` extension.
 
 The `.ts` extension is associated with [MPEG2 transport streams](https://en.wikipedia.org/wiki/MPEG_transport_stream) on OSX. As a consequence QuickLook tries to preview TypeScript files as videos with the corresponding QuickTime plugin.
 
-This is especially unfortunate, since Angular 2 gains momentum and TypeScript promotes the usage of TypeScript.
+This is especially unfortunate, since Angular 2 gains momentum and it promotes the usage of TypeScript.
 
 Here is how I got QuickLook working to display TypeScript files as raw text:
 
