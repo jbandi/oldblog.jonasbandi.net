@@ -5,7 +5,7 @@ main_image: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_z.jpg
 thumbnail: https://c6.staticflickr.com/2/1672/26603473125_2eef6ff2cf_q.jpg
 ---
 
-[QuickLook](https://en.wikipedia.org/wiki/Quick_Look) is a very productive features in OSX for me.
+[QuickLook](https://en.wikipedia.org/wiki/Quick_Look) is a very productive feature in OSX for me.
 
 It is very convenient to quickly look into a file from the filesystem without  having to open an editor:
 
