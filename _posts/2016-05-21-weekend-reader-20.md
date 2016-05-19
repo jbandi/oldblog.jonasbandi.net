@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Weekend Reader Week 19
-main_image: https://c5.staticflickr.com/2/1522/26351046860_9a34800d6d_b.jpg
-thumbnail: https://c5.staticflickr.com/2/1522/26351046860_9a34800d6d_q.jpg
+main_image: https://farm8.staticflickr.com/7645/27118686745_70db546bd8_b.jpg
+thumbnail: https://farm8.staticflickr.com/7645/27118686745_70db546bd8_q.jpg
 ---
 
 ### [Angular 2: The best example of feature creep!](https://youtu.be/aSFfLVxT5vA?t=616)
