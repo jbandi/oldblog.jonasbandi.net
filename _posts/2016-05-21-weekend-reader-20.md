@@ -24,13 +24,13 @@ The first part accurately describes the problem with recruiters (also here in Sw
 
 
 
+### [CodeMill: A Marketplace for Pull Requests](http://codemill.io/)
+An interesting crowdsourcing idea: Distribute work and pay via GitHub collaboration. Something between [99designs](http://99designs.com) and [upwork](https://www.upwork.com/) ... unfortunately nobody seems to use it ...
+
+
+
 ### [JavaPoly.js: Running Java in the Browser](https://www.javapoly.com/)
 Another attempt at using Java in the browser. It is built on [Doppio](https://github.com/plasma-umass/doppio), a JVM implemented in JavaScript, and allows you to load jars, classes or Java source code directly into the browser, just like JavaScript. An impressive project ...
-
-
-
-###[CodeMill: A Marketplace for Pull Requests](http://codemill.io/)
-An interesting crowdsourcing idea: Distribute work and pay via GitHub collaboration. Something between [99designs](http://99designs.com) and [upwork](https://www.upwork.com/) ... unfortunately nobody seems to use it ...
 
 
 
