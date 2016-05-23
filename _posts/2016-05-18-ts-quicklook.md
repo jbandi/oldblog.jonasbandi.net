@@ -11,7 +11,7 @@ It is very convenient to quickly look into a file from the filesystem without  h
 
 ![](http://imgur.com/tfYQHzs.png)
 
-There are a [many QuickLook plugins](https://github.com/sindresorhus/quick-look-plugins) that make my life easier as a developer by providing improved rendering for code files.
+There are [many QuickLook plugins](https://github.com/sindresorhus/quick-look-plugins) that make my life easier as a developer by providing improved rendering for code files.
 
 Unfortunately QuickLook does not work with [TypeScript](https://www.typescriptlang.org/) files which end with the `.ts` extension.
 
