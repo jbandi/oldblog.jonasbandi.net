@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Presentation: Angular 2 - What's New?
+title: Presentation - Angular 2, What's New?
 main_image: https://farm8.staticflickr.com/7211/26844092510_102b7b20c1_b.jpg
 thumbnail: https://farm8.staticflickr.com/7211/26844092510_102b7b20c1_q.jpg
 ---
