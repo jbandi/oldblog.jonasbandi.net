@@ -92,10 +92,10 @@ But when you switch to TypeScript you get the following error:
 Error TS1192: Module '"lodash/map"' has no default export.
 ```
 
-I don't fully understand where the root of the problem: Basically [lodash](https://www.npmjs.com/package/lodash) exports its modules in the [CommonJS format](https://en.wikipedia.org/wiki/CommonJS). [WebPack](http://webpack.js.org/) can somehow resolve the ES2015 imports to these CommonJS modules of lodash.
+I don't fully understand the root of the problem: Basically [lodash](https://www.npmjs.com/package/lodash) exports its modules in the [CommonJS format](https://en.wikipedia.org/wiki/CommonJS). [WebPack](http://webpack.js.org/) can somehow resolve the ES2015 imports to these CommonJS modules of lodash.
 The TypeScript compiler also transpiles to CommonJS, however it expects a default export according to the ES2015 module spec. If you inspect the transpiled sources you see something like `map_1.default`. This is according to the common [interpretation of the ES2015 module spec](http://www.2ality.com/2014/09/es6-modules-final.html), where a default export is a *named export* with the name `default`.
 
-The problem seems to be ES2015 (or Webpack?) and TypeScript have their own module system, which is not completely interoperable. Whatever the technical details are, for me as a programmer this means that TypeScript is not a superset of JavaScript. Whenever I use a library that offers a modularized distribution like lodash, ramda or react-bootstrap, I can't simply switch to TypeScript.
+The problem seems to be ES2015 (or WebPack?) and TypeScript have their own module system, which is not completely interoperable. Whatever the technical details are, for me as a programmer this means that TypeScript is not a superset of JavaScript. Whenever I use a library that offers a modularized distribution like [lodash](https://www.npmjs.com/package/lodash), [ramda](https://www.npmjs.com/package/ramda) or [react-bootstrap](https://www.npmjs.com/package/react-bootstrap), I can't simply switch to TypeScript.
 
 One last difference I found ES2015 and TypeScript is regarding destructuring.
 
@@ -106,6 +106,7 @@ const obj = {three: 3, four: 4 };
 const {zero = 0, three = 1, seven = 7} = obj;
 ```
 TypeScript throws:
+
 ```
 Error TS2459: Type '{ three: number; four: number; five: number; six: number; }' has no property 'seven' and no string index signature.
 ```
@@ -116,7 +117,9 @@ function processValues({three = 1, seven = 7}){};
 processValues(obj);
 ```
 
-These example illustrate that TypeScript is no superset of JavaScript any more and that the gap is widening. This of course raises the question where this will lead in the future and if the original value proposition of TypeScript is still applicable or is TypeScript becoming just another "Compile-to-JavaScript" language?
+These example illustrate that TypeScript is no superset of JavaScript any more and that the gap is widening  with modern versions of JavaScript.
+
+This of course raises the question where this will lead in the future and if the original value proposition of TypeScript is still applicable or is TypeScript becoming just another "Compile-to-JavaScript" language?
 
 All the examples are easily reproducible with the code in my Github Repo [ts-superset-myth](https://github.com/jbandi/ts-superset-myth):
 
