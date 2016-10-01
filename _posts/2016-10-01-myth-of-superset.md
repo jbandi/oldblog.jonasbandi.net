@@ -108,7 +108,7 @@ const {zero = 0, three = 1, seven = 7} = obj;
 TypeScript throws:
 
 ```
-Error TS2459: Type '{ three: number; four: number; five: number; six: number; }' has no property 'seven' and no string index signature.
+Error TS2459: Type '{ three: number; four: number; }' has no property 'seven' and no string index signature.
 ```
 However interestingly TypeScript allows to destructure the same object to function parameters like this:
 
