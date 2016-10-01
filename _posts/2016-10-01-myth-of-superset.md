@@ -18,14 +18,14 @@ This fact is a major value proposition of TypeScript over [other "Compile-to-Jav
 Technically the statement was never true. TypeScript constrained the usage of dynamic features of JavaScript since the beginning. And it was easy to write JavaScript code that was not valid TypeScript:
 
 ```javascript
-const first = {};
+var first = {};
 first.name = 'Tyler Durden';
 ```
 ```
 Error TS2339:Property 'name' does not exist on type '{}'.
 ```
 
-Since it is one of the goals of TypeScript to reduce "dynamic typing", the above error was actually desired. But technically TypeScript was not a superset from the start.
+Since it is one of the goals of TypeScript to reduce "dynamic typing", the above error was actually desired. But technically TypeScript never was a superset in the sense that any *valid* JavaScript is also *valid* TypeScript.
 
 With [ES2015](https://babeljs.io/docs/learn-es2015/) the gap to TypeScript widens, and the claim to be a superset starts breaking down ...
 
@@ -69,7 +69,7 @@ class Car {
     }
 }
 ```
-The above snippet is also not valid ES2015, but there is a proposal for a future version of EcmaScript that [standardizes class properties](https://github.com/jeffmo/es-class-fields-and-static-properties). The proposal is [currently stage 1](https://github.com/tc39/proposals) and [Babel](http://babeljs.io/) supports class properties with the [corresponding plugin](http://babeljs.io/docs/plugins/transform-class-properties/) or the [stage 1 preset](http://babeljs.io/docs/plugins/preset-stage-1/).
+The above snippet is not valid ES2015 either, but there is a proposal for a future version of EcmaScript that [standardizes class properties](https://github.com/jeffmo/es-class-fields-and-static-properties). The proposal is [currently stage 1](https://github.com/tc39/proposals) and [Babel](http://babeljs.io/) supports class properties with the [corresponding plugin](http://babeljs.io/docs/plugins/transform-class-properties/) or the [stage 1 preset](http://babeljs.io/docs/plugins/preset-stage-1/).
 
 More discrepancies between JavaScript/ES2015 and TypeScript show up when using [ES2015 Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
 
