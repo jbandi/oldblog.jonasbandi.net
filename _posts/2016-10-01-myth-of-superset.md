@@ -97,7 +97,7 @@ The TypeScript compiler also transpiles to CommonJS, however it expects a defaul
 
 The problem seems to be ES2015 (or WebPack?) and TypeScript have their own module system, which is not completely interoperable. Whatever the technical details are, for me as a programmer this means that TypeScript is not a superset of JavaScript. Whenever I use a library that offers a modularized distribution like [lodash](https://www.npmjs.com/package/lodash), [ramda](https://www.npmjs.com/package/ramda) or [react-bootstrap](https://www.npmjs.com/package/react-bootstrap), I can't simply switch to TypeScript.
 
-One last difference I found ES2015 and TypeScript is regarding destructuring.
+There is yet another difference between ES2015 and TypeScript regarding destructuring.
 
 The following snippet is valid ES2015:
 
