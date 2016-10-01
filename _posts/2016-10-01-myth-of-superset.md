@@ -117,7 +117,7 @@ function processValues({three = 1, seven = 7}){};
 processValues(obj);
 ```
 
-These example illustrate that TypeScript is no superset of JavaScript any more and that the gap is widening  with modern versions of JavaScript.
+These example illustrate that TypeScript is no superset of JavaScript and that the gap is widening  with modern versions of JavaScript.
 
 This of course raises the question where this will lead in the future and if the original value proposition of TypeScript is still applicable or is TypeScript becoming just another "Compile-to-JavaScript" language?
 
