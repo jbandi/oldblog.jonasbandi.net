@@ -5,7 +5,7 @@ main_image: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_b.jpg
 thumbnail: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_q.jpg
 ---
 > I worry about building up a large codebase using TypeScript, only to have the ECMAScript spec introduce conflicting keywords and type features.
-> -- Eric Elliot, [The Shocking Secret About Static Types](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3#.i1xembose)
+> <p>-- Eric Elliot, [The Shocking Secret About Static Types](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3#.i1xembose)</p>
 
 
 TL;DR: [TypeScript](http://www.typescriptlang.org/) is no superset of JavaScript. See my [code examples](https://github.com/jbandi/ts-superset-myth) for illustration.
