@@ -4,12 +4,7 @@ title: TypeScript - The Myth of the Superset
 main_image: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_b.jpg
 thumbnail: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_q.jpg
 ---
-
-
-<a data-flickr-embed="true"  href="https://www.flickr.com/photos/jbandi/29423877964/in/dateposted-public/" title="TS_SuperSet"><img src="https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_b.jpg" width="1024" height="911" alt="TS_SuperSet"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-
 > I worry about building up a large codebase using TypeScript, only to have the ECMAScript spec introduce conflicting keywords and type features.
->
 > -- Eric Elliot, [The Shocking Secret About Static Types](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3#.i1xembose)
 
 
