@@ -7,7 +7,7 @@ thumbnail: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_q.jpg
 
 ---
 **Update October 02, 2016:**  
-I am surprised how much reaction I got for this post, mainly on Twitter. I also learned a lot from the feedback/corrections in the comments.  
+I am surprised how much reaction I got for this post, [mainly on](https://twitter.com/housecor/status/782396331562143745) [Twitter](https://twitter.com/jbandi/status/782348191710715904). I also learned a lot from the feedback/corrections in the comments.  
 
 Still, I feel the need to clarify some things:
 
