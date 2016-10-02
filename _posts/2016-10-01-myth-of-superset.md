@@ -5,7 +5,7 @@ main_image: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_b.jpg
 thumbnail: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_q.jpg
 ---
 
-**Update October 02, 2016:**
+**Update October 02, 2016:**  
 I am surprised how much reaction I got for this post, mainly on Twitter. I am also very happy that I got valuable feedback/corrections in the comments.  
 Still I feel the need to clarify some things:
 
@@ -18,9 +18,11 @@ However other people have a different understanding of "superset" which is compa
 
 I still think this post illustrates some interesting facts about TypeScript but **be sure to read the comments to this post, they are much more insightful!**
 
+----
 
 > I worry about building up a large codebase using TypeScript, only to have the ECMAScript spec introduce conflicting keywords and type features.
 > <br/><cite>-- Eric Elliot, [The Shocking Secret About Static Types](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3#.i1xembose)</cite>
+
 
 
 TL;DR: [TypeScript](http://www.typescriptlang.org/) is no superset of JavaScript. See my [code examples](https://github.com/jbandi/ts-superset-myth) for illustration.
