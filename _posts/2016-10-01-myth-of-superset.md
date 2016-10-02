@@ -5,20 +5,22 @@ main_image: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_b.jpg
 thumbnail: https://c5.staticflickr.com/6/5093/29423877964_ee7fac938b_q.jpg
 ---
 
+---
 **Update October 02, 2016:**  
-I am surprised how much reaction I got for this post, mainly on Twitter. I am also very happy that I got valuable feedback/corrections in the comments.  
-Still I feel the need to clarify some things:
+I am surprised how much reaction I got for this post, mainly on Twitter. I also learned a lot from the feedback/corrections in the comments.  
 
-I personally think TypeScript is currently the best language choice for complex web applications. I choose it for any non-trivial project.
+Still, I feel the need to clarify some things:
 
-The intention of this post is not to diminish the value of TypeScript. I just want to document my experiences with TypeScript.
+- I personally think TypeScript is currently the best language choice for complex web applications. I choose it for any non-trivial project.
 
-My understanding of "superset" is not compatible with the actual implementation of TypeScript. I am [not](http://stackoverflow.com/questions/29918324/is-typescript-really-a-superset-of-javascript) [the](https://github.com/Microsoft/TypeScript/issues/2606) [only](https://www.reddit.com/r/javascript/comments/3phz93/is_typescript_really_a_superset_of_javascript/) one who had different expectations from the claim to be a superset.  
+- The intention of this post is not to diminish the value of TypeScript. I just want to document my experiences with TypeScript.
+
+- My understanding of "superset" is not compatible with the actual implementation of TypeScript. I am [not](http://stackoverflow.com/questions/29918324/is-typescript-really-a-superset-of-javascript) [the](https://github.com/Microsoft/TypeScript/issues/2606) [only](https://www.reddit.com/r/javascript/comments/3phz93/is_typescript_really_a_superset_of_javascript/) one who had different expectations from the claim to be a superset.  
 However other people have a different understanding of "superset" which is compatible with the implementation of TypeScript. Thanks to the comments this is now clear to me.
 
-I still think this post illustrates some interesting facts about TypeScript but **be sure to read the comments to this post, they are much more insightful!**
+- I still think this post illustrates some interesting facts about TypeScript but **be sure to read the comments to this post, they are much more insightful!**
 
-----
+---
 
 > I worry about building up a large codebase using TypeScript, only to have the ECMAScript spec introduce conflicting keywords and type features.
 > <br/><cite>-- Eric Elliot, [The Shocking Secret About Static Types](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3#.i1xembose)</cite>
