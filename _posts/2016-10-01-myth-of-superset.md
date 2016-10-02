@@ -46,7 +46,7 @@ Error TS2339: Property 'weight' does not exist on type 'Car'.
 ```
 
 The issue [is discussed on GitHub](https://github.com/Microsoft/TypeScript/issues/2606). One of the conclusions there is that TypeScript is not a superset in the sense of compatibility but in the sense of "feature sets".  
-I think that is a strange interpretation of "superset", which degrades the value proposition of TypeScript, because any programming language that compiles to JS would be a superset with this interpretation
+I think that is a strange interpretation of "superset", which degrades the value proposition of TypeScript, because any programming language that compiles to JS would be a superset with this interpretation.
 
 For the above issue, there is an easy solution which requires only a small change in the code to make the TypeScript compiler happy:
 
@@ -69,7 +69,7 @@ class Car {
     }
 }
 ```
-The above snippet is not valid ES2015 either, but there is a proposal for a future version of EcmaScript that [standardizes class properties](https://github.com/jeffmo/es-class-fields-and-static-properties). The proposal is [currently stage 1](https://github.com/tc39/proposals) and [Babel](http://babeljs.io/) supports class properties with the [corresponding plugin](http://babeljs.io/docs/plugins/transform-class-properties/) or the [stage 1 preset](http://babeljs.io/docs/plugins/preset-stage-1/).
+The above snippet is not valid ES2015 either, but there is a proposal for a future version of EcmaScript that [standardizes class properties](https://github.com/jeffmo/es-class-fields-and-static-properties). The proposal is [currently stage 2](https://github.com/tc39/proposals) and [Babel](http://babeljs.io/) supports class properties with the [corresponding plugin](http://babeljs.io/docs/plugins/transform-class-properties/) or the [stage 2 preset](http://babeljs.io/docs/plugins/preset-stage-2/).
 
 More discrepancies between JavaScript/ES2015 and TypeScript show up when using [ES2015 Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
 
