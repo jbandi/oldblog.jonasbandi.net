@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Presentation - JavaScript- The Universal Platform?
+title: Presentation - JavaScript - The Universal Platform?
 main_image: https://c7.staticflickr.com/9/8411/30163936046_4b0f12b6f9_b.jpg
 thumbnail: https://c7.staticflickr.com/9/8411/30163936046_4b0f12b6f9_q.jpg
 ---
