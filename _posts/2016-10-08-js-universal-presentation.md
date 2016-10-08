@@ -19,9 +19,9 @@ The presentation showed an experiment I did: What can I achieve by  using JavaSc
 
 I implemented three versions of the same application:
 
-- The web version of the application was using React
-- The native mobile application is using React Native
-- The desktop application is using Electron
+- The web version of the application was using [React](https://facebook.github.io/react/)
+- The native mobile application is using [React Native](https://facebook.github.io/react-native/)
+- The desktop application is using [Electron](http://electron.atom.io/)
 
 The experiment shows how it is possible to achieve knowhow-reuse and code-reuse by using the JavaScript ecosystem.
 
