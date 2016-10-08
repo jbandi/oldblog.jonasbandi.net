@@ -9,7 +9,7 @@ Last month I was invited to give a talk at the annual developer day of [Swiss Ra
 
 The SBB Developer Day is a full day conference that SBB organizes for their Development staff. The day is organized in several parallel tracks.
 
-<img class="jb-main-img" src="https://c6.staticflickr.com/6/5105/30198345485_b492a466d8_b.jpg" alt="SBB Dev Day 2016">
+<img class="jb-main-img-sm" src="https://c6.staticflickr.com/6/5105/30198345485_b492a466d8_b.jpg" alt="SBB Dev Day 2016">
 
 This is [the presentation](http://www.slideshare.net/JonasBandi/javascript-the-universal-platform) from my session at the SBB Developer Day: *JavaScript - The Universal Platform?*
 
