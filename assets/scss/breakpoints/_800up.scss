@@ -188,7 +188,11 @@ POST STYLING
 	max-width: 600px;
 }
 
-
+iframe {
+	max-width:100%;
+	//margin-left: 100px;
+	height: 500px;
+}
 
 /***************
 POST NAV STYLING

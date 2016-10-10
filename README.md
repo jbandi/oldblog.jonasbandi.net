@@ -23,11 +23,14 @@ Based on Jekyll. Theme based on [Long Haul](http://github.com/brianmaierjr/long-
 1. [Install Jekyll](http://jekyllrb.com)
 2. Fork the repo
 3. Clone it
-4. Install susy `gem install susy` 
-5. Install normalize `gem install normalize-scss`
-6. Run Jekyll `jekyll serve`
-7. Run `compass watch`
-8. Customize!
+4. Install jekyll `gem install jekyll`
+    Install compass `gem instal sass`  
+    Install susy `gem install susy`  
+    Install normalize `gem install normalize-scss`  
+    Install support-for `gem install support-for`
+5. Run Jekyll `jekyll serve`
+6. Run `compass watch`
+7. Customize!
 
 ## Site Settings
 
